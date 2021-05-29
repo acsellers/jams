@@ -1,4 +1,4 @@
-package swagger
+package jams
 
 import (
 	"bytes"
@@ -8,11 +8,8 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"mime/multipart"
 	"net/http"
 	"net/url"
-	"os"
-	"path/filepath"
 	"reflect"
 	"regexp"
 	"strings"
@@ -110,8 +107,8 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 	return fmt.Sprintf("%v", obj)
 }
 
-// callAPI do the request.
-func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
+// Call do the request.
+func (c *APIClient) Call(request *http.Request) (*http.Response, error) {
 	return c.cfg.HTTPClient.Do(request)
 }
 
@@ -135,14 +132,14 @@ func (c *APIClient) prepareRequest(
 
 		body, err = setBody(postBody, contentType)
 		if err != nil {
-			return nil, err
+			return err
 		}
 	}
 
 	// Setup path and query parameters
 	url, err := url.Parse(path)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	// Adding Query Param
@@ -163,7 +160,7 @@ func (c *APIClient) prepareRequest(
 		localVarRequest, err = http.NewRequest(method, url.String(), nil)
 	}
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	// add header parameters, if any
@@ -194,7 +191,7 @@ func (c *APIClient) prepareRequest(
 			// We were able to grab an oauth2 token from the context
 			var latestToken *oauth2.Token
 			if latestToken, err = tok.Token(); err != nil {
-				return nil, err
+				return err
 			}
 
 			latestToken.SetAuthHeader(localVarRequest)
@@ -233,23 +230,6 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 	return errors.New("undefined response type")
 }
 
-// Add a file to the multipart request
-func addFile(w *multipart.Writer, fieldName, path string) error {
-	file, err := os.Open(path)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	part, err := w.CreateFormFile(fieldName, filepath.Base(path))
-	if err != nil {
-		return err
-	}
-	_, err = io.Copy(part, file)
-
-	return err
-}
-
 // Set request body from an interface{}
 func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err error) {
 	if bodyBuf == nil {
@@ -271,12 +251,12 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	}
 
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	if bodyBuf.Len() == 0 {
 		err = fmt.Errorf("invalid body type: %s", contentType)
-		return nil, err
+		return err
 	}
 	return bodyBuf, nil
 }
