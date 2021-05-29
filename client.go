@@ -109,6 +109,7 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 
 // Call do the request.
 func (c *APIClient) Call(request *http.Request) (*http.Response, error) {
+	request.Header.Add("Authorization", "Bearer "+c.auth.AccessToken)
 	return c.cfg.HTTPClient.Do(request)
 }
 
@@ -132,14 +133,14 @@ func (c *APIClient) prepareRequest(
 
 		body, err = setBody(postBody, contentType)
 		if err != nil {
-			return err
+			return nil, err
 		}
 	}
 
 	// Setup path and query parameters
 	url, err := url.Parse(path)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	// Adding Query Param
@@ -160,7 +161,7 @@ func (c *APIClient) prepareRequest(
 		localVarRequest, err = http.NewRequest(method, url.String(), nil)
 	}
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	// add header parameters, if any
@@ -191,7 +192,7 @@ func (c *APIClient) prepareRequest(
 			// We were able to grab an oauth2 token from the context
 			var latestToken *oauth2.Token
 			if latestToken, err = tok.Token(); err != nil {
-				return err
+				return nil, err
 			}
 
 			latestToken.SetAuthHeader(localVarRequest)
@@ -251,12 +252,12 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	}
 
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	if bodyBuf.Len() == 0 {
 		err = fmt.Errorf("invalid body type: %s", contentType)
-		return err
+		return nil, err
 	}
 	return bodyBuf, nil
 }
