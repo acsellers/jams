@@ -33,25 +33,19 @@ ConfigAPI Deletes a Configuration object.
 @return string
 */
 func (a *ConfigAPI) DeleteConfig(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/cfg/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/cfg/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -103,24 +97,18 @@ ConfigAPI Gets a list of all configurations
 @return []Cfg
 */
 func (a *ConfigAPI) Configs(ctx context.Context) ([]Cfg, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Cfg
-	)
+	var localVarReturnValue []Cfg
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/cfg"
+	apiPath := a.client.cfg.BasePath + "/api/cfg"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -173,25 +161,19 @@ ConfigAPI Get the Configuration with the specified configName.
 @return Cfg
 */
 func (a *ConfigAPI) ConfigByName(ctx context.Context, name string) (Cfg, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Cfg
-	)
+	var localVarReturnValue Cfg
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/cfg/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/cfg/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -244,26 +226,18 @@ ConfigAPI Creates a new Configuration object.
 @return Cfg
 */
 func (a *ConfigAPI) CreateConfig(ctx context.Context, config Cfg) (Cfg, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Cfg
-	)
+	var localVarReturnValue Cfg
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/cfg"
+	apiPath := a.client.cfg.BasePath + "/api/cfg"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &config
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &config, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -309,33 +283,25 @@ func (a *ConfigAPI) CreateConfig(ctx context.Context, config Cfg) (Cfg, *http.Re
 }
 
 /*
-ConfigAPI Updates an existing Cfg object or creates a new definition if it doesn&#39;t exist.
+ConfigAPI Updates an existing Cfg object or creates a new definition if it doesn't exist.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param config The name of the cfg
 
 @return Cfg
 */
 func (a *ConfigAPI) UpdateConfig(ctx context.Context, config Cfg) (Cfg, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Cfg
-	)
+	var localVarReturnValue Cfg
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/cfg"
+	apiPath := a.client.cfg.BasePath + "/api/cfg"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &config
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &config, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

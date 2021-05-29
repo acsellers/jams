@@ -33,24 +33,18 @@ func (client *APIClient) UserInfo(ctx context.Context) (Authentication, error) {
 	if client.auth == nil {
 		return Authentication{}, errors.New("missing login information")
 	}
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Authentication
-	)
+	var localVarReturnValue Authentication
 
 	// create path and map variables
-	localVarPath := client.cfg.BasePath + "/api/authentication"
+	apiPath := client.cfg.BasePath + "/api/authentication"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, err
 	}
@@ -103,26 +97,18 @@ AuthenticationAPI Login to the web server
 @return AccessToken
 */
 func (client *APIClient) Login(ctx context.Context, loginData LoginData) error {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue AccessToken
-	)
+	var localVarReturnValue AccessToken
 
 	// create path and map variables
-	localVarPath := client.cfg.BasePath + "/api/authentication/login"
+	apiPath := client.cfg.BasePath + "/api/authentication/login"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &loginData
-	r, err := client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := client.prepareRequest(ctx, apiPath, "POST", &loginData, headers, queryParams)
 	if err != nil {
 		return err
 	}

@@ -31,23 +31,20 @@ ThemeApiService
 */
 func (a *ThemeApiService) Theme(ctx context.Context) (Theme, *http.Response, error) {
 	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
 		localVarReturnValue Theme
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/theme"
+	apiPath := a.client.cfg.BasePath + "/api/theme"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
+	queryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

@@ -34,27 +34,19 @@ VariableAPI Changes the value of a variable identified by name
 @return Object
 */
 func (a *VariableAPI) ChangeVariableValue(ctx context.Context, name string, value Object) (Object, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Object
-	)
+	var localVarReturnValue Object
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/variable/setvalue"
+	apiPath := a.client.cfg.BasePath + "/api/variable/setvalue"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("name", parameterToString(name, ""))
+	queryParams.Add("name", parameterToString(name, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &value
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &value, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -107,25 +99,19 @@ VariableAPI Deletes a variable definition
 @return string
 */
 func (a *VariableAPI) DeleteVariable(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/variable"
+	apiPath := a.client.cfg.BasePath + "/api/variable"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("name", parameterToString(name, ""))
+	queryParams.Add("name", parameterToString(name, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -177,24 +163,18 @@ VariableAPI Gets a list of variables that match the queryString
 @return []Variable
 */
 func (a *VariableAPI) Variables(ctx context.Context) ([]Variable, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Variable
-	)
+	var localVarReturnValue []Variable
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/variable"
+	apiPath := a.client.cfg.BasePath + "/api/variable"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -247,25 +227,19 @@ VariableAPI Get the Variable with the specified ID.
 @return Variable
 */
 func (a *VariableAPI) VariableByID(ctx context.Context, id int32) (Variable, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Variable
-	)
+	var localVarReturnValue Variable
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/variable/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/variable/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -318,25 +292,19 @@ VariableAPI Gets a list of variables under the specified folder definition by ID
 @return []Variable
 */
 func (a *VariableAPI) VariablesByFolderID(ctx context.Context, id int32) ([]Variable, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Variable
-	)
+	var localVarReturnValue []Variable
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/variable/folder/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/variable/folder/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -389,26 +357,18 @@ VariableAPI Creates a new variable definition
 @return Variable
 */
 func (a *VariableAPI) CreateVariable(ctx context.Context, variable Variable) (Variable, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Variable
-	)
+	var localVarReturnValue Variable
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/variable"
+	apiPath := a.client.cfg.BasePath + "/api/variable"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &variable
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &variable, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -461,26 +421,18 @@ VariableAPI Update the Variable object.
 @return Variable
 */
 func (a *VariableAPI) UpdateVariable(ctx context.Context, var_ Variable) (Variable, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Variable
-	)
+	var localVarReturnValue Variable
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/variable"
+	apiPath := a.client.cfg.BasePath + "/api/variable"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &var_
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &var_, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

@@ -33,25 +33,19 @@ EntryAuditTrailApiService Gets Entry Audit Trail.
 @return []EntryAuditTrail
 */
 func (a *EntryAuditTrailApiService) EntryAuditTrails(ctx context.Context, jamsId string) ([]EntryAuditTrail, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []EntryAuditTrail
-	)
+	var localVarReturnValue []EntryAuditTrail
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/EntryAuditTrail/{jamsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jamsId"+"}", fmt.Sprintf("%v", jamsId), -1)
+	apiPath := a.client.cfg.BasePath + "/api/EntryAuditTrail/{jamsId}"
+	apiPath = strings.Replace(apiPath, "{"+"jamsId"+"}", fmt.Sprintf("%v", jamsId), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

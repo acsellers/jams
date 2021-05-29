@@ -32,24 +32,18 @@ SubmitMenuAPI Gets the full populated menu. This is starts from the Folders in t
 @return []NestedMenuEntry
 */
 func (a *SubmitMenuAPI) NestedMenu(ctx context.Context) ([]NestedMenuEntry, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []NestedMenuEntry
-	)
+	var localVarReturnValue []NestedMenuEntry
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/SubmitMenu/Nested"
+	apiPath := a.client.cfg.BasePath + "/api/SubmitMenu/Nested"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -101,24 +95,18 @@ SubmitMenuAPI Gets the default root level menu. This is created from the Folders
 @return []MenuEntry
 */
 func (a *SubmitMenuAPI) SubmitMenu(ctx context.Context) ([]MenuEntry, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []MenuEntry
-	)
+	var localVarReturnValue []MenuEntry
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/SubmitMenu"
+	apiPath := a.client.cfg.BasePath + "/api/SubmitMenu"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -172,26 +160,20 @@ SubmitMenuAPI Gets a submit menu.
 @return []MenuEntry
 */
 func (a *SubmitMenuAPI) SubmitMenuByName(ctx context.Context, menuType string, name string) ([]MenuEntry, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []MenuEntry
-	)
+	var localVarReturnValue []MenuEntry
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/SubmitMenu/{menuType}/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"menuType"+"}", fmt.Sprintf("%v", menuType), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/SubmitMenu/{menuType}/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"menuType"+"}", fmt.Sprintf("%v", menuType), -1)
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -245,26 +227,20 @@ SubmitMenuAPI Gets the entries in a branch of a submit menu. Use GetSubmitMenuBy
 @return []MenuEntry
 */
 func (a *SubmitMenuAPI) SubmitMenuByID(ctx context.Context, menuType string, id int32) ([]MenuEntry, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []MenuEntry
-	)
+	var localVarReturnValue []MenuEntry
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/SubmitMenu/{menuType}/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"menuType"+"}", fmt.Sprintf("%v", menuType), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/SubmitMenu/{menuType}/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"menuType"+"}", fmt.Sprintf("%v", menuType), -1)
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

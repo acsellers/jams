@@ -33,25 +33,19 @@ SetupAPI Deletes a Setup definition.
 @return string
 */
 func (a *SetupAPI) DeleteSetup(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/setup"
+	apiPath := a.client.cfg.BasePath + "/api/setup"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("name", parameterToString(name, ""))
+	queryParams.Add("name", parameterToString(name, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -103,24 +97,18 @@ SetupAPI Gets a collection of all setups
 @return []Setup
 */
 func (a *SetupAPI) Setups(ctx context.Context) ([]Setup, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Setup
-	)
+	var localVarReturnValue []Setup
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/setup"
+	apiPath := a.client.cfg.BasePath + "/api/setup"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -173,25 +161,19 @@ SetupAPI Get the Setup with the specified ID.
 @return Setup
 */
 func (a *SetupAPI) SetupByID(ctx context.Context, id int32) (Setup, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Setup
-	)
+	var localVarReturnValue Setup
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/setup/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/setup/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -244,25 +226,19 @@ SetupAPI Get the Setup with the specified setupName.
 @return Setup
 */
 func (a *SetupAPI) SetupByName(ctx context.Context, name string) (Setup, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Setup
-	)
+	var localVarReturnValue Setup
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/setup/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/setup/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -315,25 +291,19 @@ SetupAPI Gets all Setups in the folder with the specified ID
 @return []Setup
 */
 func (a *SetupAPI) SetupsByFolderID(ctx context.Context, id int32) ([]Setup, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Setup
-	)
+	var localVarReturnValue []Setup
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/setup/folder/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/setup/folder/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -386,26 +356,18 @@ SetupAPI Creates a new Setup definition
 @return Setup
 */
 func (a *SetupAPI) CreateSetup(ctx context.Context, setup Setup) (Setup, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Setup
-	)
+	var localVarReturnValue Setup
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/setup"
+	apiPath := a.client.cfg.BasePath + "/api/setup"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &setup
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &setup, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -458,26 +420,18 @@ SetupAPI Updates an existing Setup definition or creates a new definition if it 
 @return Setup
 */
 func (a *SetupAPI) UpdateSetup(ctx context.Context, setup Setup) (Setup, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Setup
-	)
+	var localVarReturnValue Setup
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/setup"
+	apiPath := a.client.cfg.BasePath + "/api/setup"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &setup
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &setup, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

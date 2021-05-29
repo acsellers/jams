@@ -42,28 +42,22 @@ type EntryApiEntryDownloadOpts struct {
 }
 
 func (a *EntryAPI) EntryDownload(ctx context.Context, entryId int32, localVarOptionals *EntryApiEntryDownloadOpts) (Object, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Object
-	)
+	var localVarReturnValue Object
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/log/{entryId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"entryId"+"}", fmt.Sprintf("%v", entryId), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/log/{entryId}"
+	apiPath = strings.Replace(apiPath, "{"+"entryId"+"}", fmt.Sprintf("%v", entryId), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.IsPreview.IsSet() {
-		localVarQueryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
+		queryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
 	}
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -115,24 +109,18 @@ EntryAPI Gets entry information for all entries in the current schedule.
 @return []Entry
 */
 func (a *EntryAPI) Entries(ctx context.Context) ([]Entry, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Entry
-	)
+	var localVarReturnValue []Entry
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry"
+	apiPath := a.client.cfg.BasePath + "/api/entry"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -186,26 +174,20 @@ EntryAPI Gets parameter value for a given entry.
 @return EntryParam
 */
 func (a *EntryAPI) EntryParameter(ctx context.Context, id int32, name string) (EntryParam, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue EntryParam
-	)
+	var localVarReturnValue EntryParam
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}/parameter/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/parameter/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -258,25 +240,19 @@ EntryAPI Gets parameter list for a given entry.
 @return []EntryParam
 */
 func (a *EntryAPI) EntryParameters(ctx context.Context, id int32) ([]EntryParam, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []EntryParam
-	)
+	var localVarReturnValue []EntryParam
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}/parameter"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/parameter"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -329,25 +305,19 @@ EntryAPI Gets Entry information with the specified ID
 @return Entry
 */
 func (a *EntryAPI) EntryByID(ctx context.Context, id int32) (Entry, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Entry
-	)
+	var localVarReturnValue Entry
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -401,26 +371,19 @@ EntryAPI Cancels a JAMS entry.
 
 */
 func (a *EntryAPI) UpdateEntryCancel(ctx context.Context, id int32, cancelEntry CancelEntry) (*http.Response, error) {
-	var (
-		localVarPostBody  interface{}
-		localVarFileName  string
-		localVarFileBytes []byte
-	)
+	var ()
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}/cancel"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/cancel"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &cancelEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &cancelEntry, headers, queryParams)
 	if err != nil {
 		return nil, err
 	}
@@ -458,26 +421,21 @@ EntryAPI Sets parameter value for a given entry.
 
 */
 func (a *EntryAPI) UpdateEntryParameter(ctx context.Context, id int32, name string, value string) (*http.Response, error) {
-	var (
-		localVarPostBody  interface{}
-		localVarFileName  string
-		localVarFileBytes []byte
-	)
+	var ()
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}/parameter/{name}/{value}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"value"+"}", fmt.Sprintf("%v", value), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/parameter/{name}/{value}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath = strings.Replace(apiPath, "{"+"value"+"}", fmt.Sprintf("%v", value), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", nil, headers, queryParams)
 	if err != nil {
 		return nil, err
 	}
@@ -514,26 +472,19 @@ EntryAPI Reschedules a JAMS entry.
 
 */
 func (a *EntryAPI) UpdateEntryReschedule(ctx context.Context, id int32, rescheduleEntry RescheduleEntry) (*http.Response, error) {
-	var (
-		localVarPostBody  interface{}
-		localVarFileName  string
-		localVarFileBytes []byte
-	)
+	var ()
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}/reschedule"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/reschedule"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &rescheduleEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &rescheduleEntry, headers, queryParams)
 	if err != nil {
 		return nil, err
 	}
@@ -570,26 +521,19 @@ EntryAPI Restarts a JAMS entry.
 
 */
 func (a *EntryAPI) UpdateEntryRestart(ctx context.Context, id int32, restartEntry RestartEntry) (*http.Response, error) {
-	var (
-		localVarPostBody  interface{}
-		localVarFileName  string
-		localVarFileBytes []byte
-	)
+	var ()
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}/restart"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/restart"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &restartEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &restartEntry, headers, queryParams)
 	if err != nil {
 		return nil, err
 	}
@@ -629,28 +573,23 @@ EntryAPI Sets the status message for an entry.
 
 */
 func (a *EntryAPI) UpdateEntryStatus(ctx context.Context, id int32, status string, icon string, message string, permanent bool) (*http.Response, error) {
-	var (
-		localVarPostBody  interface{}
-		localVarFileName  string
-		localVarFileBytes []byte
-	)
+	var ()
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/status"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("status", parameterToString(status, ""))
-	localVarQueryParams.Add("icon", parameterToString(icon, ""))
-	localVarQueryParams.Add("message", parameterToString(message, ""))
-	localVarQueryParams.Add("permanent", parameterToString(permanent, ""))
+	queryParams.Add("status", parameterToString(status, ""))
+	queryParams.Add("icon", parameterToString(icon, ""))
+	queryParams.Add("message", parameterToString(message, ""))
+	queryParams.Add("permanent", parameterToString(permanent, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", nil, headers, queryParams)
 	if err != nil {
 		return nil, err
 	}
@@ -687,26 +626,19 @@ EntryAPI Holds an Entry with the specified ID, with the              specified H
 
 */
 func (a *EntryAPI) UpdateHoldEntry(ctx context.Context, id int32, holdEntry HoldEntry) (*http.Response, error) {
-	var (
-		localVarPostBody  interface{}
-		localVarFileName  string
-		localVarFileBytes []byte
-	)
+	var ()
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}/hold"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/hold"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &holdEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &holdEntry, headers, queryParams)
 	if err != nil {
 		return nil, err
 	}
@@ -743,26 +675,19 @@ EntryAPI Releases a CurJob with the specified ID              to Run Again, with
 
 */
 func (a *EntryAPI) UpdateReleaseEntry(ctx context.Context, id int32, releaseEntry ReleaseEntry) (*http.Response, error) {
-	var (
-		localVarPostBody  interface{}
-		localVarFileName  string
-		localVarFileBytes []byte
-	)
+	var ()
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/entry/{id}/release"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/release"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &releaseEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &releaseEntry, headers, queryParams)
 	if err != nil {
 		return nil, err
 	}

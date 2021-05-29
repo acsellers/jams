@@ -30,24 +30,18 @@ AppMenuAPI Get all AppMenuItems.
 @return []AppMenuItem
 */
 func (a *AppMenuAPI) AppMenus(ctx context.Context) ([]AppMenuItem, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []AppMenuItem
-	)
+	var localVarReturnValue []AppMenuItem
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/appmenu"
+	apiPath := a.client.cfg.BasePath + "/api/appmenu"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

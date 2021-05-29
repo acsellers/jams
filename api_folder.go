@@ -33,25 +33,19 @@ FolderAPI Deletes a folder definition
 @return string
 */
 func (a *FolderAPI) DeleteFolder(ctx context.Context, qualifiedName string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/folder"
+	apiPath := a.client.cfg.BasePath + "/api/folder"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("qualifiedName", parameterToString(qualifiedName, ""))
+	queryParams.Add("qualifiedName", parameterToString(qualifiedName, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -104,25 +98,19 @@ FolderAPI Get full folder definition by ID
 @return Folder
 */
 func (a *FolderAPI) FolderByID(ctx context.Context, id int32) (Folder, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Folder
-	)
+	var localVarReturnValue Folder
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/folder/details/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/folder/details/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -175,25 +163,19 @@ FolderAPI Get full folder definition by name.
 @return Folder
 */
 func (a *FolderAPI) FolderByName(ctx context.Context, name string) (Folder, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Folder
-	)
+	var localVarReturnValue Folder
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/folder/details/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/folder/details/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -246,25 +228,19 @@ FolderAPI Gets all child folder definitions of selected folder by ID
 @return []Folder
 */
 func (a *FolderAPI) FoldersByParentID(ctx context.Context, id int32) ([]Folder, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Folder
-	)
+	var localVarReturnValue []Folder
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/folder/folder/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/folder/folder/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -317,25 +293,19 @@ FolderAPI Gets all child folder definitions of selected folder by name
 @return []Folder
 */
 func (a *FolderAPI) FoldersByParentName(ctx context.Context, name string) ([]Folder, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Folder
-	)
+	var localVarReturnValue []Folder
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/folder/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/folder/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -387,24 +357,18 @@ FolderAPI Gets all child folder definitions of the root folder
 @return []Folder
 */
 func (a *FolderAPI) SubFoldersOfRootFolder(ctx context.Context) ([]Folder, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Folder
-	)
+	var localVarReturnValue []Folder
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/folder/folder/root"
+	apiPath := a.client.cfg.BasePath + "/api/folder/folder/root"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -457,26 +421,18 @@ FolderAPI Adds a new folder definition
 @return Folder
 */
 func (a *FolderAPI) CreateFolder(ctx context.Context, folder Folder) (Folder, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Folder
-	)
+	var localVarReturnValue Folder
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/folder"
+	apiPath := a.client.cfg.BasePath + "/api/folder"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &folder
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &folder, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -529,26 +485,18 @@ FolderAPI Updates an existing folder definition
 @return Folder
 */
 func (a *FolderAPI) UpdateFolder(ctx context.Context, folder Folder) (Folder, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Folder
-	)
+	var localVarReturnValue Folder
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/folder"
+	apiPath := a.client.cfg.BasePath + "/api/folder"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &folder
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &folder, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

@@ -34,24 +34,18 @@ HistoryAPI Gets job execution history.
 @return []History
 */
 func (a *HistoryAPI) History(ctx context.Context) ([]History, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []History
-	)
+	var localVarReturnValue []History
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/history"
+	apiPath := a.client.cfg.BasePath + "/api/history"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -103,24 +97,18 @@ HistoryAPI Gets job execution history using OData filters.
 @return PageResultHistory
 */
 func (a *HistoryAPI) HistoryOdata(ctx context.Context) (PageResultHistory, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue PageResultHistory
-	)
+	var localVarReturnValue PageResultHistory
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/history/odata"
+	apiPath := a.client.cfg.BasePath + "/api/history/odata"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -182,30 +170,24 @@ type HistoryApiHistoryGetJobLogOpts struct {
 }
 
 func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron int32, restartCount int32, localVarOptionals *HistoryApiHistoryGetJobLogOpts) (Object, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Object
-	)
+	var localVarReturnValue Object
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/history/job/log/{jobName}/{ron}/{restartCount}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", fmt.Sprintf("%v", jobName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ron"+"}", fmt.Sprintf("%v", ron), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"restartCount"+"}", fmt.Sprintf("%v", restartCount), -1)
+	apiPath := a.client.cfg.BasePath + "/api/history/job/log/{jobName}/{ron}/{restartCount}"
+	apiPath = strings.Replace(apiPath, "{"+"jobName"+"}", fmt.Sprintf("%v", jobName), -1)
+	apiPath = strings.Replace(apiPath, "{"+"ron"+"}", fmt.Sprintf("%v", ron), -1)
+	apiPath = strings.Replace(apiPath, "{"+"restartCount"+"}", fmt.Sprintf("%v", restartCount), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.IsPreview.IsSet() {
-		localVarQueryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
+		queryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
 	}
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -267,30 +249,24 @@ type HistoryApiHistoryGetSetupLogOpts struct {
 }
 
 func (a *HistoryAPI) SetupLog(ctx context.Context, setupName string, ron int32, restartCount int32, localVarOptionals *HistoryApiHistoryGetSetupLogOpts) (Object, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Object
-	)
+	var localVarReturnValue Object
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/history/setup/log/{setupName}/{ron}/{restartCount}"
-	localVarPath = strings.Replace(localVarPath, "{"+"setupName"+"}", fmt.Sprintf("%v", setupName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ron"+"}", fmt.Sprintf("%v", ron), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"restartCount"+"}", fmt.Sprintf("%v", restartCount), -1)
+	apiPath := a.client.cfg.BasePath + "/api/history/setup/log/{setupName}/{ron}/{restartCount}"
+	apiPath = strings.Replace(apiPath, "{"+"setupName"+"}", fmt.Sprintf("%v", setupName), -1)
+	apiPath = strings.Replace(apiPath, "{"+"ron"+"}", fmt.Sprintf("%v", ron), -1)
+	apiPath = strings.Replace(apiPath, "{"+"restartCount"+"}", fmt.Sprintf("%v", restartCount), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.IsPreview.IsSet() {
-		localVarQueryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
+		queryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
 	}
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

@@ -33,24 +33,18 @@ AgentAPI Deletes an Agent object.
 @return string
 */
 func (a *AgentAPI) DeleteAgent(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/agent/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/agent/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarFormParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, url.Values{}, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, url.Values{})
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -102,24 +96,18 @@ AgentAPI Gets a list of all agents
 @return []Agent
 */
 func (a *AgentAPI) Agents(ctx context.Context) ([]Agent, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Agent
-	)
+	var localVarReturnValue []Agent
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/agent"
+	apiPath := a.client.cfg.BasePath + "/api/agent"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -172,25 +160,19 @@ AgentAPI Get the Agent with the specified agentID.
 @return Agent
 */
 func (a *AgentAPI) AgentByID(ctx context.Context, id int32) (Agent, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Agent
-	)
+	var localVarReturnValue Agent
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/agent/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/agent/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -243,25 +225,19 @@ AgentAPI Get the Agent with the specified agentName.
 @return Agent
 */
 func (a *AgentAPI) AgentByName(ctx context.Context, name string) (Agent, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Agent
-	)
+	var localVarReturnValue Agent
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/agent/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/agent/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -314,26 +290,18 @@ AgentAPI Creates a new Agent object.
 @return Agent
 */
 func (a *AgentAPI) CreateAgent(ctx context.Context, agent Agent) (Agent, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Agent
-	)
+	var localVarReturnValue Agent
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/agent"
+	apiPath := a.client.cfg.BasePath + "/api/agent"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &agent
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &agent, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -386,26 +354,18 @@ AgentAPI Updates an existing Agent object or creates a new definition if it does
 @return Agent
 */
 func (a *AgentAPI) UpdateAgent(ctx context.Context, agent Agent) (Agent, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Agent
-	)
+	var localVarReturnValue Agent
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/agent"
+	apiPath := a.client.cfg.BasePath + "/api/agent"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &agent
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &agent, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

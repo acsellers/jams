@@ -33,25 +33,19 @@ TriggerAPI Deletes a trigger definition
 @return string
 */
 func (a *TriggerAPI) DeleteTrigger(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/trigger"
+	apiPath := a.client.cfg.BasePath + "/api/trigger"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("name", parameterToString(name, ""))
+	queryParams.Add("name", parameterToString(name, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -104,25 +98,19 @@ TriggerAPI Disables a trigger by name
 @return string
 */
 func (a *TriggerAPI) DisableTrigger(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/trigger/disable"
+	apiPath := a.client.cfg.BasePath + "/api/trigger/disable"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("name", parameterToString(name, ""))
+	queryParams.Add("name", parameterToString(name, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -175,25 +163,19 @@ TriggerAPI Enables a trigger by name
 @return string
 */
 func (a *TriggerAPI) EnableTrigger(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/trigger/enable"
+	apiPath := a.client.cfg.BasePath + "/api/trigger/enable"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("name", parameterToString(name, ""))
+	queryParams.Add("name", parameterToString(name, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -246,25 +228,19 @@ TriggerAPI Gets a trigger definition by name
 @return Trigger
 */
 func (a *TriggerAPI) TriggerByName(ctx context.Context, name string) (Trigger, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Trigger
-	)
+	var localVarReturnValue Trigger
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/trigger/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/trigger/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -317,25 +293,19 @@ TriggerAPI Gets all trigger definitions by parent folder ID
 @return []Trigger
 */
 func (a *TriggerAPI) TriggersByFolderID(ctx context.Context, id int32) ([]Trigger, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Trigger
-	)
+	var localVarReturnValue []Trigger
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/trigger/folder/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/trigger/folder/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -388,26 +358,18 @@ TriggerAPI Adds a new trigger definition to a JAMS Server
 @return Trigger
 */
 func (a *TriggerAPI) CreateTrigger(ctx context.Context, trigger Trigger) (Trigger, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Trigger
-	)
+	var localVarReturnValue Trigger
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/trigger"
+	apiPath := a.client.cfg.BasePath + "/api/trigger"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &trigger
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &trigger, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -460,26 +422,18 @@ TriggerAPI Updates and existing trigger definition
 @return Trigger
 */
 func (a *TriggerAPI) UpdateTrigger(ctx context.Context, trigger Trigger) (Trigger, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Trigger
-	)
+	var localVarReturnValue Trigger
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/trigger"
+	apiPath := a.client.cfg.BasePath + "/api/trigger"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &trigger
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &trigger, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -532,25 +486,19 @@ TriggerAPI Resets a trigger
 @return string
 */
 func (a *TriggerAPI) ResetTrigger(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/trigger/reset"
+	apiPath := a.client.cfg.BasePath + "/api/trigger/reset"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("name", parameterToString(name, ""))
+	queryParams.Add("name", parameterToString(name, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

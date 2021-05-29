@@ -33,25 +33,19 @@ SubmitAPI Get the submit information for a Job or Setup with the specified name.
 @return SubmitInfo
 */
 func (a *SubmitAPI) SubmitInfoByName(ctx context.Context, name string) (SubmitInfo, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue SubmitInfo
-	)
+	var localVarReturnValue SubmitInfo
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/submit"
+	apiPath := a.client.cfg.BasePath + "/api/submit"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("name", parameterToString(name, ""))
+	queryParams.Add("name", parameterToString(name, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -104,25 +98,19 @@ SubmitAPI Get the submit info for a Setup with the specified ID
 @return SubmitInfo
 */
 func (a *SubmitAPI) SubmitInfoBySetupID(ctx context.Context, id int32) (SubmitInfo, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue SubmitInfo
-	)
+	var localVarReturnValue SubmitInfo
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/submit/setup/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/submit/setup/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -175,25 +163,19 @@ SubmitAPI Get the submit info for a Job with the specified ID
 @return SubmitInfo
 */
 func (a *SubmitAPI) SubmitInfoByJobID(ctx context.Context, id int32) (SubmitInfo, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue SubmitInfo
-	)
+	var localVarReturnValue SubmitInfo
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/submit/job/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/submit/job/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -246,26 +228,18 @@ SubmitAPI Submit the job specified in the SubmitInfo object. Usually, you create
 @return SubmitInfo
 */
 func (a *SubmitAPI) CreateSubmitInfo(ctx context.Context, si SubmitInfo) (SubmitInfo, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue SubmitInfo
-	)
+	var localVarReturnValue SubmitInfo
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/submit"
+	apiPath := a.client.cfg.BasePath + "/api/submit"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &si
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &si, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

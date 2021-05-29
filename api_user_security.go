@@ -33,25 +33,19 @@ UserSecurityAPI Deletes a UserSecurity object.
 @return string
 */
 func (a *UserSecurityAPI) DeleteUser(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/usersecurity/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/usersecurity/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -103,24 +97,18 @@ UserSecurityAPI Gets a collection of all users
 @return []UserSecurity
 */
 func (a *UserSecurityAPI) Users(ctx context.Context) ([]UserSecurity, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []UserSecurity
-	)
+	var localVarReturnValue []UserSecurity
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/usersecurity"
+	apiPath := a.client.cfg.BasePath + "/api/usersecurity"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -173,25 +161,19 @@ UserSecurityAPI Get the UserSecurity with the specified name.
 @return UserSecurity
 */
 func (a *UserSecurityAPI) UserByName(ctx context.Context, name string) (UserSecurity, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue UserSecurity
-	)
+	var localVarReturnValue UserSecurity
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/usersecurity/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/usersecurity/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -244,25 +226,19 @@ UserSecurityAPI Get the User with the specified ID.
 @return UserSecurity
 */
 func (a *UserSecurityAPI) UserByID(ctx context.Context, id int32) (UserSecurity, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue UserSecurity
-	)
+	var localVarReturnValue UserSecurity
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/usersecurity/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/usersecurity/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -315,26 +291,18 @@ UserSecurityAPI Creates a new UserSecurity object.
 @return UserSecurity
 */
 func (a *UserSecurityAPI) CreateUser(ctx context.Context, user UserSecurity) (UserSecurity, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue UserSecurity
-	)
+	var localVarReturnValue UserSecurity
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/usersecurity/user"
+	apiPath := a.client.cfg.BasePath + "/api/usersecurity/user"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &user
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &user, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -387,26 +355,18 @@ UserSecurityAPI Updates an existing UserSecurity object or creates new definitio
 @return UserSecurity
 */
 func (a *UserSecurityAPI) UpdateUser(ctx context.Context, user UserSecurity) (UserSecurity, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue UserSecurity
-	)
+	var localVarReturnValue UserSecurity
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/usersecurity/user"
+	apiPath := a.client.cfg.BasePath + "/api/usersecurity/user"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &user
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &user, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

@@ -33,25 +33,19 @@ ResourceAPI Delete the resource definition by name
 @return string
 */
 func (a *ResourceAPI) DeleteResource(ctx context.Context, name string) (string, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue string
-	)
+	var localVarReturnValue string
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/resource/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/resource/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -103,24 +97,18 @@ ResourceAPI Gets all resources
 @return []Resource
 */
 func (a *ResourceAPI) Resources(ctx context.Context) ([]Resource, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []Resource
-	)
+	var localVarReturnValue []Resource
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/resource"
+	apiPath := a.client.cfg.BasePath + "/api/resource"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -173,25 +161,19 @@ ResourceAPI Gets a resource by ID
 @return Resource
 */
 func (a *ResourceAPI) ResourceByID(ctx context.Context, id int32) (Resource, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Resource
-	)
+	var localVarReturnValue Resource
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/resource/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/resource/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -244,25 +226,19 @@ ResourceAPI Gets a resource by name
 @return Resource
 */
 func (a *ResourceAPI) ResourceByName(ctx context.Context, name string) (Resource, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Resource
-	)
+	var localVarReturnValue Resource
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/resource/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/resource/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -315,26 +291,18 @@ ResourceAPI Add a new resource definition
 @return Resource
 */
 func (a *ResourceAPI) CreateResource(ctx context.Context, resource Resource) (Resource, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Resource
-	)
+	var localVarReturnValue Resource
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/resource"
+	apiPath := a.client.cfg.BasePath + "/api/resource"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &resource
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &resource, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -387,26 +355,18 @@ ResourceAPI Updates an existing resource
 @return Resource
 */
 func (a *ResourceAPI) UpdateResource(ctx context.Context, resource Resource) (Resource, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Resource
-	)
+	var localVarReturnValue Resource
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/resource"
+	apiPath := a.client.cfg.BasePath + "/api/resource"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &resource
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &resource, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -460,26 +420,20 @@ ResourceAPI Change the value of quantity available on a resource
 @return Resource
 */
 func (a *ResourceAPI) ResourceSetQuantityAvailable(ctx context.Context, name string, available int32) (Resource, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Resource
-	)
+	var localVarReturnValue Resource
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/resource/setquantityavailable/{name}/{available}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"available"+"}", fmt.Sprintf("%v", available), -1)
+	apiPath := a.client.cfg.BasePath + "/api/resource/setquantityavailable/{name}/{available}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath = strings.Replace(apiPath, "{"+"available"+"}", fmt.Sprintf("%v", available), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}

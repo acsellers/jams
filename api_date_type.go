@@ -33,25 +33,19 @@ DateTypeAPI Deletes a DateType object.
 @return Object
 */
 func (a *DateTypeAPI) DeleteDateType(ctx context.Context, name string) (Object, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Object
-	)
+	var localVarReturnValue Object
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/datetype"
+	apiPath := a.client.cfg.BasePath + "/api/datetype"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
-	localVarQueryParams.Add("name", parameterToString(name, ""))
+	queryParams.Add("name", parameterToString(name, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -103,24 +97,18 @@ DateTypeAPI Gets a collection of all DateTypes
 @return []DateType
 */
 func (a *DateTypeAPI) DateTypes(ctx context.Context) ([]DateType, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue []DateType
-	)
+	var localVarReturnValue []DateType
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/datetype"
+	apiPath := a.client.cfg.BasePath + "/api/datetype"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -173,25 +161,19 @@ DateTypeAPI Get the DateType with the specified name.
 @return DateType
 */
 func (a *DateTypeAPI) DateTypeByName(ctx context.Context, name string) (DateType, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue DateType
-	)
+	var localVarReturnValue DateType
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/datetype/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := a.client.cfg.BasePath + "/api/datetype/{name}"
+	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -244,25 +226,19 @@ DateTypeAPI Get the DateType with the specified ID.
 @return DateType
 */
 func (a *DateTypeAPI) DateTypeByID(ctx context.Context, id int32) (DateType, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue DateType
-	)
+	var localVarReturnValue DateType
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/datetype/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := a.client.cfg.BasePath + "/api/datetype/{id}"
+	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -315,26 +291,18 @@ DateTypeAPI Creates a new DateType object.
 @return Object
 */
 func (a *DateTypeAPI) CreateDateType(ctx context.Context, dateType DateType) (Object, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Object
-	)
+	var localVarReturnValue Object
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/datetype/dateType"
+	apiPath := a.client.cfg.BasePath + "/api/datetype/dateType"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &dateType
-	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &dateType, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -387,26 +355,18 @@ DateTypeAPI Updates an existing DateType object or creates a new definition if i
 @return Object
 */
 func (a *DateTypeAPI) UpdateDateType(ctx context.Context, dateType DateType) (Object, *http.Response, error) {
-	var (
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Object
-	)
+	var localVarReturnValue Object
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/datetype/dateType"
+	apiPath := a.client.cfg.BasePath + "/api/datetype/dateType"
 
 	headers := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	// body params
-	localVarPostBody = &dateType
-	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &dateType, headers, queryParams)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
