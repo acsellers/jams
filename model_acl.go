@@ -9,6 +9,6 @@
 
 package jams
 
-type Acl struct {
-	GenericACL []Ace `json:"genericACL,omitempty"`
+type ACL struct {
+	GenericACL []ACE `json:"genericACL,omitempty"`
 }

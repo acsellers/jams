@@ -14,7 +14,7 @@ import (
 )
 
 type UserSecurity struct {
-	Acl           *Acl      `json:"acl,omitempty"`
+	ACL           *ACL      `json:"acl,omitempty"`
 	Description   string    `json:"description,omitempty"`
 	Fingerprint   string    `json:"fingerprint,omitempty"`
 	LastChangeUTC time.Time `json:"lastChangeUTC,omitempty"`

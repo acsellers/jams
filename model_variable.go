@@ -14,7 +14,7 @@ import (
 )
 
 type Variable struct {
-	Acl              *Acl      `json:"acl,omitempty"`
+	ACL              *ACL      `json:"acl,omitempty"`
 	CurrentLength    int32     `json:"currentLength,omitempty"`
 	DataType         string    `json:"dataType,omitempty"`
 	Description      string    `json:"description,omitempty"`
