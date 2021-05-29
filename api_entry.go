@@ -43,7 +43,6 @@ type EntryApiEntryDownloadOpts struct {
 
 func (a *EntryApiService) EntryDownload(ctx context.Context, entryId int32, localVarOptionals *EntryApiEntryDownloadOpts) (Object, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "GET"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -64,49 +63,49 @@ func (a *EntryApiService) EntryDownload(ctx context.Context, entryId int32, loca
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -117,7 +116,6 @@ EntryApiService Gets entry information for all entries in the current schedule.
 */
 func (a *EntryApiService) EntryGetEntry(ctx context.Context) ([]Entry, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "GET"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -134,49 +132,49 @@ func (a *EntryApiService) EntryGetEntry(ctx context.Context) ([]Entry, *http.Res
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v []Entry
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -189,7 +187,6 @@ EntryApiService Gets parameter value for a given entry.
 */
 func (a *EntryApiService) EntryGetEntryParameter(ctx context.Context, id int32, name string) (EntryParam, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "GET"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -208,49 +205,49 @@ func (a *EntryApiService) EntryGetEntryParameter(ctx context.Context, id int32, 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v EntryParam
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -262,7 +259,6 @@ EntryApiService Gets parameter list for a given entry.
 */
 func (a *EntryApiService) EntryGetEntryParameters(ctx context.Context, id int32) ([]EntryParam, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "GET"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -280,49 +276,49 @@ func (a *EntryApiService) EntryGetEntryParameters(ctx context.Context, id int32)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v []EntryParam
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -334,7 +330,6 @@ EntryApiService Gets Entry information with the specified ID
 */
 func (a *EntryApiService) EntryGetEntryByID(ctx context.Context, id int32) (Entry, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "GET"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -352,49 +347,49 @@ func (a *EntryApiService) EntryGetEntryByID(ctx context.Context, id int32) (Entr
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v Entry
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -407,10 +402,9 @@ EntryApiService Cancels a JAMS entry.
 */
 func (a *EntryApiService) EntryPutEntryCancel(ctx context.Context, id int32, cancelEntry CancelEntry) (*http.Response, error) {
 	var (
-		localVarHttpMethod = "PUT"
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarPostBody  interface{}
+		localVarFileName  string
+		localVarFileBytes []byte
 	)
 
 	// create path and map variables
@@ -426,32 +420,32 @@ func (a *EntryApiService) EntryPutEntryCancel(ctx context.Context, id int32, can
 
 	// body params
 	localVarPostBody = &cancelEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarHttpResponse, err
+		return response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		return localVarHttpResponse, newErr
+		return response, newErr
 	}
 
-	return localVarHttpResponse, nil
+	return response, nil
 }
 
 /*
@@ -465,10 +459,9 @@ EntryApiService Sets parameter value for a given entry.
 */
 func (a *EntryApiService) EntryPutEntryParameter(ctx context.Context, id int32, name string, value string) (*http.Response, error) {
 	var (
-		localVarHttpMethod = "PUT"
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarPostBody  interface{}
+		localVarFileName  string
+		localVarFileBytes []byte
 	)
 
 	// create path and map variables
@@ -484,32 +477,32 @@ func (a *EntryApiService) EntryPutEntryParameter(ctx context.Context, id int32, 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarHttpResponse, err
+		return response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		return localVarHttpResponse, newErr
+		return response, newErr
 	}
 
-	return localVarHttpResponse, nil
+	return response, nil
 }
 
 /*
@@ -522,10 +515,9 @@ EntryApiService Reschedules a JAMS entry.
 */
 func (a *EntryApiService) EntryPutEntryReschedule(ctx context.Context, id int32, rescheduleEntry RescheduleEntry) (*http.Response, error) {
 	var (
-		localVarHttpMethod = "PUT"
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarPostBody  interface{}
+		localVarFileName  string
+		localVarFileBytes []byte
 	)
 
 	// create path and map variables
@@ -541,32 +533,32 @@ func (a *EntryApiService) EntryPutEntryReschedule(ctx context.Context, id int32,
 
 	// body params
 	localVarPostBody = &rescheduleEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarHttpResponse, err
+		return response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		return localVarHttpResponse, newErr
+		return response, newErr
 	}
 
-	return localVarHttpResponse, nil
+	return response, nil
 }
 
 /*
@@ -579,10 +571,9 @@ EntryApiService Restarts a JAMS entry.
 */
 func (a *EntryApiService) EntryPutEntryRestart(ctx context.Context, id int32, restartEntry RestartEntry) (*http.Response, error) {
 	var (
-		localVarHttpMethod = "PUT"
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarPostBody  interface{}
+		localVarFileName  string
+		localVarFileBytes []byte
 	)
 
 	// create path and map variables
@@ -598,32 +589,32 @@ func (a *EntryApiService) EntryPutEntryRestart(ctx context.Context, id int32, re
 
 	// body params
 	localVarPostBody = &restartEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarHttpResponse, err
+		return response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		return localVarHttpResponse, newErr
+		return response, newErr
 	}
 
-	return localVarHttpResponse, nil
+	return response, nil
 }
 
 /*
@@ -639,10 +630,9 @@ EntryApiService Sets the status message for an entry.
 */
 func (a *EntryApiService) EntryPutEntryStatus(ctx context.Context, id int32, status string, icon string, message string, permanent bool) (*http.Response, error) {
 	var (
-		localVarHttpMethod = "PUT"
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarPostBody  interface{}
+		localVarFileName  string
+		localVarFileBytes []byte
 	)
 
 	// create path and map variables
@@ -660,32 +650,32 @@ func (a *EntryApiService) EntryPutEntryStatus(ctx context.Context, id int32, sta
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarHttpResponse, err
+		return response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		return localVarHttpResponse, newErr
+		return response, newErr
 	}
 
-	return localVarHttpResponse, nil
+	return response, nil
 }
 
 /*
@@ -698,10 +688,9 @@ EntryApiService Holds an Entry with the specified ID, with the              spec
 */
 func (a *EntryApiService) EntryPutHoldEntry(ctx context.Context, id int32, holdEntry HoldEntry) (*http.Response, error) {
 	var (
-		localVarHttpMethod = "PUT"
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarPostBody  interface{}
+		localVarFileName  string
+		localVarFileBytes []byte
 	)
 
 	// create path and map variables
@@ -717,32 +706,32 @@ func (a *EntryApiService) EntryPutHoldEntry(ctx context.Context, id int32, holdE
 
 	// body params
 	localVarPostBody = &holdEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarHttpResponse, err
+		return response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		return localVarHttpResponse, newErr
+		return response, newErr
 	}
 
-	return localVarHttpResponse, nil
+	return response, nil
 }
 
 /*
@@ -755,10 +744,9 @@ EntryApiService Releases a CurJob with the specified ID              to Run Agai
 */
 func (a *EntryApiService) EntryPutReleaseEntry(ctx context.Context, id int32, releaseEntry ReleaseEntry) (*http.Response, error) {
 	var (
-		localVarHttpMethod = "PUT"
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarPostBody  interface{}
+		localVarFileName  string
+		localVarFileBytes []byte
 	)
 
 	// create path and map variables
@@ -774,30 +762,30 @@ func (a *EntryApiService) EntryPutReleaseEntry(ctx context.Context, id int32, re
 
 	// body params
 	localVarPostBody = &releaseEntry
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarHttpResponse, err
+		return response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		return localVarHttpResponse, newErr
+		return response, newErr
 	}
 
-	return localVarHttpResponse, nil
+	return response, nil
 }

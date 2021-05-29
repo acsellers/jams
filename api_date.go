@@ -46,7 +46,6 @@ type DateApiDateGetEvaluateDateOpts struct {
 
 func (a *DateApiService) DateGetEvaluateDate(ctx context.Context, date string, localVarOptionals *DateApiDateGetEvaluateDateOpts) (time.Time, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "GET"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -70,53 +69,53 @@ func (a *DateApiService) DateGetEvaluateDate(ctx context.Context, date string, l
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v time.Time
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
-DateApiService Adds a date to an existing DateType or creates a new DateType if it doesn&#39;t exist.
+DateApiService Adds a date to an existing DateType or creates a new DateType if it doesn't exist.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param dateTypeName The name of the DateType to add the date to.
  * @param date The date to add.
@@ -125,7 +124,6 @@ DateApiService Adds a date to an existing DateType or creates a new DateType if 
 */
 func (a *DateApiService) DatePutDate(ctx context.Context, dateTypeName string, date time.Time) (Object, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "PUT"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -144,47 +142,47 @@ func (a *DateApiService) DatePutDate(ctx context.Context, dateTypeName string, d
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }

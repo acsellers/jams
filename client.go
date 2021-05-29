@@ -128,7 +128,7 @@ func atoi(in string) (int, error) {
 	return strconv.Atoi(in)
 }
 
-// contains is a case insenstive match, finding needle in a haystack
+// contains is a case insensitive match, finding needle in a haystack
 func contains(haystack []string, needle string) bool {
 	for _, a := range haystack {
 		if strings.ToLower(a) == strings.ToLower(needle) {
@@ -482,24 +482,14 @@ func strlen(s string) int {
 	return utf8.RuneCountInString(s)
 }
 
-// GenericSwaggerError Provides access to the body, error and model on returned errors.
-type GenericSwaggerError struct {
-	body  []byte
-	error string
-	model interface{}
+// Error Provides access to the body, error and model on returned errors.
+type Error struct {
+	Body  []byte
+	Err   string
+	Model interface{}
 }
 
 // Error returns non-empty string if there was an error.
-func (e GenericSwaggerError) Error() string {
-	return e.error
-}
-
-// Body returns the raw bytes of the response
-func (e GenericSwaggerError) Body() []byte {
-	return e.body
-}
-
-// Model returns the unpacked model of the error
-func (e GenericSwaggerError) Model() interface{} {
-	return e.model
+func (e Error) Error() string {
+	return e.Err
 }

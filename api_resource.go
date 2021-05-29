@@ -34,7 +34,6 @@ ResourceApiService Delete the resource definition by name
 */
 func (a *ResourceApiService) ResourceDeleteResource(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "DELETE"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -52,49 +51,49 @@ func (a *ResourceApiService) ResourceDeleteResource(ctx context.Context, name st
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "DELETE", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v string
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -105,7 +104,6 @@ ResourceApiService Gets all resources
 */
 func (a *ResourceApiService) ResourceGetResource(ctx context.Context) ([]Resource, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "GET"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -122,49 +120,49 @@ func (a *ResourceApiService) ResourceGetResource(ctx context.Context) ([]Resourc
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v []Resource
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -176,7 +174,6 @@ ResourceApiService Gets a resource by ID
 */
 func (a *ResourceApiService) ResourceGetResourceByID(ctx context.Context, id int32) (Resource, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "GET"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -194,49 +191,49 @@ func (a *ResourceApiService) ResourceGetResourceByID(ctx context.Context, id int
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v Resource
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -248,7 +245,6 @@ ResourceApiService Gets a resource by name
 */
 func (a *ResourceApiService) ResourceGetResourceByName(ctx context.Context, name string) (Resource, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "GET"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -266,49 +262,49 @@ func (a *ResourceApiService) ResourceGetResourceByName(ctx context.Context, name
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "GET", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v Resource
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -320,7 +316,6 @@ ResourceApiService Add a new resource definition
 */
 func (a *ResourceApiService) ResourcePostResource(ctx context.Context, resource Resource) (Resource, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "POST"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -339,49 +334,49 @@ func (a *ResourceApiService) ResourcePostResource(ctx context.Context, resource 
 
 	// body params
 	localVarPostBody = &resource
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v Resource
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -393,7 +388,6 @@ ResourceApiService Updates an existing resource
 */
 func (a *ResourceApiService) ResourcePutResource(ctx context.Context, resource Resource) (Resource, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "PUT"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -412,49 +406,49 @@ func (a *ResourceApiService) ResourcePutResource(ctx context.Context, resource R
 
 	// body params
 	localVarPostBody = &resource
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "PUT", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v Resource
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
 
 /*
@@ -467,7 +461,6 @@ ResourceApiService Change the value of quantity available on a resource
 */
 func (a *ResourceApiService) ResourceSetQuantityAvailable(ctx context.Context, name string, available int32) (Resource, *http.Response, error) {
 	var (
-		localVarHttpMethod  = "POST"
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
@@ -486,47 +479,47 @@ func (a *ResourceApiService) ResourceSetQuantityAvailable(ctx context.Context, n
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, "POST", localVarPostBody, headers, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+	response, err := a.client.callAPI(r)
+	if err != nil || response == nil {
+		return localVarReturnValue, response, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	localVarBody, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode < 300 {
+	if response.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
+		err = a.client.decode(&localVarReturnValue, localVarBody, response.Header.Get("Content-Type"))
+		return localVarReturnValue, response, err
 	}
 
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+	if response.StatusCode >= 300 {
+		newErr := Error{
+			Body: localVarBody,
+			Err:  response.Status,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
+		if response.StatusCode == 200 {
 			var v Resource
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				newErr.Err = err.Error()
+				return localVarReturnValue, response, newErr
 			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			newErr.Model = v
+			return localVarReturnValue, response, newErr
 		}
 
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, response, newErr
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarReturnValue, response, nil
 }
