@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type ResourceApiService service
+type ResourceAPI service
 
 /*
-ResourceApiService Delete the resource definition by name
+ResourceAPI Delete the resource definition by name
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the resource to delete
 
 @return string
 */
-func (a *ResourceApiService) ResourceDeleteResource(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *ResourceAPI) DeleteResource(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,12 +97,12 @@ func (a *ResourceApiService) ResourceDeleteResource(ctx context.Context, name st
 }
 
 /*
-ResourceApiService Gets all resources
+ResourceAPI Gets all resources
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Resource
 */
-func (a *ResourceApiService) ResourceGetResource(ctx context.Context) ([]Resource, *http.Response, error) {
+func (a *ResourceAPI) Resources(ctx context.Context) ([]Resource, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -166,13 +166,13 @@ func (a *ResourceApiService) ResourceGetResource(ctx context.Context) ([]Resourc
 }
 
 /*
-ResourceApiService Gets a resource by ID
+ResourceAPI Gets a resource by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id ID of the resource
 
 @return Resource
 */
-func (a *ResourceApiService) ResourceGetResourceByID(ctx context.Context, id int32) (Resource, *http.Response, error) {
+func (a *ResourceAPI) ResourceByID(ctx context.Context, id int32) (Resource, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -237,13 +237,13 @@ func (a *ResourceApiService) ResourceGetResourceByID(ctx context.Context, id int
 }
 
 /*
-ResourceApiService Gets a resource by name
+ResourceAPI Gets a resource by name
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the resource
 
 @return Resource
 */
-func (a *ResourceApiService) ResourceGetResourceByName(ctx context.Context, name string) (Resource, *http.Response, error) {
+func (a *ResourceAPI) ResourceByName(ctx context.Context, name string) (Resource, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -308,13 +308,13 @@ func (a *ResourceApiService) ResourceGetResourceByName(ctx context.Context, name
 }
 
 /*
-ResourceApiService Add a new resource definition
+ResourceAPI Add a new resource definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param resource The resource definition
 
 @return Resource
 */
-func (a *ResourceApiService) ResourcePostResource(ctx context.Context, resource Resource) (Resource, *http.Response, error) {
+func (a *ResourceAPI) CreateResource(ctx context.Context, resource Resource) (Resource, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -380,13 +380,13 @@ func (a *ResourceApiService) ResourcePostResource(ctx context.Context, resource 
 }
 
 /*
-ResourceApiService Updates an existing resource
+ResourceAPI Updates an existing resource
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param resource Resource definition to be updated
 
 @return Resource
 */
-func (a *ResourceApiService) ResourcePutResource(ctx context.Context, resource Resource) (Resource, *http.Response, error) {
+func (a *ResourceAPI) UpdateResource(ctx context.Context, resource Resource) (Resource, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -452,14 +452,14 @@ func (a *ResourceApiService) ResourcePutResource(ctx context.Context, resource R
 }
 
 /*
-ResourceApiService Change the value of quantity available on a resource
+ResourceAPI Change the value of quantity available on a resource
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the resource
  * @param available The true or false value of node specific
 
 @return Resource
 */
-func (a *ResourceApiService) ResourceSetQuantityAvailable(ctx context.Context, name string, available int32) (Resource, *http.Response, error) {
+func (a *ResourceAPI) ResourceSetQuantityAvailable(ctx context.Context, name string, available int32) (Resource, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

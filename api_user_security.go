@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type UserSecurityApiService service
+type UserSecurityAPI service
 
 /*
-UserSecurityApiService Deletes a UserSecurity object.
+UserSecurityAPI Deletes a UserSecurity object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the UserSecurity to delete.
 
 @return string
 */
-func (a *UserSecurityApiService) UserSecurityDeleteUser(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *UserSecurityAPI) DeleteUser(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,12 +97,12 @@ func (a *UserSecurityApiService) UserSecurityDeleteUser(ctx context.Context, nam
 }
 
 /*
-UserSecurityApiService Gets a collection of all users
+UserSecurityAPI Gets a collection of all users
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []UserSecurity
 */
-func (a *UserSecurityApiService) UserSecurityGetUser(ctx context.Context) ([]UserSecurity, *http.Response, error) {
+func (a *UserSecurityAPI) Users(ctx context.Context) ([]UserSecurity, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -166,13 +166,13 @@ func (a *UserSecurityApiService) UserSecurityGetUser(ctx context.Context) ([]Use
 }
 
 /*
-UserSecurityApiService Get the UserSecurity with the specified name.
+UserSecurityAPI Get the UserSecurity with the specified name.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the UserSecurity.
 
 @return UserSecurity
 */
-func (a *UserSecurityApiService) UserSecurityGetUserByName(ctx context.Context, name string) (UserSecurity, *http.Response, error) {
+func (a *UserSecurityAPI) UserByName(ctx context.Context, name string) (UserSecurity, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -237,13 +237,13 @@ func (a *UserSecurityApiService) UserSecurityGetUserByName(ctx context.Context, 
 }
 
 /*
-UserSecurityApiService Get the User with the specified ID.
+UserSecurityAPI Get the User with the specified ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The id of the UserSecurity.
 
 @return UserSecurity
 */
-func (a *UserSecurityApiService) UserSecurityGetUserByID(ctx context.Context, id int32) (UserSecurity, *http.Response, error) {
+func (a *UserSecurityAPI) UserByID(ctx context.Context, id int32) (UserSecurity, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -308,13 +308,13 @@ func (a *UserSecurityApiService) UserSecurityGetUserByID(ctx context.Context, id
 }
 
 /*
-UserSecurityApiService Creates a new UserSecurity object.
+UserSecurityAPI Creates a new UserSecurity object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param user A Models.UserSecurity object
 
 @return UserSecurity
 */
-func (a *UserSecurityApiService) UserSecurityPostUser(ctx context.Context, user UserSecurity) (UserSecurity, *http.Response, error) {
+func (a *UserSecurityAPI) CreateUser(ctx context.Context, user UserSecurity) (UserSecurity, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -380,13 +380,13 @@ func (a *UserSecurityApiService) UserSecurityPostUser(ctx context.Context, user 
 }
 
 /*
-UserSecurityApiService Updates an existing UserSecurity object or creates new definition if it doesn't exist.
+UserSecurityAPI Updates an existing UserSecurity object or creates new definition if it doesn't exist.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param user A Models.UserSecurity object
 
 @return UserSecurity
 */
-func (a *UserSecurityApiService) UserSecurityPutUser(ctx context.Context, user UserSecurity) (UserSecurity, *http.Response, error) {
+func (a *UserSecurityAPI) UpdateUser(ctx context.Context, user UserSecurity) (UserSecurity, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

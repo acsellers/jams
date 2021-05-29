@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type FolderApiService service
+type FolderAPI service
 
 /*
-FolderApiService Deletes a folder definition
+FolderAPI Deletes a folder definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param qualifiedName The fully qualified name of the folder
 
 @return string
 */
-func (a *FolderApiService) FolderDeleteFolder(ctx context.Context, qualifiedName string) (string, *http.Response, error) {
+func (a *FolderAPI) DeleteFolder(ctx context.Context, qualifiedName string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,13 +97,13 @@ func (a *FolderApiService) FolderDeleteFolder(ctx context.Context, qualifiedName
 }
 
 /*
-FolderApiService Get full folder definition by ID
+FolderAPI Get full folder definition by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id ID of the folder definition.
 
 @return Folder
 */
-func (a *FolderApiService) FolderGetFolderByID(ctx context.Context, id int32) (Folder, *http.Response, error) {
+func (a *FolderAPI) FolderByID(ctx context.Context, id int32) (Folder, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -168,13 +168,13 @@ func (a *FolderApiService) FolderGetFolderByID(ctx context.Context, id int32) (F
 }
 
 /*
-FolderApiService Get full folder definition by name.
+FolderAPI Get full folder definition by name.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the folder definition.
 
 @return Folder
 */
-func (a *FolderApiService) FolderGetFolderByName(ctx context.Context, name string) (Folder, *http.Response, error) {
+func (a *FolderAPI) FolderByName(ctx context.Context, name string) (Folder, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -239,13 +239,13 @@ func (a *FolderApiService) FolderGetFolderByName(ctx context.Context, name strin
 }
 
 /*
-FolderApiService Gets all child folder definitions of selected folder by ID
+FolderAPI Gets all child folder definitions of selected folder by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id ID of the parent folder.
 
 @return []Folder
 */
-func (a *FolderApiService) FolderGetFoldersByParentID(ctx context.Context, id int32) ([]Folder, *http.Response, error) {
+func (a *FolderAPI) FoldersByParentID(ctx context.Context, id int32) ([]Folder, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -310,13 +310,13 @@ func (a *FolderApiService) FolderGetFoldersByParentID(ctx context.Context, id in
 }
 
 /*
-FolderApiService Gets all child folder definitions of selected folder by name
+FolderAPI Gets all child folder definitions of selected folder by name
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the parent folder.
 
 @return []Folder
 */
-func (a *FolderApiService) FolderGetFoldersByParentName(ctx context.Context, name string) ([]Folder, *http.Response, error) {
+func (a *FolderAPI) FoldersByParentName(ctx context.Context, name string) ([]Folder, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -381,12 +381,12 @@ func (a *FolderApiService) FolderGetFoldersByParentName(ctx context.Context, nam
 }
 
 /*
-FolderApiService Gets all child folder definitions of the root folder
+FolderAPI Gets all child folder definitions of the root folder
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Folder
 */
-func (a *FolderApiService) FolderGetSubFoldersOfRootFolder(ctx context.Context) ([]Folder, *http.Response, error) {
+func (a *FolderAPI) SubFoldersOfRootFolder(ctx context.Context) ([]Folder, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -450,13 +450,13 @@ func (a *FolderApiService) FolderGetSubFoldersOfRootFolder(ctx context.Context) 
 }
 
 /*
-FolderApiService Adds a new folder definition
+FolderAPI Adds a new folder definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param folder The folder definition
 
 @return Folder
 */
-func (a *FolderApiService) FolderPostFolder(ctx context.Context, folder Folder) (Folder, *http.Response, error) {
+func (a *FolderAPI) CreateFolder(ctx context.Context, folder Folder) (Folder, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -522,13 +522,13 @@ func (a *FolderApiService) FolderPostFolder(ctx context.Context, folder Folder) 
 }
 
 /*
-FolderApiService Updates an existing folder definition
+FolderAPI Updates an existing folder definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param folder The folder definition
 
 @return Folder
 */
-func (a *FolderApiService) FolderPutFolder(ctx context.Context, folder Folder) (Folder, *http.Response, error) {
+func (a *FolderAPI) UpdateFolder(ctx context.Context, folder Folder) (Folder, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

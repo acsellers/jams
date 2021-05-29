@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type SubmitApiService service
+type SubmitAPI service
 
 /*
-SubmitApiService Get the submit information for a Job or Setup with the specified name.
+SubmitAPI Get the submit information for a Job or Setup with the specified name.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The qualified name of the Job or Setup.
 
 @return SubmitInfo
 */
-func (a *SubmitApiService) SubmitGetSubmit(ctx context.Context, name string) (SubmitInfo, *http.Response, error) {
+func (a *SubmitAPI) SubmitInfoByName(ctx context.Context, name string) (SubmitInfo, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,13 +97,13 @@ func (a *SubmitApiService) SubmitGetSubmit(ctx context.Context, name string) (Su
 }
 
 /*
-SubmitApiService Get the submit info for a Setup with the specified ID
+SubmitAPI Get the submit info for a Setup with the specified ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The ID of the Setup.
 
 @return SubmitInfo
 */
-func (a *SubmitApiService) SubmitGetSubmitSetup(ctx context.Context, id int32) (SubmitInfo, *http.Response, error) {
+func (a *SubmitAPI) SubmitInfoBySetupID(ctx context.Context, id int32) (SubmitInfo, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -168,13 +168,13 @@ func (a *SubmitApiService) SubmitGetSubmitSetup(ctx context.Context, id int32) (
 }
 
 /*
-SubmitApiService Get the submit info for a Job with the specified ID
+SubmitAPI Get the submit info for a Job with the specified ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The ID of the Job.
 
 @return SubmitInfo
 */
-func (a *SubmitApiService) SubmitGetSubmitByID(ctx context.Context, id int32) (SubmitInfo, *http.Response, error) {
+func (a *SubmitAPI) SubmitInfoByJobID(ctx context.Context, id int32) (SubmitInfo, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -239,13 +239,13 @@ func (a *SubmitApiService) SubmitGetSubmitByID(ctx context.Context, id int32) (S
 }
 
 /*
-SubmitApiService Submit the job specified in the SubmitInfo object. Usually, you create the SubmitInfo object              by calling GetSubmit which returns a SubmitInfo. You can then modify values in the SubmitInfo              before calling PutSubmit.
+SubmitAPI Submit the job specified in the SubmitInfo object. Usually, you create the SubmitInfo object              by calling GetSubmit which returns a SubmitInfo. You can then modify values in the SubmitInfo              before calling PutSubmit.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param si A SubmitInfo object
 
 @return SubmitInfo
 */
-func (a *SubmitApiService) SubmitPostSubmit(ctx context.Context, si SubmitInfo) (SubmitInfo, *http.Response, error) {
+func (a *SubmitAPI) CreateSubmitInfo(ctx context.Context, si SubmitInfo) (SubmitInfo, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

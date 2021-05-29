@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type BatchQueueApiService service
+type BatchQueueAPI service
 
 /*
-BatchQueueApiService Delete the batch queue definition by name.
+BatchQueueAPI Delete the batch queue definition by name.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the batch queue to delete.
 
 @return string
 */
-func (a *BatchQueueApiService) BatchQueueDeleteBatchQueue(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *BatchQueueAPI) DeleteBatchQueue(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,12 +97,12 @@ func (a *BatchQueueApiService) BatchQueueDeleteBatchQueue(ctx context.Context, n
 }
 
 /*
-BatchQueueApiService Gets all batch queue definitions
+BatchQueueAPI Gets all batch queue definitions
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []BatchQueue
 */
-func (a *BatchQueueApiService) BatchQueueGetBatchQueue(ctx context.Context) ([]BatchQueue, *http.Response, error) {
+func (a *BatchQueueAPI) BatchQueues(ctx context.Context) ([]BatchQueue, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -166,13 +166,13 @@ func (a *BatchQueueApiService) BatchQueueGetBatchQueue(ctx context.Context) ([]B
 }
 
 /*
-BatchQueueApiService Gets a batch queue definition by ID
+BatchQueueAPI Gets a batch queue definition by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id ID of the BatchQueue
 
 @return BatchQueue
 */
-func (a *BatchQueueApiService) BatchQueueGetBatchQueueByID(ctx context.Context, id int32) (BatchQueue, *http.Response, error) {
+func (a *BatchQueueAPI) BatchQueueByID(ctx context.Context, id int32) (BatchQueue, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -237,13 +237,13 @@ func (a *BatchQueueApiService) BatchQueueGetBatchQueueByID(ctx context.Context, 
 }
 
 /*
-BatchQueueApiService Gets a batch queue definition by name
+BatchQueueAPI Gets a batch queue definition by name
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the BatchQueue
 
 @return BatchQueue
 */
-func (a *BatchQueueApiService) BatchQueueGetBatchQueueByName(ctx context.Context, name string) (BatchQueue, *http.Response, error) {
+func (a *BatchQueueAPI) BatchQueueByName(ctx context.Context, name string) (BatchQueue, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -308,13 +308,13 @@ func (a *BatchQueueApiService) BatchQueueGetBatchQueueByName(ctx context.Context
 }
 
 /*
-BatchQueueApiService Adds a new batch queue definition
+BatchQueueAPI Adds a new batch queue definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param batchqueue The BatchQueue object.
 
 @return BatchQueue
 */
-func (a *BatchQueueApiService) BatchQueuePostBatchQueue(ctx context.Context, batchqueue BatchQueue) (BatchQueue, *http.Response, error) {
+func (a *BatchQueueAPI) CreateBatchQueue(ctx context.Context, batchqueue BatchQueue) (BatchQueue, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -380,13 +380,13 @@ func (a *BatchQueueApiService) BatchQueuePostBatchQueue(ctx context.Context, bat
 }
 
 /*
-BatchQueueApiService Updates an existing batch queue
+BatchQueueAPI Updates an existing batch queue
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param batchqueue Batch queue definition to be updated
 
 @return BatchQueue
 */
-func (a *BatchQueueApiService) BatchQueuePutBatchQueue(ctx context.Context, batchqueue BatchQueue) (BatchQueue, *http.Response, error) {
+func (a *BatchQueueAPI) UpdateBatchQueue(ctx context.Context, batchqueue BatchQueue) (BatchQueue, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -452,13 +452,13 @@ func (a *BatchQueueApiService) BatchQueuePutBatchQueue(ctx context.Context, batc
 }
 
 /*
-BatchQueueApiService Starts a  batch queue
+BatchQueueAPI Starts a  batch queue
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the queue to start
 
 @return string
 */
-func (a *BatchQueueApiService) BatchQueueStartBatchQueue(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *BatchQueueAPI) BatchQueueStartBatchQueue(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -523,13 +523,13 @@ func (a *BatchQueueApiService) BatchQueueStartBatchQueue(ctx context.Context, na
 }
 
 /*
-BatchQueueApiService Stops a batch queue
+BatchQueueAPI Stops a batch queue
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the queue to stop
 
 @return string
 */
-func (a *BatchQueueApiService) BatchQueueStopBatchQueue(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *BatchQueueAPI) BatchQueueStopBatchQueue(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

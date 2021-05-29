@@ -21,17 +21,17 @@ var (
 	_ context.Context
 )
 
-type AuthenticationApiService service
+type AuthenticationAPI service
 
 /*
-AuthenticationApiService Provides information about the authenticated user
+AuthenticationAPI Provides information about the authenticated user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return Authentication
 */
 func (client *APIClient) UserInfo(ctx context.Context) (Authentication, error) {
 	if client.auth == nil {
-		return Authentication{}, errors.New("No Login Information")
+		return Authentication{}, errors.New("missing login information")
 	}
 	var (
 		localVarPostBody    interface{}
@@ -96,7 +96,7 @@ func (client *APIClient) UserInfo(ctx context.Context) (Authentication, error) {
 }
 
 /*
-AuthenticationApiService Login to the web server
+AuthenticationAPI Login to the web server
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param loginData The login credentials
 

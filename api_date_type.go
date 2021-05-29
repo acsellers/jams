@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type DateTypeApiService service
+type DateTypeAPI service
 
 /*
-DateTypeApiService Deletes a DateType object.
+DateTypeAPI Deletes a DateType object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the DateType
 
 @return Object
 */
-func (a *DateTypeApiService) DateTypeDeleteDateType(ctx context.Context, name string) (Object, *http.Response, error) {
+func (a *DateTypeAPI) DeleteDateType(ctx context.Context, name string) (Object, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,12 +97,12 @@ func (a *DateTypeApiService) DateTypeDeleteDateType(ctx context.Context, name st
 }
 
 /*
-DateTypeApiService Gets a collection of all DateTypes
+DateTypeAPI Gets a collection of all DateTypes
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []DateType
 */
-func (a *DateTypeApiService) DateTypeGetDateType(ctx context.Context) ([]DateType, *http.Response, error) {
+func (a *DateTypeAPI) DateTypes(ctx context.Context) ([]DateType, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -166,13 +166,13 @@ func (a *DateTypeApiService) DateTypeGetDateType(ctx context.Context) ([]DateTyp
 }
 
 /*
-DateTypeApiService Get the DateType with the specified name.
+DateTypeAPI Get the DateType with the specified name.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the DateType
 
 @return DateType
 */
-func (a *DateTypeApiService) DateTypeGetDateTypeByName(ctx context.Context, name string) (DateType, *http.Response, error) {
+func (a *DateTypeAPI) DateTypeByName(ctx context.Context, name string) (DateType, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -237,13 +237,13 @@ func (a *DateTypeApiService) DateTypeGetDateTypeByName(ctx context.Context, name
 }
 
 /*
-DateTypeApiService Get the DateType with the specified ID.
+DateTypeAPI Get the DateType with the specified ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 
 @return DateType
 */
-func (a *DateTypeApiService) DateTypeGetDateTypeByID(ctx context.Context, id int32) (DateType, *http.Response, error) {
+func (a *DateTypeAPI) DateTypeByID(ctx context.Context, id int32) (DateType, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -308,13 +308,13 @@ func (a *DateTypeApiService) DateTypeGetDateTypeByID(ctx context.Context, id int
 }
 
 /*
-DateTypeApiService Creates a new DateType object.
+DateTypeAPI Creates a new DateType object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param dateType A Models.DateType object
 
 @return Object
 */
-func (a *DateTypeApiService) DateTypePostDateType(ctx context.Context, dateType DateType) (Object, *http.Response, error) {
+func (a *DateTypeAPI) CreateDateType(ctx context.Context, dateType DateType) (Object, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -380,13 +380,13 @@ func (a *DateTypeApiService) DateTypePostDateType(ctx context.Context, dateType 
 }
 
 /*
-DateTypeApiService Updates an existing DateType object or creates a new definition if it doesn&#39;t exist.
+DateTypeAPI Updates an existing DateType object or creates a new definition if it doesn't exist.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param dateType A Models.DateType object
 
 @return Object
 */
-func (a *DateTypeApiService) DateTypePutDateType(ctx context.Context, dateType DateType) (Object, *http.Response, error) {
+func (a *DateTypeAPI) UpdateDateType(ctx context.Context, dateType DateType) (Object, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

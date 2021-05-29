@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type CfgApiService service
+type ConfigAPI service
 
 /*
-CfgApiService Deletes a Configuration object.
+ConfigAPI Deletes a Configuration object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the Configuration
 
 @return string
 */
-func (a *CfgApiService) CfgDeleteCfg(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *ConfigAPI) DeleteConfig(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,12 +97,12 @@ func (a *CfgApiService) CfgDeleteCfg(ctx context.Context, name string) (string, 
 }
 
 /*
-CfgApiService Gets a list of all configurations
+ConfigAPI Gets a list of all configurations
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Cfg
 */
-func (a *CfgApiService) CfgGetCfg(ctx context.Context) ([]Cfg, *http.Response, error) {
+func (a *ConfigAPI) Configs(ctx context.Context) ([]Cfg, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -166,13 +166,13 @@ func (a *CfgApiService) CfgGetCfg(ctx context.Context) ([]Cfg, *http.Response, e
 }
 
 /*
-CfgApiService Get the Configuration with the specified configName.
+ConfigAPI Get the Configuration with the specified configName.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the Configuration
 
 @return Cfg
 */
-func (a *CfgApiService) CfgGetCfgByName(ctx context.Context, name string) (Cfg, *http.Response, error) {
+func (a *ConfigAPI) ConfigByName(ctx context.Context, name string) (Cfg, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -237,13 +237,13 @@ func (a *CfgApiService) CfgGetCfgByName(ctx context.Context, name string) (Cfg, 
 }
 
 /*
-CfgApiService Creates a new Configuration object.
+ConfigAPI Creates a new Configuration object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param config The name of the configuration
 
 @return Cfg
 */
-func (a *CfgApiService) CfgPostCfg(ctx context.Context, config Cfg) (Cfg, *http.Response, error) {
+func (a *ConfigAPI) CreateConfig(ctx context.Context, config Cfg) (Cfg, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -309,13 +309,13 @@ func (a *CfgApiService) CfgPostCfg(ctx context.Context, config Cfg) (Cfg, *http.
 }
 
 /*
-CfgApiService Updates an existing Cfg object or creates a new definition if it doesn&#39;t exist.
+ConfigAPI Updates an existing Cfg object or creates a new definition if it doesn&#39;t exist.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param config The name of the cfg
 
 @return Cfg
 */
-func (a *CfgApiService) CfgPutConfig(ctx context.Context, config Cfg) (Cfg, *http.Response, error) {
+func (a *ConfigAPI) UpdateConfig(ctx context.Context, config Cfg) (Cfg, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

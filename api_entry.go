@@ -25,10 +25,10 @@ var (
 	_ context.Context
 )
 
-type EntryApiService service
+type EntryAPI service
 
 /*
-EntryApiService Gets log file as download or preview of first 512 kB.
+EntryAPI Gets log file as download or preview of first 512 kB.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param entryId The Entry Id
  * @param optional nil or *EntryApiEntryDownloadOpts - Optional Parameters:
@@ -41,7 +41,7 @@ type EntryApiEntryDownloadOpts struct {
 	IsPreview optional.Bool
 }
 
-func (a *EntryApiService) EntryDownload(ctx context.Context, entryId int32, localVarOptionals *EntryApiEntryDownloadOpts) (Object, *http.Response, error) {
+func (a *EntryAPI) EntryDownload(ctx context.Context, entryId int32, localVarOptionals *EntryApiEntryDownloadOpts) (Object, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -109,12 +109,12 @@ func (a *EntryApiService) EntryDownload(ctx context.Context, entryId int32, loca
 }
 
 /*
-EntryApiService Gets entry information for all entries in the current schedule.
+EntryAPI Gets entry information for all entries in the current schedule.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Entry
 */
-func (a *EntryApiService) EntryGetEntry(ctx context.Context) ([]Entry, *http.Response, error) {
+func (a *EntryAPI) Entries(ctx context.Context) ([]Entry, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -178,14 +178,14 @@ func (a *EntryApiService) EntryGetEntry(ctx context.Context) ([]Entry, *http.Res
 }
 
 /*
-EntryApiService Gets parameter value for a given entry.
+EntryAPI Gets parameter value for a given entry.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry for which to get the parameter.
  * @param name The name of the parameter to return.
 
 @return EntryParam
 */
-func (a *EntryApiService) EntryGetEntryParameter(ctx context.Context, id int32, name string) (EntryParam, *http.Response, error) {
+func (a *EntryAPI) EntryParameter(ctx context.Context, id int32, name string) (EntryParam, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -251,13 +251,13 @@ func (a *EntryApiService) EntryGetEntryParameter(ctx context.Context, id int32, 
 }
 
 /*
-EntryApiService Gets parameter list for a given entry.
+EntryAPI Gets parameter list for a given entry.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry for which to get parameters.
 
 @return []EntryParam
 */
-func (a *EntryApiService) EntryGetEntryParameters(ctx context.Context, id int32) ([]EntryParam, *http.Response, error) {
+func (a *EntryAPI) EntryParameters(ctx context.Context, id int32) ([]EntryParam, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -322,13 +322,13 @@ func (a *EntryApiService) EntryGetEntryParameters(ctx context.Context, id int32)
 }
 
 /*
-EntryApiService Gets Entry information with the specified ID
+EntryAPI Gets Entry information with the specified ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry to get.
 
 @return Entry
 */
-func (a *EntryApiService) EntryGetEntryByID(ctx context.Context, id int32) (Entry, *http.Response, error) {
+func (a *EntryAPI) EntryByID(ctx context.Context, id int32) (Entry, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -393,14 +393,14 @@ func (a *EntryApiService) EntryGetEntryByID(ctx context.Context, id int32) (Entr
 }
 
 /*
-EntryApiService Cancels a JAMS entry.
+EntryAPI Cancels a JAMS entry.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry to cancel.
  * @param cancelEntry A Models.CancelEntry.
 
 
 */
-func (a *EntryApiService) EntryPutEntryCancel(ctx context.Context, id int32, cancelEntry CancelEntry) (*http.Response, error) {
+func (a *EntryAPI) UpdateEntryCancel(ctx context.Context, id int32, cancelEntry CancelEntry) (*http.Response, error) {
 	var (
 		localVarPostBody  interface{}
 		localVarFileName  string
@@ -449,7 +449,7 @@ func (a *EntryApiService) EntryPutEntryCancel(ctx context.Context, id int32, can
 }
 
 /*
-EntryApiService Sets parameter value for a given entry.
+EntryAPI Sets parameter value for a given entry.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry to update.
  * @param name The name of the parameter to update.
@@ -457,7 +457,7 @@ EntryApiService Sets parameter value for a given entry.
 
 
 */
-func (a *EntryApiService) EntryPutEntryParameter(ctx context.Context, id int32, name string, value string) (*http.Response, error) {
+func (a *EntryAPI) UpdateEntryParameter(ctx context.Context, id int32, name string, value string) (*http.Response, error) {
 	var (
 		localVarPostBody  interface{}
 		localVarFileName  string
@@ -506,14 +506,14 @@ func (a *EntryApiService) EntryPutEntryParameter(ctx context.Context, id int32, 
 }
 
 /*
-EntryApiService Reschedules a JAMS entry.
+EntryAPI Reschedules a JAMS entry.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry to reschedule.
  * @param rescheduleEntry A Models.RescheduleEntry.
 
 
 */
-func (a *EntryApiService) EntryPutEntryReschedule(ctx context.Context, id int32, rescheduleEntry RescheduleEntry) (*http.Response, error) {
+func (a *EntryAPI) UpdateEntryReschedule(ctx context.Context, id int32, rescheduleEntry RescheduleEntry) (*http.Response, error) {
 	var (
 		localVarPostBody  interface{}
 		localVarFileName  string
@@ -562,14 +562,14 @@ func (a *EntryApiService) EntryPutEntryReschedule(ctx context.Context, id int32,
 }
 
 /*
-EntryApiService Restarts a JAMS entry.
+EntryAPI Restarts a JAMS entry.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry to restart.
  * @param restartEntry A Models.RestartEntry.
 
 
 */
-func (a *EntryApiService) EntryPutEntryRestart(ctx context.Context, id int32, restartEntry RestartEntry) (*http.Response, error) {
+func (a *EntryAPI) UpdateEntryRestart(ctx context.Context, id int32, restartEntry RestartEntry) (*http.Response, error) {
 	var (
 		localVarPostBody  interface{}
 		localVarFileName  string
@@ -618,7 +618,7 @@ func (a *EntryApiService) EntryPutEntryRestart(ctx context.Context, id int32, re
 }
 
 /*
-EntryApiService Sets the status message for an entry.
+EntryAPI Sets the status message for an entry.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry to update.
  * @param status The new status message.
@@ -628,7 +628,7 @@ EntryApiService Sets the status message for an entry.
 
 
 */
-func (a *EntryApiService) EntryPutEntryStatus(ctx context.Context, id int32, status string, icon string, message string, permanent bool) (*http.Response, error) {
+func (a *EntryAPI) UpdateEntryStatus(ctx context.Context, id int32, status string, icon string, message string, permanent bool) (*http.Response, error) {
 	var (
 		localVarPostBody  interface{}
 		localVarFileName  string
@@ -679,14 +679,14 @@ func (a *EntryApiService) EntryPutEntryStatus(ctx context.Context, id int32, sta
 }
 
 /*
-EntryApiService Holds an Entry with the specified ID, with the              specified HoldEntry Audit Comment.
+EntryAPI Holds an Entry with the specified ID, with the              specified HoldEntry Audit Comment.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry to hold.
  * @param holdEntry A Models.HoldEntry.
 
 
 */
-func (a *EntryApiService) EntryPutHoldEntry(ctx context.Context, id int32, holdEntry HoldEntry) (*http.Response, error) {
+func (a *EntryAPI) UpdateHoldEntry(ctx context.Context, id int32, holdEntry HoldEntry) (*http.Response, error) {
 	var (
 		localVarPostBody  interface{}
 		localVarFileName  string
@@ -735,14 +735,14 @@ func (a *EntryApiService) EntryPutHoldEntry(ctx context.Context, id int32, holdE
 }
 
 /*
-EntryApiService Releases a CurJob with the specified ID              to Run Again, with specified ReleaseEntry Audit Comment
+EntryAPI Releases a CurJob with the specified ID              to Run Again, with specified ReleaseEntry Audit Comment
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The JAMS entry to release.
  * @param releaseEntry A Models.ReleaseEntry.
 
 
 */
-func (a *EntryApiService) EntryPutReleaseEntry(ctx context.Context, id int32, releaseEntry ReleaseEntry) (*http.Response, error) {
+func (a *EntryAPI) UpdateReleaseEntry(ctx context.Context, id int32, releaseEntry ReleaseEntry) (*http.Response, error) {
 	var (
 		localVarPostBody  interface{}
 		localVarFileName  string

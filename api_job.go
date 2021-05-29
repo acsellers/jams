@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type JobApiService service
+type JobAPI service
 
 /*
-JobApiService Deletes a Job by name.
+JobAPI Deletes a Job by name.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the Job to delete
 
 @return string
 */
-func (a *JobApiService) JobDeleteJob(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *JobAPI) DeleteJob(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,13 +97,13 @@ func (a *JobApiService) JobDeleteJob(ctx context.Context, name string) (string, 
 }
 
 /*
-JobApiService Get the Job with the specified ID.
+JobAPI Get the Job with the specified ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The ID of the Job.
 
 @return Job
 */
-func (a *JobApiService) JobGetJob(ctx context.Context, id int32) (Job, *http.Response, error) {
+func (a *JobAPI) JobByID(ctx context.Context, id int32) (Job, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -168,13 +168,13 @@ func (a *JobApiService) JobGetJob(ctx context.Context, id int32) (Job, *http.Res
 }
 
 /*
-JobApiService Get the Job with the specified name.
+JobAPI Get the Job with the specified name.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the Job
 
 @return Job
 */
-func (a *JobApiService) JobGetJobByName(ctx context.Context, name string) (Job, *http.Response, error) {
+func (a *JobAPI) JobByName(ctx context.Context, name string) (Job, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -239,12 +239,12 @@ func (a *JobApiService) JobGetJobByName(ctx context.Context, name string) (Job, 
 }
 
 /*
-JobApiService Gets a list of all jobs
+JobAPI Gets a list of all jobs
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Job
 */
-func (a *JobApiService) JobGetJobs(ctx context.Context) ([]Job, *http.Response, error) {
+func (a *JobAPI) Jobs(ctx context.Context) ([]Job, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -308,14 +308,14 @@ func (a *JobApiService) JobGetJobs(ctx context.Context) ([]Job, *http.Response, 
 }
 
 /*
-JobApiService Gets Jobs in the Folder with the specified name
+JobAPI Gets Jobs in the Folder with the specified name
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param folderName The name of the Folder to return Jobs from.
  * @param name
 
 @return []Job
 */
-func (a *JobApiService) JobGetJobsByFolder(ctx context.Context, folderName string, name string) ([]Job, *http.Response, error) {
+func (a *JobAPI) JobsByFolder(ctx context.Context, folderName string, name string) ([]Job, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -381,13 +381,13 @@ func (a *JobApiService) JobGetJobsByFolder(ctx context.Context, folderName strin
 }
 
 /*
-JobApiService Gets all jobs in the Folder with the specified ID
+JobAPI Gets all jobs in the Folder with the specified ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id ID of the folder definition
 
 @return []Job
 */
-func (a *JobApiService) JobGetJobsByFolderID(ctx context.Context, id int32) ([]Job, *http.Response, error) {
+func (a *JobAPI) JobsByFolderID(ctx context.Context, id int32) ([]Job, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -452,13 +452,13 @@ func (a *JobApiService) JobGetJobsByFolderID(ctx context.Context, id int32) ([]J
 }
 
 /*
-JobApiService Creates a new Job object.
+JobAPI Creates a new Job object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param job A Models.Job object
 
 @return Job
 */
-func (a *JobApiService) JobPostJob(ctx context.Context, job Job) (Job, *http.Response, error) {
+func (a *JobAPI) CreateJob(ctx context.Context, job Job) (Job, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -524,13 +524,13 @@ func (a *JobApiService) JobPostJob(ctx context.Context, job Job) (Job, *http.Res
 }
 
 /*
-JobApiService Updates an existing Job object or creates new definition if it doesn&#39;t exist.
+JobAPI Updates an existing Job object or creates new definition if it doesn't exist.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param job A Models.Job object
 
 @return Job
 */
-func (a *JobApiService) JobPutJob(ctx context.Context, job Job) (Job, *http.Response, error) {
+func (a *JobAPI) UpdateJob(ctx context.Context, job Job) (Job, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

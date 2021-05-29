@@ -11,9 +11,11 @@ package swagger
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -21,24 +23,26 @@ var (
 	_ context.Context
 )
 
-type HelpApiService service
+type EntryAuditTrailApiService service
 
 /*
-HelpApiService
+EntryAuditTrailApiService Gets Entry Audit Trail.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jamsId The JAMS Id.
 
-@return Object
+@return []EntryAuditTrail
 */
-func (a *HelpApiService) HelpGetHelp(ctx context.Context) (Object, *http.Response, error) {
+func (a *EntryAuditTrailApiService) EntryAuditTrails(ctx context.Context, jamsId string) ([]EntryAuditTrail, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
-		localVarReturnValue Object
+		localVarReturnValue []EntryAuditTrail
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/help"
+	localVarPath := a.client.cfg.BasePath + "/api/EntryAuditTrail/{jamsId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jamsId"+"}", fmt.Sprintf("%v", jamsId), -1)
 
 	headers := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -76,7 +80,7 @@ func (a *HelpApiService) HelpGetHelp(ctx context.Context) (Object, *http.Respons
 		}
 
 		if response.StatusCode == 200 {
-			var v Object
+			var v []EntryAuditTrail
 			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.Err = err.Error()

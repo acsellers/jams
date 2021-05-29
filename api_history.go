@@ -25,15 +25,15 @@ var (
 	_ context.Context
 )
 
-type HistoryApiService service
+type HistoryAPI service
 
 /*
-HistoryApiService Gets job execution history.
+HistoryAPI Gets job execution history.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []History
 */
-func (a *HistoryApiService) HistoryGetHistory(ctx context.Context) ([]History, *http.Response, error) {
+func (a *HistoryAPI) History(ctx context.Context) ([]History, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,12 +97,12 @@ func (a *HistoryApiService) HistoryGetHistory(ctx context.Context) ([]History, *
 }
 
 /*
-HistoryApiService Gets job execution history using OData filters.
+HistoryAPI Gets job execution history using OData filters.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return PageResultHistory
 */
-func (a *HistoryApiService) HistoryGetHistoryOdata(ctx context.Context) (PageResultHistory, *http.Response, error) {
+func (a *HistoryAPI) HistoryOdata(ctx context.Context) (PageResultHistory, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -166,7 +166,7 @@ func (a *HistoryApiService) HistoryGetHistoryOdata(ctx context.Context) (PageRes
 }
 
 /*
-HistoryApiService Gets log file as download or preview of first 512 kB.
+HistoryAPI Gets log file as download or preview of first 512 kB.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param jobName The Job Name
  * @param ron The RON number
@@ -181,7 +181,7 @@ type HistoryApiHistoryGetJobLogOpts struct {
 	IsPreview optional.Bool
 }
 
-func (a *HistoryApiService) HistoryGetJobLog(ctx context.Context, jobName string, ron int32, restartCount int32, localVarOptionals *HistoryApiHistoryGetJobLogOpts) (Object, *http.Response, error) {
+func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron int32, restartCount int32, localVarOptionals *HistoryApiHistoryGetJobLogOpts) (Object, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -251,7 +251,7 @@ func (a *HistoryApiService) HistoryGetJobLog(ctx context.Context, jobName string
 }
 
 /*
-HistoryApiService Gets log file as download or preview of first 512 kB.
+HistoryAPI Gets log file as download or preview of first 512 kB.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param setupName The Setup Name
  * @param ron The RON number
@@ -266,7 +266,7 @@ type HistoryApiHistoryGetSetupLogOpts struct {
 	IsPreview optional.Bool
 }
 
-func (a *HistoryApiService) HistoryGetSetupLog(ctx context.Context, setupName string, ron int32, restartCount int32, localVarOptionals *HistoryApiHistoryGetSetupLogOpts) (Object, *http.Response, error) {
+func (a *HistoryAPI) SetupLog(ctx context.Context, setupName string, ron int32, restartCount int32, localVarOptionals *HistoryApiHistoryGetSetupLogOpts) (Object, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

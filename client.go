@@ -15,10 +15,8 @@ import (
 	"path/filepath"
 	"reflect"
 	"regexp"
-	"strconv"
 	"strings"
 	"time"
-	"unicode/utf8"
 
 	"golang.org/x/oauth2"
 )
@@ -36,50 +34,22 @@ type APIClient struct {
 	auth   *AccessToken
 
 	// API Services
-
-	AgentApi *AgentApiService
-
-	AppMenuApi *AppMenuApiService
-
-	BatchQueueApi *BatchQueueApiService
-
-	CfgApi *CfgApiService
-
-	DateApi *DateApiService
-
-	DateTypeApi *DateTypeApiService
-
-	EntryApi *EntryApiService
-
-	EntryAuditTrailApi *EntryAuditTrailApiService
-
-	FolderApi *FolderApiService
-
-	HelpApi *HelpApiService
-
-	HistoryApi *HistoryApiService
-
-	JobApi *JobApiService
-
-	JsSettingsApi *JsSettingsApiService
-
-	ResourceApi *ResourceApiService
-
-	SetupApi *SetupApiService
-
-	SubmitApi *SubmitApiService
-
-	SubmitMenuApi *SubmitMenuApiService
-
-	TenantApi *TenantApiService
-
-	ThemeApi *ThemeApiService
-
-	TriggerApi *TriggerApiService
-
-	UserSecurityApi *UserSecurityApiService
-
-	VariableApi *VariableApiService
+	Agent        *AgentAPI
+	BatchQueue   *BatchQueueAPI
+	Config       *ConfigAPI
+	Date         *DateAPI
+	DateType     *DateTypeAPI
+	Entry        *EntryAPI
+	Folder       *FolderAPI
+	History      *HistoryAPI
+	Job          *JobAPI
+	Resource     *ResourceAPI
+	Setup        *SetupAPI
+	Submit       *SubmitAPI
+	SubmitMenu   *SubmitMenuAPI
+	Trigger      *TriggerAPI
+	UserSecurity *UserSecurityAPI
+	Variable     *VariableAPI
 }
 
 type service struct {
@@ -98,58 +68,24 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AgentApi = (*AgentApiService)(&c.common)
-	c.AppMenuApi = (*AppMenuApiService)(&c.common)
-	c.BatchQueueApi = (*BatchQueueApiService)(&c.common)
-	c.CfgApi = (*CfgApiService)(&c.common)
-	c.DateApi = (*DateApiService)(&c.common)
-	c.DateTypeApi = (*DateTypeApiService)(&c.common)
-	c.EntryApi = (*EntryApiService)(&c.common)
-	c.EntryAuditTrailApi = (*EntryAuditTrailApiService)(&c.common)
-	c.FolderApi = (*FolderApiService)(&c.common)
-	c.HelpApi = (*HelpApiService)(&c.common)
-	c.HistoryApi = (*HistoryApiService)(&c.common)
-	c.JobApi = (*JobApiService)(&c.common)
-	c.JsSettingsApi = (*JsSettingsApiService)(&c.common)
-	c.ResourceApi = (*ResourceApiService)(&c.common)
-	c.SetupApi = (*SetupApiService)(&c.common)
-	c.SubmitApi = (*SubmitApiService)(&c.common)
-	c.SubmitMenuApi = (*SubmitMenuApiService)(&c.common)
-	c.TenantApi = (*TenantApiService)(&c.common)
-	c.ThemeApi = (*ThemeApiService)(&c.common)
-	c.TriggerApi = (*TriggerApiService)(&c.common)
-	c.UserSecurityApi = (*UserSecurityApiService)(&c.common)
-	c.VariableApi = (*VariableApiService)(&c.common)
+	c.Agent = (*AgentAPI)(&c.common)
+	c.BatchQueue = (*BatchQueueAPI)(&c.common)
+	c.Config = (*ConfigAPI)(&c.common)
+	c.Date = (*DateAPI)(&c.common)
+	c.DateType = (*DateTypeAPI)(&c.common)
+	c.Entry = (*EntryAPI)(&c.common)
+	c.Folder = (*FolderAPI)(&c.common)
+	c.History = (*HistoryAPI)(&c.common)
+	c.Job = (*JobAPI)(&c.common)
+	c.Resource = (*ResourceAPI)(&c.common)
+	c.Setup = (*SetupAPI)(&c.common)
+	c.Submit = (*SubmitAPI)(&c.common)
+	c.SubmitMenu = (*SubmitMenuAPI)(&c.common)
+	c.Trigger = (*TriggerAPI)(&c.common)
+	c.UserSecurity = (*UserSecurityAPI)(&c.common)
+	c.Variable = (*VariableAPI)(&c.common)
 
 	return c
-}
-
-func atoi(in string) (int, error) {
-	return strconv.Atoi(in)
-}
-
-// contains is a case insensitive match, finding needle in a haystack
-func contains(haystack []string, needle string) bool {
-	for _, a := range haystack {
-		if strings.ToLower(a) == strings.ToLower(needle) {
-			return true
-		}
-	}
-	return false
-}
-
-// Verify optional parameters are of the correct type.
-func typeCheckParameter(obj interface{}, expected string, name string) error {
-	// Make sure there is an object.
-	if obj == nil {
-		return nil
-	}
-
-	// Check the type is as expected.
-	if reflect.TypeOf(obj).String() != expected {
-		return fmt.Errorf("Expected %s to be of type %s but received %s.", name, expected, reflect.TypeOf(obj).String())
-	}
-	return nil
 }
 
 // parameterToString convert interface{} parameters to string, using a delimiter if format is provided.
@@ -177,11 +113,6 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	return c.cfg.HTTPClient.Do(request)
-}
-
-// Change base path to allow switching to mocks
-func (c *APIClient) ChangeBasePath(path string) {
-	c.cfg.BasePath = path
 }
 
 // prepareRequest build the request
@@ -214,7 +145,7 @@ func (c *APIClient) prepareRequest(
 	// add form parameters and file if available.
 	if strings.HasPrefix(headerParams["Content-Type"], "multipart/form-data") && len(formParams) > 0 || (len(fileBytes) > 0 && fileName != "") {
 		if body != nil {
-			return nil, errors.New("Cannot specify postBody and multipart form at the same time.")
+			return nil, errors.New("cannot specify postBody and multipart form at the same time")
 		}
 		body = &bytes.Buffer{}
 		w := multipart.NewWriter(body)
@@ -253,7 +184,7 @@ func (c *APIClient) prepareRequest(
 
 	if strings.HasPrefix(headerParams["Content-Type"], "application/x-www-form-urlencoded") && len(formParams) > 0 {
 		if body != nil {
-			return nil, errors.New("Cannot specify postBody and x-www-form-urlencoded form at the same time.")
+			return nil, errors.New("cannot specify postBody and x-www-form-urlencoded form at the same time")
 		}
 		body = &bytes.Buffer{}
 		body.WriteString(formParams.Encode())
@@ -372,11 +303,6 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 	return err
 }
 
-// Prevent trying to import "fmt"
-func reportError(format string, a ...interface{}) error {
-	return fmt.Errorf(format, a...)
-}
-
 // Set request body from an interface{}
 func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err error) {
 	if bodyBuf == nil {
@@ -402,7 +328,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	}
 
 	if bodyBuf.Len() == 0 {
-		err = fmt.Errorf("Invalid body type %s\n", contentType)
+		err = fmt.Errorf("invalid body type: %s", contentType)
 		return nil, err
 	}
 	return bodyBuf, nil
@@ -476,10 +402,6 @@ func CacheExpires(r *http.Response) time.Time {
 		}
 	}
 	return expires
-}
-
-func strlen(s string) int {
-	return utf8.RuneCountInString(s)
 }
 
 // Error Provides access to the body, error and model on returned errors.

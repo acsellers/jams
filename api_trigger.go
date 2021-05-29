@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type TriggerApiService service
+type TriggerAPI service
 
 /*
-TriggerApiService Deletes a trigger definition
+TriggerAPI Deletes a trigger definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the trigger definition
 
 @return string
 */
-func (a *TriggerApiService) TriggerDeleteTrigger(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *TriggerAPI) DeleteTrigger(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,13 +97,13 @@ func (a *TriggerApiService) TriggerDeleteTrigger(ctx context.Context, name strin
 }
 
 /*
-TriggerApiService Disables a trigger by name
+TriggerAPI Disables a trigger by name
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the trigger to disable
 
 @return string
 */
-func (a *TriggerApiService) TriggerDisableTrigger(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *TriggerAPI) DisableTrigger(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -168,13 +168,13 @@ func (a *TriggerApiService) TriggerDisableTrigger(ctx context.Context, name stri
 }
 
 /*
-TriggerApiService Enables a trigger by name
+TriggerAPI Enables a trigger by name
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the trigger to enable
 
 @return string
 */
-func (a *TriggerApiService) TriggerEnableTrigger(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *TriggerAPI) EnableTrigger(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -239,13 +239,13 @@ func (a *TriggerApiService) TriggerEnableTrigger(ctx context.Context, name strin
 }
 
 /*
-TriggerApiService Gets a trigger definition by name
+TriggerAPI Gets a trigger definition by name
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the trigger definition
 
 @return Trigger
 */
-func (a *TriggerApiService) TriggerGetTrigger(ctx context.Context, name string) (Trigger, *http.Response, error) {
+func (a *TriggerAPI) TriggerByName(ctx context.Context, name string) (Trigger, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -310,13 +310,13 @@ func (a *TriggerApiService) TriggerGetTrigger(ctx context.Context, name string) 
 }
 
 /*
-TriggerApiService Gets all trigger definitions by parent folder ID
+TriggerAPI Gets all trigger definitions by parent folder ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The Trigger Id
 
 @return []Trigger
 */
-func (a *TriggerApiService) TriggerGetTriggersByFolderID(ctx context.Context, id int32) ([]Trigger, *http.Response, error) {
+func (a *TriggerAPI) TriggersByFolderID(ctx context.Context, id int32) ([]Trigger, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -381,13 +381,13 @@ func (a *TriggerApiService) TriggerGetTriggersByFolderID(ctx context.Context, id
 }
 
 /*
-TriggerApiService Adds a new trigger definition to a JAMS Server
+TriggerAPI Adds a new trigger definition to a JAMS Server
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param trigger The trigger definition
 
 @return Trigger
 */
-func (a *TriggerApiService) TriggerPostTrigger(ctx context.Context, trigger Trigger) (Trigger, *http.Response, error) {
+func (a *TriggerAPI) CreateTrigger(ctx context.Context, trigger Trigger) (Trigger, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -453,13 +453,13 @@ func (a *TriggerApiService) TriggerPostTrigger(ctx context.Context, trigger Trig
 }
 
 /*
-TriggerApiService Updates and existing trigger definition
+TriggerAPI Updates and existing trigger definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param trigger The trigger definition
 
 @return Trigger
 */
-func (a *TriggerApiService) TriggerPutTrigger(ctx context.Context, trigger Trigger) (Trigger, *http.Response, error) {
+func (a *TriggerAPI) UpdateTrigger(ctx context.Context, trigger Trigger) (Trigger, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -525,13 +525,13 @@ func (a *TriggerApiService) TriggerPutTrigger(ctx context.Context, trigger Trigg
 }
 
 /*
-TriggerApiService Resets a trigger
+TriggerAPI Resets a trigger
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the trigger to reset
 
 @return string
 */
-func (a *TriggerApiService) TriggerResetTrigger(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *TriggerAPI) ResetTrigger(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

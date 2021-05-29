@@ -23,17 +23,17 @@ var (
 	_ context.Context
 )
 
-type VariableApiService service
+type VariableAPI service
 
 /*
-VariableApiService Changes the value of a variable identified by name
+VariableAPI Changes the value of a variable identified by name
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the variable definition
  * @param value The new value of the variable definition
 
 @return Object
 */
-func (a *VariableApiService) VariableChangeVariableValue(ctx context.Context, name string, value Object) (Object, *http.Response, error) {
+func (a *VariableAPI) ChangeVariableValue(ctx context.Context, name string, value Object) (Object, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -100,13 +100,13 @@ func (a *VariableApiService) VariableChangeVariableValue(ctx context.Context, na
 }
 
 /*
-VariableApiService Deletes a variable definition
+VariableAPI Deletes a variable definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of the variable
 
 @return string
 */
-func (a *VariableApiService) VariableDeleteVariable(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *VariableAPI) DeleteVariable(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -171,12 +171,12 @@ func (a *VariableApiService) VariableDeleteVariable(ctx context.Context, name st
 }
 
 /*
-VariableApiService Gets a list of variables that match the queryString
+VariableAPI Gets a list of variables that match the queryString
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Variable
 */
-func (a *VariableApiService) VariableGetVariable(ctx context.Context) ([]Variable, *http.Response, error) {
+func (a *VariableAPI) Variables(ctx context.Context) ([]Variable, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -240,13 +240,13 @@ func (a *VariableApiService) VariableGetVariable(ctx context.Context) ([]Variabl
 }
 
 /*
-VariableApiService Get the Variable with the specified ID.
+VariableAPI Get the Variable with the specified ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 
 @return Variable
 */
-func (a *VariableApiService) VariableGetVariableByID(ctx context.Context, id int32) (Variable, *http.Response, error) {
+func (a *VariableAPI) VariableByID(ctx context.Context, id int32) (Variable, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -311,13 +311,13 @@ func (a *VariableApiService) VariableGetVariableByID(ctx context.Context, id int
 }
 
 /*
-VariableApiService Gets a list of variables under the specified folder definition by ID
+VariableAPI Gets a list of variables under the specified folder definition by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id ID of the folder definition
 
 @return []Variable
 */
-func (a *VariableApiService) VariableGetVariablesByFolderID(ctx context.Context, id int32) ([]Variable, *http.Response, error) {
+func (a *VariableAPI) VariablesByFolderID(ctx context.Context, id int32) ([]Variable, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -382,13 +382,13 @@ func (a *VariableApiService) VariableGetVariablesByFolderID(ctx context.Context,
 }
 
 /*
-VariableApiService Creates a new variable definition
+VariableAPI Creates a new variable definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param variable Model of a new variable definition
 
 @return Variable
 */
-func (a *VariableApiService) VariablePostVariable(ctx context.Context, variable Variable) (Variable, *http.Response, error) {
+func (a *VariableAPI) CreateVariable(ctx context.Context, variable Variable) (Variable, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -454,13 +454,13 @@ func (a *VariableApiService) VariablePostVariable(ctx context.Context, variable 
 }
 
 /*
-VariableApiService Update the Variable object.
+VariableAPI Update the Variable object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param var_ A Models.Variable object
 
 @return Variable
 */
-func (a *VariableApiService) VariablePutVariable(ctx context.Context, var_ Variable) (Variable, *http.Response, error) {
+func (a *VariableAPI) UpdateVariable(ctx context.Context, var_ Variable) (Variable, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

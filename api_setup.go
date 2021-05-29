@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type SetupApiService service
+type SetupAPI service
 
 /*
-SetupApiService Deletes a Setup definition.
+SetupAPI Deletes a Setup definition.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the Setup
 
 @return string
 */
-func (a *SetupApiService) SetupDeleteSetup(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *SetupAPI) DeleteSetup(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -97,12 +97,12 @@ func (a *SetupApiService) SetupDeleteSetup(ctx context.Context, name string) (st
 }
 
 /*
-SetupApiService Gets a collection of all setups
+SetupAPI Gets a collection of all setups
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Setup
 */
-func (a *SetupApiService) SetupGetSetup(ctx context.Context) ([]Setup, *http.Response, error) {
+func (a *SetupAPI) Setups(ctx context.Context) ([]Setup, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -166,13 +166,13 @@ func (a *SetupApiService) SetupGetSetup(ctx context.Context) ([]Setup, *http.Res
 }
 
 /*
-SetupApiService Get the Setup with the specified ID.
+SetupAPI Get the Setup with the specified ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The ID of the Setup definition
 
 @return Setup
 */
-func (a *SetupApiService) SetupGetSetupByID(ctx context.Context, id int32) (Setup, *http.Response, error) {
+func (a *SetupAPI) SetupByID(ctx context.Context, id int32) (Setup, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -237,13 +237,13 @@ func (a *SetupApiService) SetupGetSetupByID(ctx context.Context, id int32) (Setu
 }
 
 /*
-SetupApiService Get the Setup with the specified setupName.
+SetupAPI Get the Setup with the specified setupName.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the Setup
 
 @return Setup
 */
-func (a *SetupApiService) SetupGetSetupByName(ctx context.Context, name string) (Setup, *http.Response, error) {
+func (a *SetupAPI) SetupByName(ctx context.Context, name string) (Setup, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -308,13 +308,13 @@ func (a *SetupApiService) SetupGetSetupByName(ctx context.Context, name string) 
 }
 
 /*
-SetupApiService Gets all Setups in the folder with the specified ID
+SetupAPI Gets all Setups in the folder with the specified ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id ID of the folder definition
 
 @return []Setup
 */
-func (a *SetupApiService) SetupGetSetupsByFolderID(ctx context.Context, id int32) ([]Setup, *http.Response, error) {
+func (a *SetupAPI) SetupsByFolderID(ctx context.Context, id int32) ([]Setup, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -379,13 +379,13 @@ func (a *SetupApiService) SetupGetSetupsByFolderID(ctx context.Context, id int32
 }
 
 /*
-SetupApiService Creates a new Setup definition
+SetupAPI Creates a new Setup definition
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param setup New Setup definition
 
 @return Setup
 */
-func (a *SetupApiService) SetupPostSetup(ctx context.Context, setup Setup) (Setup, *http.Response, error) {
+func (a *SetupAPI) CreateSetup(ctx context.Context, setup Setup) (Setup, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -451,13 +451,13 @@ func (a *SetupApiService) SetupPostSetup(ctx context.Context, setup Setup) (Setu
 }
 
 /*
-SetupApiService Updates an existing Setup definition or creates a new definition if it doesn&#39;t exist.
+SetupAPI Updates an existing Setup definition or creates a new definition if it doesn't exist.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param setup The name of the setup
 
 @return Setup
 */
-func (a *SetupApiService) SetupPutSetup(ctx context.Context, setup Setup) (Setup, *http.Response, error) {
+func (a *SetupAPI) UpdateSetup(ctx context.Context, setup Setup) (Setup, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

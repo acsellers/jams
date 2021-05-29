@@ -29,7 +29,7 @@ TenantApiService
 
 @return Tenant
 */
-func (a *TenantApiService) TenantGetTenant(ctx context.Context) (Tenant, *http.Response, error) {
+func (a *TenantApiService) Tenant(ctx context.Context) (Tenant, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

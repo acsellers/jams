@@ -26,10 +26,10 @@ var (
 	_ context.Context
 )
 
-type DateApiService service
+type DateAPI service
 
 /*
-DateApiService Evaluate a natural language date and return the date that it identifies.
+DateAPI Evaluate a natural language date and return the date that it identifies.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param date The natural language date specification.
  * @param optional nil or *DateApiDateGetEvaluateDateOpts - Optional Parameters:
@@ -44,7 +44,7 @@ type DateApiDateGetEvaluateDateOpts struct {
 	StartDate optional.Time
 }
 
-func (a *DateApiService) DateGetEvaluateDate(ctx context.Context, date string, localVarOptionals *DateApiDateGetEvaluateDateOpts) (time.Time, *http.Response, error) {
+func (a *DateAPI) EvaluateDate(ctx context.Context, date string, localVarOptionals *DateApiDateGetEvaluateDateOpts) (time.Time, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -115,14 +115,14 @@ func (a *DateApiService) DateGetEvaluateDate(ctx context.Context, date string, l
 }
 
 /*
-DateApiService Adds a date to an existing DateType or creates a new DateType if it doesn't exist.
+DateAPI Adds a date to an existing DateType or creates a new DateType if it doesn't exist.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param dateTypeName The name of the DateType to add the date to.
  * @param date The date to add.
 
 @return Object
 */
-func (a *DateApiService) DatePutDate(ctx context.Context, dateTypeName string, date time.Time) (Object, *http.Response, error) {
+func (a *DateAPI) UpdateDate(ctx context.Context, dateTypeName string, date time.Time) (Object, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

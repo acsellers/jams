@@ -21,24 +21,24 @@ var (
 	_ context.Context
 )
 
-type ThemeApiService service
+type JsSettingsApiService service
 
 /*
-ThemeApiService
+JsSettingsApiService
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return Theme
+@return Object
 */
-func (a *ThemeApiService) ThemeGetTheme(ctx context.Context) (Theme, *http.Response, error) {
+func (a *JsSettingsApiService) JsSettings(ctx context.Context) (Object, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
-		localVarReturnValue Theme
+		localVarReturnValue Object
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/theme"
+	localVarPath := a.client.cfg.BasePath + "/jsSettings"
 
 	headers := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -76,7 +76,7 @@ func (a *ThemeApiService) ThemeGetTheme(ctx context.Context) (Theme, *http.Respo
 		}
 
 		if response.StatusCode == 200 {
-			var v Theme
+			var v Object
 			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.Err = err.Error()

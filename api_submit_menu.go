@@ -23,15 +23,15 @@ var (
 	_ context.Context
 )
 
-type SubmitMenuApiService service
+type SubmitMenuAPI service
 
 /*
-SubmitMenuApiService Gets the full populated menu. This is starts from the Folders in the root.
+SubmitMenuAPI Gets the full populated menu. This is starts from the Folders in the root.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []NestedMenuEntry
 */
-func (a *SubmitMenuApiService) SubmitMenuGetNestedMenu(ctx context.Context) ([]NestedMenuEntry, *http.Response, error) {
+func (a *SubmitMenuAPI) NestedMenu(ctx context.Context) ([]NestedMenuEntry, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -95,12 +95,12 @@ func (a *SubmitMenuApiService) SubmitMenuGetNestedMenu(ctx context.Context) ([]N
 }
 
 /*
-SubmitMenuApiService Gets the default root level menu. This is created from the Folders in the root.
+SubmitMenuAPI Gets the default root level menu. This is created from the Folders in the root.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []MenuEntry
 */
-func (a *SubmitMenuApiService) SubmitMenuGetSubmitMenu(ctx context.Context) ([]MenuEntry, *http.Response, error) {
+func (a *SubmitMenuAPI) SubmitMenu(ctx context.Context) ([]MenuEntry, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -164,14 +164,14 @@ func (a *SubmitMenuApiService) SubmitMenuGetSubmitMenu(ctx context.Context) ([]M
 }
 
 /*
-SubmitMenuApiService Gets a submit menu.
+SubmitMenuAPI Gets a submit menu.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param menuType Specifies which type of menu should be retrieved.
  * @param name Specifies the name of the foler or menu to be retrieved.
 
 @return []MenuEntry
 */
-func (a *SubmitMenuApiService) SubmitMenuGetSubmitMenuByName(ctx context.Context, menuType string, name string) ([]MenuEntry, *http.Response, error) {
+func (a *SubmitMenuAPI) SubmitMenuByName(ctx context.Context, menuType string, name string) ([]MenuEntry, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -237,14 +237,14 @@ func (a *SubmitMenuApiService) SubmitMenuGetSubmitMenuByName(ctx context.Context
 }
 
 /*
-SubmitMenuApiService Gets the entries in a branch of a submit menu. Use GetSubmitMenuByName to get the top level menu              and use this to expand branches when they are selected.
+SubmitMenuAPI Gets the entries in a branch of a submit menu. Use GetSubmitMenuByName to get the top level menu              and use this to expand branches when they are selected.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param menuType Specifies which type of menu should be retrieved.
  * @param id The ID of the folder or menu that should be retrieved.
 
 @return []MenuEntry
 */
-func (a *SubmitMenuApiService) SubmitMenuGetSubmitMenuByID(ctx context.Context, menuType string, id int32) ([]MenuEntry, *http.Response, error) {
+func (a *SubmitMenuAPI) SubmitMenuByID(ctx context.Context, menuType string, id int32) ([]MenuEntry, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

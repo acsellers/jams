@@ -23,16 +23,16 @@ var (
 	_ context.Context
 )
 
-type AgentApiService service
+type AgentAPI service
 
 /*
-AgentApiService Deletes an Agent object.
+AgentAPI Deletes an Agent object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the Agent
 
 @return string
 */
-func (a *AgentApiService) AgentDeleteAgent(ctx context.Context, name string) (string, *http.Response, error) {
+func (a *AgentAPI) DeleteAgent(ctx context.Context, name string) (string, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -96,12 +96,12 @@ func (a *AgentApiService) AgentDeleteAgent(ctx context.Context, name string) (st
 }
 
 /*
-AgentApiService Gets a list of all agents
+AgentAPI Gets a list of all agents
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Agent
 */
-func (a *AgentApiService) AgentGetAgent(ctx context.Context) ([]Agent, *http.Response, error) {
+func (a *AgentAPI) Agents(ctx context.Context) ([]Agent, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -165,13 +165,13 @@ func (a *AgentApiService) AgentGetAgent(ctx context.Context) ([]Agent, *http.Res
 }
 
 /*
-AgentApiService Get the Agent with the specified agentID.
+AgentAPI Get the Agent with the specified agentID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 
 @return Agent
 */
-func (a *AgentApiService) AgentGetAgentByID(ctx context.Context, id int32) (Agent, *http.Response, error) {
+func (a *AgentAPI) AgentByID(ctx context.Context, id int32) (Agent, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -236,13 +236,13 @@ func (a *AgentApiService) AgentGetAgentByID(ctx context.Context, id int32) (Agen
 }
 
 /*
-AgentApiService Get the Agent with the specified agentName.
+AgentAPI Get the Agent with the specified agentName.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the Agent
 
 @return Agent
 */
-func (a *AgentApiService) AgentGetAgentByName(ctx context.Context, name string) (Agent, *http.Response, error) {
+func (a *AgentAPI) AgentByName(ctx context.Context, name string) (Agent, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -307,13 +307,13 @@ func (a *AgentApiService) AgentGetAgentByName(ctx context.Context, name string) 
 }
 
 /*
-AgentApiService Creates a new Agent object.
+AgentAPI Creates a new Agent object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param agent &amp;gt;The name of the agent
 
 @return Agent
 */
-func (a *AgentApiService) AgentPostAgent(ctx context.Context, agent Agent) (Agent, *http.Response, error) {
+func (a *AgentAPI) CreateAgent(ctx context.Context, agent Agent) (Agent, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
@@ -379,13 +379,13 @@ func (a *AgentApiService) AgentPostAgent(ctx context.Context, agent Agent) (Agen
 }
 
 /*
-AgentApiService Updates an existing Agent object or creates a new definition if it doesn&#39;t exist.
+AgentAPI Updates an existing Agent object or creates a new definition if it doesn't exist.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param agent The name of the agent
 
 @return Agent
 */
-func (a *AgentApiService) AgentPutAgent(ctx context.Context, agent Agent) (Agent, *http.Response, error) {
+func (a *AgentAPI) UpdateAgent(ctx context.Context, agent Agent) (Agent, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string

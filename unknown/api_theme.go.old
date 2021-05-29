@@ -11,11 +11,9 @@ package swagger
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -23,26 +21,24 @@ var (
 	_ context.Context
 )
 
-type EntryAuditTrailApiService service
+type ThemeApiService service
 
 /*
-EntryAuditTrailApiService Gets Entry Audit Trail.
+ThemeApiService
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param jamsId The JAMS Id.
 
-@return []EntryAuditTrail
+@return Theme
 */
-func (a *EntryAuditTrailApiService) EntryAuditTrailGetEntryAuditTrails(ctx context.Context, jamsId string) ([]EntryAuditTrail, *http.Response, error) {
+func (a *ThemeApiService) Theme(ctx context.Context) (Theme, *http.Response, error) {
 	var (
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
-		localVarReturnValue []EntryAuditTrail
+		localVarReturnValue Theme
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/api/EntryAuditTrail/{jamsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jamsId"+"}", fmt.Sprintf("%v", jamsId), -1)
+	localVarPath := a.client.cfg.BasePath + "/api/theme"
 
 	headers := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -80,7 +76,7 @@ func (a *EntryAuditTrailApiService) EntryAuditTrailGetEntryAuditTrails(ctx conte
 		}
 
 		if response.StatusCode == 200 {
-			var v []EntryAuditTrail
+			var v Theme
 			err = a.client.decode(&v, localVarBody, response.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.Err = err.Error()
