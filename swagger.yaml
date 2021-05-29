@@ -1,0 +1,5989 @@
+swagger: '2.0'
+info:
+  version: V6
+  title: JAMS REST API
+host: 172.31.80.244
+schemes:
+  - http
+  - https
+paths:
+  /api/agent:
+    get:
+      tags:
+        - Agent
+      summary: Gets a list of all agents
+      operationId: Agent_GetAgent
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Agent'
+      deprecated: false
+    put:
+      tags:
+        - Agent
+      summary: Updates an existing Agent object or creates a new definition if it doesn't exist.
+      operationId: Agent_PutAgent
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: agent
+          in: body
+          description: The name of the agent
+          required: true
+          schema:
+            $ref: '#/definitions/Agent'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Agent'
+      deprecated: false
+    post:
+      tags:
+        - Agent
+      summary: Creates a new Agent object.
+      operationId: Agent_PostAgent
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: agent
+          in: body
+          description: '&gt;The name of the agent'
+          required: true
+          schema:
+            $ref: '#/definitions/Agent'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Agent'
+      deprecated: false
+  '/api/agent/{id}':
+    get:
+      tags:
+        - Agent
+      summary: Get the Agent with the specified agentID.
+      operationId: Agent_GetAgent2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Agent'
+      deprecated: false
+  '/api/agent/byName/{name}':
+    get:
+      tags:
+        - Agent
+      summary: Get the Agent with the specified agentName.
+      operationId: Agent_GetAgent3
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: The name of the Agent
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Agent'
+      deprecated: false
+    delete:
+      tags:
+        - Agent
+      summary: Deletes an Agent object.
+      operationId: Agent_DeleteAgent
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: The name of the Agent
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  /api/appmenu:
+    get:
+      tags:
+        - AppMenu
+      summary: Get all AppMenuItems.
+      operationId: AppMenu_GetAppMenu
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppMenuItem'
+      deprecated: false
+  /api/authentication:
+    get:
+      tags:
+        - Authentication
+      summary: Provides information about the authenticated user
+      operationId: Authentication_GetAuthentication
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Authentication'
+      deprecated: false
+  /api/authentication/login:
+    post:
+      tags:
+        - Authentication
+      summary: Login to the web server
+      operationId: Authentication_Login
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: loginData
+          in: body
+          description: The login credentials
+          required: true
+          schema:
+            $ref: '#/definitions/LoginData'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessToken'
+      deprecated: false
+  /api/batchqueue:
+    get:
+      tags:
+        - BatchQueue
+      summary: Gets all batch queue definitions
+      operationId: BatchQueue_GetBatchQueue
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BatchQueue'
+      deprecated: false
+    put:
+      tags:
+        - BatchQueue
+      summary: Updates an existing batch queue
+      operationId: BatchQueue_PutBatchQueue
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: batchqueue
+          in: body
+          description: Batch queue definition to be updated
+          required: true
+          schema:
+            $ref: '#/definitions/BatchQueue'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BatchQueue'
+      deprecated: false
+    post:
+      tags:
+        - BatchQueue
+      summary: Adds a new batch queue definition
+      operationId: BatchQueue_PostBatchQueue
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: batchqueue
+          in: body
+          description: The BatchQueue object.
+          required: true
+          schema:
+            $ref: '#/definitions/BatchQueue'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BatchQueue'
+      deprecated: false
+  '/api/batchqueue/{id}':
+    get:
+      tags:
+        - BatchQueue
+      summary: Gets a batch queue definition by ID
+      operationId: BatchQueue_GetBatchQueue2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: ID of the BatchQueue
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BatchQueue'
+      deprecated: false
+  '/api/batchqueue/byName/{name}':
+    get:
+      tags:
+        - BatchQueue
+      summary: Gets a batch queue definition by name
+      operationId: BatchQueue_GetBatchQueue3
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the BatchQueue
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BatchQueue'
+      deprecated: false
+    delete:
+      tags:
+        - BatchQueue
+      summary: Delete the batch queue definition by name.
+      operationId: BatchQueue_DeleteBatchQueue
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the batch queue to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  '/api/batchqueue/start/{name}':
+    post:
+      tags:
+        - BatchQueue
+      summary: Starts a  batch queue
+      operationId: BatchQueue_StartBatchQueue
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the queue to start
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  '/api/batchqueue/stop/{name}':
+    post:
+      tags:
+        - BatchQueue
+      summary: Stops a batch queue
+      operationId: BatchQueue_StopBatchQueue
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the queue to stop
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  /api/cfg:
+    get:
+      tags:
+        - Cfg
+      summary: Gets a list of all configurations
+      operationId: Cfg_GetCfg
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cfg'
+      deprecated: false
+    put:
+      tags:
+        - Cfg
+      summary: Updates an existing Cfg object or creates a new definition if it doesn't exist.
+      operationId: Cfg_PutConfig
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: config
+          in: body
+          description: The name of the cfg
+          required: true
+          schema:
+            $ref: '#/definitions/Cfg'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Cfg'
+      deprecated: false
+    post:
+      tags:
+        - Cfg
+      summary: Creates a new Configuration object.
+      operationId: Cfg_PostCfg
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: config
+          in: body
+          description: The name of the configuration
+          required: true
+          schema:
+            $ref: '#/definitions/Cfg'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Cfg'
+      deprecated: false
+  '/api/cfg/{name}':
+    get:
+      tags:
+        - Cfg
+      summary: Get the Configuration with the specified configName.
+      operationId: Cfg_GetCfg2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: The name of the Configuration
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Cfg'
+      deprecated: false
+    delete:
+      tags:
+        - Cfg
+      summary: Deletes a Configuration object.
+      operationId: Cfg_DeleteCfg
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: The name of the Configuration
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  /api/date/evaluate:
+    get:
+      tags:
+        - Date
+      summary: Evaluate a natural language date and return the date that it identifies.
+      operationId: Date_GetEvaluateDate
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: date
+          in: query
+          description: The natural language date specification.
+          required: true
+          type: string
+        - name: today
+          in: query
+          description: "The date that should be considered \"today\" when evaluating\r\n            the date specification."
+          required: false
+          type: string
+          format: date-time
+        - name: startDate
+          in: query
+          description: The starting date to be used for interval specification (i.e. every other monday)
+          required: false
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: OK
+          schema:
+            format: date-time
+            type: string
+      deprecated: false
+  '/api/date/{dateTypeName}/{date}':
+    put:
+      tags:
+        - Date
+      summary: Adds a date to an existing DateType or creates a new DateType if it doesn't exist.
+      operationId: Date_PutDate
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: dateTypeName
+          in: path
+          description: The name of the DateType to add the date to.
+          required: true
+          type: string
+        - name: date
+          in: path
+          description: The date to add.
+          required: true
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+  /api/datetype:
+    get:
+      tags:
+        - DateType
+      summary: Gets a collection of all DateTypes
+      operationId: DateType_GetDateType
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DateType'
+      deprecated: false
+    delete:
+      tags:
+        - DateType
+      summary: Deletes a DateType object.
+      operationId: DateType_DeleteDateType
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: The name of the DateType
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+  '/api/datetype/byName/{name}':
+    get:
+      tags:
+        - DateType
+      summary: Get the DateType with the specified name.
+      operationId: DateType_GetDateType2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: The name of the DateType
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/DateType'
+      deprecated: false
+  '/api/datetype/{id}':
+    get:
+      tags:
+        - DateType
+      summary: Get the DateType with the specified ID.
+      operationId: DateType_GetDateType3
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/DateType'
+      deprecated: false
+  /api/datetype/dateType:
+    put:
+      tags:
+        - DateType
+      summary: Updates an existing DateType object or creates a new definition if it doesn't exist.
+      operationId: DateType_PutDateType
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: dateType
+          in: body
+          description: A Models.DateType object
+          required: true
+          schema:
+            $ref: '#/definitions/DateType'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+    post:
+      tags:
+        - DateType
+      summary: Creates a new DateType object.
+      operationId: DateType_PostDateType
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: dateType
+          in: body
+          description: A Models.DateType object
+          required: true
+          schema:
+            $ref: '#/definitions/DateType'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+  /api/entry:
+    get:
+      tags:
+        - Entry
+      summary: Gets entry information for all entries in the current schedule.
+      operationId: Entry_GetEntry
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Entry'
+      deprecated: false
+  '/api/entry/{id}':
+    get:
+      tags:
+        - Entry
+      summary: Gets Entry information with the specified ID
+      operationId: Entry_GetEntry2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry to get.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Entry'
+      deprecated: false
+  '/api/entry/{id}/hold':
+    put:
+      tags:
+        - Entry
+      summary: "Holds an Entry with the specified ID, with the\r\n            specified HoldEntry Audit Comment."
+      operationId: Entry_PutHoldEntry
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces: []
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry to hold.
+          required: true
+          type: integer
+          format: int32
+        - name: holdEntry
+          in: body
+          description: A Models.HoldEntry.
+          required: true
+          schema:
+            $ref: '#/definitions/HoldEntry'
+      responses:
+        '204':
+          description: No Content
+      deprecated: false
+  '/api/entry/{id}/release':
+    put:
+      tags:
+        - Entry
+      summary: "Releases a CurJob with the specified ID\r\n            to Run Again, with specified ReleaseEntry Audit Comment"
+      operationId: Entry_PutReleaseEntry
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces: []
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry to release.
+          required: true
+          type: integer
+          format: int32
+        - name: releaseEntry
+          in: body
+          description: A Models.ReleaseEntry.
+          required: true
+          schema:
+            $ref: '#/definitions/ReleaseEntry'
+      responses:
+        '204':
+          description: No Content
+      deprecated: false
+  '/api/entry/{id}/parameter':
+    get:
+      tags:
+        - Entry
+      summary: Gets parameter list for a given entry.
+      operationId: Entry_GetEntryParameters
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry for which to get parameters.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/EntryParam'
+      deprecated: false
+  '/api/entry/{id}/parameter/{name}':
+    get:
+      tags:
+        - Entry
+      summary: Gets parameter value for a given entry.
+      operationId: Entry_GetEntryParameter
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry for which to get the parameter.
+          required: true
+          type: integer
+          format: int32
+        - name: name
+          in: path
+          description: The name of the parameter to return.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EntryParam'
+      deprecated: false
+  '/api/entry/{id}/parameter/{name}/{value}':
+    put:
+      tags:
+        - Entry
+      summary: Sets parameter value for a given entry.
+      operationId: Entry_PutEntryParameter
+      consumes: []
+      produces: []
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry to update.
+          required: true
+          type: integer
+          format: int32
+        - name: name
+          in: path
+          description: The name of the parameter to update.
+          required: true
+          type: string
+        - name: value
+          in: path
+          description: The new parameter value.
+          required: true
+          type: string
+      responses:
+        '204':
+          description: No Content
+      deprecated: false
+  '/api/entry/{id}/status':
+    put:
+      tags:
+        - Entry
+      summary: Sets the status message for an entry.
+      operationId: Entry_PutEntryStatus
+      consumes: []
+      produces: []
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry to update.
+          required: true
+          type: integer
+          format: int32
+        - name: status
+          in: query
+          description: The new status message.
+          required: true
+          type: string
+        - name: icon
+          in: query
+          description: The new icon.
+          required: true
+          type: string
+          enum:
+            - Default
+            - NoChange
+            - Black
+            - Blue
+            - Graphite
+            - Green
+            - Purple
+            - Red
+            - White
+            - Yellow
+        - name: message
+          in: query
+          description: A tooltip message for this entry.
+          required: true
+          type: string
+        - name: permanent
+          in: query
+          description: 'When true, the status change is permanent.'
+          required: true
+          type: boolean
+      responses:
+        '204':
+          description: No Content
+      deprecated: false
+  '/api/entry/{id}/reschedule':
+    put:
+      tags:
+        - Entry
+      summary: Reschedules a JAMS entry.
+      operationId: Entry_PutEntryReschedule
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces: []
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry to reschedule.
+          required: true
+          type: integer
+          format: int32
+        - name: rescheduleEntry
+          in: body
+          description: A Models.RescheduleEntry.
+          required: true
+          schema:
+            $ref: '#/definitions/RescheduleEntry'
+      responses:
+        '204':
+          description: No Content
+      deprecated: false
+  '/api/entry/{id}/restart':
+    put:
+      tags:
+        - Entry
+      summary: Restarts a JAMS entry.
+      operationId: Entry_PutEntryRestart
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces: []
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry to restart.
+          required: true
+          type: integer
+          format: int32
+        - name: restartEntry
+          in: body
+          description: A Models.RestartEntry.
+          required: true
+          schema:
+            $ref: '#/definitions/RestartEntry'
+      responses:
+        '204':
+          description: No Content
+      deprecated: false
+  '/api/entry/{id}/cancel':
+    put:
+      tags:
+        - Entry
+      summary: Cancels a JAMS entry.
+      operationId: Entry_PutEntryCancel
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces: []
+      parameters:
+        - name: id
+          in: path
+          description: The JAMS entry to cancel.
+          required: true
+          type: integer
+          format: int32
+        - name: cancelEntry
+          in: body
+          description: A Models.CancelEntry.
+          required: true
+          schema:
+            $ref: '#/definitions/CancelEntry'
+      responses:
+        '204':
+          description: No Content
+      deprecated: false
+  '/api/entry/log/{entryId}':
+    get:
+      tags:
+        - Entry
+      summary: Gets log file as download or preview of first 512 kB.
+      operationId: Entry_Download
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: entryId
+          in: path
+          description: The Entry Id
+          required: true
+          type: integer
+          format: int32
+        - name: isPreview
+          in: query
+          description: 'If true, returns first 512 kB of log file. If false or omitted, returns log file as attachment'
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+  '/api/EntryAuditTrail/{jamsId}':
+    get:
+      tags:
+        - EntryAuditTrail
+      summary: Gets Entry Audit Trail.
+      operationId: EntryAuditTrail_GetEntryAuditTrails
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: jamsId
+          in: path
+          description: The JAMS Id.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/EntryAuditTrail'
+      deprecated: false
+  '/api/folder/folder/{id}':
+    get:
+      tags:
+        - Folder
+      summary: Gets all child folder definitions of selected folder by ID
+      operationId: Folder_GetFoldersByParentID
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: ID of the parent folder.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Folder'
+      deprecated: false
+  /api/folder/folder/root:
+    get:
+      tags:
+        - Folder
+      summary: Gets all child folder definitions of the root folder
+      operationId: Folder_GetSubFoldersOfRootFolder
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Folder'
+      deprecated: false
+  '/api/folder/{name}':
+    get:
+      tags:
+        - Folder
+      summary: Gets all child folder definitions of selected folder by name
+      operationId: Folder_GetFoldersByParentName
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the parent folder.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Folder'
+      deprecated: false
+  '/api/folder/details/{id}':
+    get:
+      tags:
+        - Folder
+      summary: Get full folder definition by ID
+      operationId: Folder_GetFolderByID
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: ID of the folder definition.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Folder'
+      deprecated: false
+  '/api/folder/details/byName/{name}':
+    get:
+      tags:
+        - Folder
+      summary: Get full folder definition by name.
+      operationId: Folder_GetFolderByName
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the folder definition.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Folder'
+      deprecated: false
+  /api/folder:
+    put:
+      tags:
+        - Folder
+      summary: Updates an existing folder definition
+      operationId: Folder_PutFolder
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: folder
+          in: body
+          description: The folder definition
+          required: true
+          schema:
+            $ref: '#/definitions/Folder'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Folder'
+      deprecated: false
+    post:
+      tags:
+        - Folder
+      summary: Adds a new folder definition
+      operationId: Folder_PostFolder
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: folder
+          in: body
+          description: The folder definition
+          required: true
+          schema:
+            $ref: '#/definitions/Folder'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Folder'
+      deprecated: false
+    delete:
+      tags:
+        - Folder
+      summary: Deletes a folder definition
+      operationId: Folder_DeleteFolder
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: qualifiedName
+          in: query
+          description: The fully qualified name of the folder
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  /api/help:
+    get:
+      tags:
+        - Help
+      operationId: Help_GetHelp
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+  /api/history:
+    get:
+      tags:
+        - History
+      summary: Gets job execution history.
+      operationId: History_GetHistory
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/History'
+      deprecated: false
+  /api/history/odata:
+    get:
+      tags:
+        - History
+      summary: Gets job execution history using OData filters.
+      operationId: History_GetHistoryOdata
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PageResult[History]'
+      deprecated: false
+  '/api/history/job/log/{jobName}/{ron}/{restartCount}':
+    get:
+      tags:
+        - History
+      summary: Gets log file as download or preview of first 512 kB.
+      operationId: History_GetJobLog
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: jobName
+          in: path
+          description: The Job Name
+          required: true
+          type: string
+        - name: ron
+          in: path
+          description: The RON number
+          required: true
+          type: integer
+          format: int32
+        - name: restartCount
+          in: path
+          description: The Restart Count
+          required: true
+          type: integer
+          format: int32
+        - name: isPreview
+          in: query
+          description: 'If true, returns first 512 kB of log file. If false or omitted, returns log file as attachment'
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+  '/api/history/setup/log/{setupName}/{ron}/{restartCount}':
+    get:
+      tags:
+        - History
+      summary: Gets log file as download or preview of first 512 kB.
+      operationId: History_GetSetupLog
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: setupName
+          in: path
+          description: The Setup Name
+          required: true
+          type: string
+        - name: ron
+          in: path
+          description: The RON number
+          required: true
+          type: integer
+          format: int32
+        - name: restartCount
+          in: path
+          description: The Restart Count
+          required: true
+          type: integer
+          format: int32
+        - name: isPreview
+          in: query
+          description: 'If true, returns first 512 kB of log file. If false or omitted, returns log file as attachment'
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+  /api/job:
+    get:
+      tags:
+        - Job
+      summary: Gets a list of all jobs
+      operationId: Job_GetJobs
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Job'
+      deprecated: false
+    put:
+      tags:
+        - Job
+      summary: Updates an existing Job object or creates new definition if it doesn't exist.
+      operationId: Job_PutJob
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: job
+          in: body
+          description: A Models.Job object
+          required: true
+          schema:
+            $ref: '#/definitions/Job'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Job'
+      deprecated: false
+    post:
+      tags:
+        - Job
+      summary: Creates a new Job object.
+      operationId: Job_PostJob
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: job
+          in: body
+          description: A Models.Job object
+          required: true
+          schema:
+            $ref: '#/definitions/Job'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Job'
+      deprecated: false
+    delete:
+      tags:
+        - Job
+      summary: Deletes a Job by name.
+      operationId: Job_DeleteJob
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: The name of the Job to delete
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  '/api/job/{id}':
+    get:
+      tags:
+        - Job
+      summary: Get the Job with the specified ID.
+      operationId: Job_GetJob
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the Job.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Job'
+      deprecated: false
+  '/api/job/byName/{name}':
+    get:
+      tags:
+        - Job
+      summary: Get the Job with the specified name.
+      operationId: Job_GetJob2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: The name of the Job
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Job'
+      deprecated: false
+  '/api/job/folder/byName/{name}':
+    get:
+      tags:
+        - Job
+      summary: Gets Jobs in the Folder with the specified name
+      operationId: Job_GetJobsByFolder
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: folderName
+          in: query
+          description: The name of the Folder to return Jobs from.
+          required: true
+          type: string
+        - name: name
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Job'
+      deprecated: false
+  '/api/job/folder/{id}':
+    get:
+      tags:
+        - Job
+      summary: Gets all jobs in the Folder with the specified ID
+      operationId: Job_GetJobsByFolderID
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: ID of the folder definition
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Job'
+      deprecated: false
+  /jsSettings:
+    get:
+      tags:
+        - JsSettings
+      operationId: JsSettings_GetJsSettings
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+  /api/resource:
+    get:
+      tags:
+        - Resource
+      summary: Gets all resources
+      operationId: Resource_GetResources
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resource'
+      deprecated: false
+    put:
+      tags:
+        - Resource
+      summary: Updates an existing resource
+      operationId: Resource_PutResource
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: resource
+          in: body
+          description: Resource definition to be updated
+          required: true
+          schema:
+            $ref: '#/definitions/Resource'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Resource'
+      deprecated: false
+    post:
+      tags:
+        - Resource
+      summary: Add a new resource definition
+      operationId: Resource_PostResource
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: resource
+          in: body
+          description: The resource definition
+          required: true
+          schema:
+            $ref: '#/definitions/Resource'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Resource'
+      deprecated: false
+  '/api/resource/{id}':
+    get:
+      tags:
+        - Resource
+      summary: Gets a resource by ID
+      operationId: Resource_GetResource2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: ID of the resource
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Resource'
+      deprecated: false
+  '/api/resource/byName/{name}':
+    get:
+      tags:
+        - Resource
+      summary: Gets a resource by name
+      operationId: Resource_GetResource3
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the resource
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Resource'
+      deprecated: false
+    delete:
+      tags:
+        - Resource
+      summary: Delete the resource definition by name
+      operationId: Resource_DeleteResource
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the resource to delete
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  '/api/resource/setquantityavailable/{name}/{available}':
+    post:
+      tags:
+        - Resource
+      summary: Change the value of quantity available on a resource
+      operationId: Resource_SetQuantityAvailable
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the resource
+          required: true
+          type: string
+        - name: available
+          in: path
+          description: The true or false value of node specific
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Resource'
+      deprecated: false
+  /api/setup:
+    get:
+      tags:
+        - Setup
+      summary: Gets a collection of all setups
+      operationId: Setup_GetSetup
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Setup'
+      deprecated: false
+    put:
+      tags:
+        - Setup
+      summary: Updates an existing Setup definition or creates a new definition if it doesn't exist.
+      operationId: Setup_PutSetup
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: setup
+          in: body
+          description: The name of the setup
+          required: true
+          schema:
+            $ref: '#/definitions/Setup'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Setup'
+      deprecated: false
+    post:
+      tags:
+        - Setup
+      summary: Creates a new Setup definition
+      operationId: Setup_PostSetup
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: setup
+          in: body
+          description: New Setup definition
+          required: true
+          schema:
+            $ref: '#/definitions/Setup'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Setup'
+      deprecated: false
+    delete:
+      tags:
+        - Setup
+      summary: Deletes a Setup definition.
+      operationId: Setup_DeleteSetup
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: The name of the Setup
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  '/api/setup/{id}':
+    get:
+      tags:
+        - Setup
+      summary: Get the Setup with the specified ID.
+      operationId: Setup_GetSetupByID
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the Setup definition
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Setup'
+      deprecated: false
+  '/api/setup/byName/{name}':
+    get:
+      tags:
+        - Setup
+      summary: Get the Setup with the specified setupName.
+      operationId: Setup_GetSetupByName
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: The name of the Setup
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Setup'
+      deprecated: false
+  '/api/setup/folder/{id}':
+    get:
+      tags:
+        - Setup
+      summary: Gets all Setups in the folder with the specified ID
+      operationId: Setup_GetSetupsByFolderID
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: ID of the folder definition
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Setup'
+      deprecated: false
+  /api/submit:
+    get:
+      tags:
+        - Submit
+      summary: Get the submit information for a Job or Setup with the specified name.
+      operationId: Submit_GetSubmit
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: The qualified name of the Job or Setup.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubmitInfo'
+      deprecated: false
+    post:
+      tags:
+        - Submit
+      summary: "Submit the job specified in the SubmitInfo object. Usually, you create the SubmitInfo object\r\n            by calling GetSubmit which returns a SubmitInfo. You can then modify values in the SubmitInfo\r\n            before calling PutSubmit."
+      operationId: Submit_PostSubmit
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: si
+          in: body
+          description: A SubmitInfo object
+          required: true
+          schema:
+            $ref: '#/definitions/SubmitInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubmitInfo'
+      deprecated: false
+  '/api/submit/job/{id}':
+    get:
+      tags:
+        - Submit
+      summary: Get the submit info for a Job with the specified ID
+      operationId: Submit_GetSubmit2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the Job.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubmitInfo'
+      deprecated: false
+  '/api/submit/setup/{id}':
+    get:
+      tags:
+        - Submit
+      summary: Get the submit info for a Setup with the specified ID
+      operationId: Submit_GetSubmitSetup
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the Setup.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubmitInfo'
+      deprecated: false
+  /api/SubmitMenu:
+    get:
+      tags:
+        - SubmitMenu
+      summary: Gets the default root level menu. This is created from the Folders in the root.
+      operationId: SubmitMenu_GetSubmitMenu
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MenuEntry'
+      deprecated: false
+  '/api/SubmitMenu/{menuType}/{id}':
+    get:
+      tags:
+        - SubmitMenu
+      summary: "Gets the entries in a branch of a submit menu. Use GetSubmitMenuByName to get the top level menu\r\n            and use this to expand branches when they are selected."
+      operationId: SubmitMenu_GetSubmitMenu2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: menuType
+          in: path
+          description: Specifies which type of menu should be retrieved.
+          required: true
+          type: string
+          enum:
+            - Menu
+            - Folder
+            - Job
+            - Setup
+        - name: id
+          in: path
+          description: The ID of the folder or menu that should be retrieved.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MenuEntry'
+      deprecated: false
+  '/api/SubmitMenu/{menuType}/byName/{name}':
+    get:
+      tags:
+        - SubmitMenu
+      summary: Gets a submit menu.
+      operationId: SubmitMenu_GetSubmitMenuByName
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: menuType
+          in: path
+          description: Specifies which type of menu should be retrieved.
+          required: true
+          type: string
+          enum:
+            - Menu
+            - Folder
+            - Job
+            - Setup
+        - name: name
+          in: path
+          description: Specifies the name of the foler or menu to be retrieved.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MenuEntry'
+      deprecated: false
+  /api/SubmitMenu/Nested:
+    get:
+      tags:
+        - SubmitMenu
+      summary: Gets the full populated menu. This is starts from the Folders in the root.
+      operationId: SubmitMenu_GetNestedMenu
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/NestedMenuEntry'
+      deprecated: false
+  /api/tenant:
+    get:
+      tags:
+        - Tenant
+      operationId: Tenant_GetTenant
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Tenant'
+      deprecated: false
+  /api/theme:
+    get:
+      tags:
+        - Theme
+      operationId: Theme_GetTheme
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Theme'
+      deprecated: false
+  '/api/trigger/folder/{id}':
+    get:
+      tags:
+        - Trigger
+      summary: Gets all trigger definitions by parent folder ID
+      operationId: Trigger_GetTriggersByFolderID
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: The Trigger Id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Trigger'
+      deprecated: false
+  '/api/trigger/{name}':
+    get:
+      tags:
+        - Trigger
+      summary: Gets a trigger definition by name
+      operationId: Trigger_GetTrigger
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: Name of the trigger definition
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Trigger'
+      deprecated: false
+  /api/trigger:
+    put:
+      tags:
+        - Trigger
+      summary: Updates and existing trigger definition
+      operationId: Trigger_PutTrigger
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: trigger
+          in: body
+          description: The trigger definition
+          required: true
+          schema:
+            $ref: '#/definitions/Trigger'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Trigger'
+      deprecated: false
+    post:
+      tags:
+        - Trigger
+      summary: Adds a new trigger definition to a JAMS Server
+      operationId: Trigger_PostTrigger
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: trigger
+          in: body
+          description: The trigger definition
+          required: true
+          schema:
+            $ref: '#/definitions/Trigger'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Trigger'
+      deprecated: false
+    delete:
+      tags:
+        - Trigger
+      summary: Deletes a trigger definition
+      operationId: Trigger_DeleteTrigger
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: Name of the trigger definition
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  /api/trigger/reset:
+    post:
+      tags:
+        - Trigger
+      summary: Resets a trigger
+      operationId: Trigger_ResetTrigger
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: Name of the trigger to reset
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  /api/trigger/disable:
+    post:
+      tags:
+        - Trigger
+      summary: Disables a trigger by name
+      operationId: Trigger_DisableTrigger
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: Name of the trigger to disable
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  /api/trigger/enable:
+    post:
+      tags:
+        - Trigger
+      summary: Enables a trigger by name
+      operationId: Trigger_EnableTrigger
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: Name of the trigger to enable
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  /api/usersecurity:
+    get:
+      tags:
+        - UserSecurity
+      summary: Gets a collection of all users
+      operationId: UserSecurity_GetUser
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserSecurity'
+      deprecated: false
+  '/api/usersecurity/byName/{name}':
+    get:
+      tags:
+        - UserSecurity
+      summary: Get the UserSecurity with the specified name.
+      operationId: UserSecurity_GetUser2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: The name of the UserSecurity.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserSecurity'
+      deprecated: false
+    delete:
+      tags:
+        - UserSecurity
+      summary: Deletes a UserSecurity object.
+      operationId: UserSecurity_DeleteUser
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: path
+          description: The name of the UserSecurity to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  '/api/usersecurity/{id}':
+    get:
+      tags:
+        - UserSecurity
+      summary: Get the User with the specified ID.
+      operationId: UserSecurity_GetUser3
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: The id of the UserSecurity.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserSecurity'
+      deprecated: false
+  /api/usersecurity/user:
+    put:
+      tags:
+        - UserSecurity
+      summary: Updates an existing UserSecurity object or creates new definition if it doesn't exist.
+      operationId: UserSecurity_PutUser
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: user
+          in: body
+          description: A Models.UserSecurity object
+          required: true
+          schema:
+            $ref: '#/definitions/UserSecurity'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserSecurity'
+      deprecated: false
+    post:
+      tags:
+        - UserSecurity
+      summary: Creates a new UserSecurity object.
+      operationId: UserSecurity_PostUser
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: user
+          in: body
+          description: A Models.UserSecurity object
+          required: true
+          schema:
+            $ref: '#/definitions/UserSecurity'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserSecurity'
+      deprecated: false
+  /api/variable:
+    get:
+      tags:
+        - Variable
+      summary: Gets a list of variables that match the queryString
+      operationId: Variable_GetVariable
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Variable'
+      deprecated: false
+    put:
+      tags:
+        - Variable
+      summary: Update the Variable object.
+      operationId: Variable_PutVariable
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: var
+          in: body
+          description: A Models.Variable object
+          required: true
+          schema:
+            $ref: '#/definitions/Variable'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Variable'
+      deprecated: false
+    post:
+      tags:
+        - Variable
+      summary: Creates a new variable definition
+      operationId: Variable_PostVariable
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: variable
+          in: body
+          description: Model of a new variable definition
+          required: true
+          schema:
+            $ref: '#/definitions/Variable'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Variable'
+      deprecated: false
+    delete:
+      tags:
+        - Variable
+      summary: Deletes a variable definition
+      operationId: Variable_DeleteVariable
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: Name of the variable
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+      deprecated: false
+  '/api/variable/{id}':
+    get:
+      tags:
+        - Variable
+      summary: Get the Variable with the specified ID.
+      operationId: Variable_GetVariable2
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Variable'
+      deprecated: false
+  '/api/variable/folder/{id}':
+    get:
+      tags:
+        - Variable
+      summary: Gets a list of variables under the specified folder definition by ID
+      operationId: Variable_GetVariablesByFolderID
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: id
+          in: path
+          description: ID of the folder definition
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Variable'
+      deprecated: false
+  /api/variable/setvalue:
+    post:
+      tags:
+        - Variable
+      summary: Changes the value of a variable identified by name
+      operationId: Variable_ChangeVariableValue
+      consumes:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      parameters:
+        - name: name
+          in: query
+          description: Name of the variable definition
+          required: true
+          type: string
+        - name: value
+          in: body
+          description: The new value of the variable definition
+          required: true
+          schema:
+            $ref: '#/definitions/Object'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Object'
+      deprecated: false
+definitions:
+  Agent:
+    type: object
+    properties:
+      agentName:
+        type: string
+      agentID:
+        format: int32
+        type: integer
+      agentType:
+        enum:
+          - Unknown
+          - Windows
+          - SSH
+          - OpenVMS
+          - AS400
+          - ZOS
+          - Unix
+        type: string
+      description:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      lastChangedBy:
+        type: string
+      platform:
+        type: string
+      jobCount:
+        format: int32
+        type: integer
+      jobLimit:
+        format: int32
+        type: integer
+      licenseAllocated:
+        type: boolean
+      online:
+        type: boolean
+      port:
+        format: int32
+        type: integer
+      timeOffset:
+        type: string
+      username:
+        type: string
+      agentState:
+        enum:
+          - Unknown
+          - Idle
+          - Offline
+          - Unreachable
+        type: string
+  AppMenuItem:
+    type: object
+    properties:
+      id:
+        format: int32
+        type: integer
+      label:
+        type: string
+      icon:
+        type: string
+      url:
+        type: string
+      route:
+        type: string
+      subMenu:
+        type: array
+        items:
+          $ref: '#/definitions/AppMenuItem'
+  Authentication:
+    type: object
+    properties:
+      username:
+        type: string
+      mappedTo:
+        type: string
+      impersonatedUser:
+        type: string
+  LoginData:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+  AccessToken:
+    type: object
+    properties:
+      access_token:
+        type: string
+      expires_in:
+        type: string
+  BatchQueue:
+    type: object
+    properties:
+      queueID:
+        format: int32
+        type: integer
+      queueName:
+        type: string
+      description:
+        type: string
+      jobCount:
+        format: int32
+        type: integer
+      jobLimit:
+        format: int32
+        type: integer
+      lastChangeUTC:
+        format: date-time
+        type: string
+      lastChangedBy:
+        type: string
+      started:
+        type: boolean
+      startedOn:
+        type: array
+        items:
+          $ref: '#/definitions/QueueNode'
+  QueueNode:
+    type: object
+    properties:
+      nodeName:
+        type: string
+  Cfg:
+    type: object
+    properties:
+      cfgName:
+        type: string
+      dataType:
+        enum:
+          - Unknown
+          - Text
+          - Integer
+          - Boolean
+          - DateTime
+          - Time
+          - Delta
+        type: string
+      value:
+        $ref: '#/definitions/Object'
+      description:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+  Object:
+    type: object
+    properties: {}
+  DateType:
+    type: object
+    properties:
+      continuous:
+        type: boolean
+      dates:
+        type: array
+        items:
+          $ref: '#/definitions/DateDetail'
+      dateTypeID:
+        format: int32
+        type: integer
+      dateTypeType:
+        type: string
+      description:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      specificTypes:
+        type: array
+        items:
+          $ref: '#/definitions/SpecificDateType'
+  DateDetail:
+    type: object
+    properties:
+      dateTypeID:
+        format: int32
+        type: integer
+      dateTypeType:
+        type: string
+      description:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      specificType:
+        type: string
+      startDate:
+        format: date-time
+        type: string
+      workDay:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+  SpecificDateType:
+    type: object
+    properties:
+      sequence:
+        format: int32
+        type: integer
+      specificType:
+        type: string
+  Entry:
+    type: object
+    properties:
+      agentNode:
+        type: string
+      altUserName:
+        type: string
+      batchQueueID:
+        format: int32
+        type: integer
+      batchQueueName:
+        type: string
+      completionTimeUTC:
+        format: date-time
+        type: string
+      currentState:
+        enum:
+          - None
+          - Scheduled
+          - Timed
+          - TimeWindow
+          - Held
+          - StepWait
+          - DependencyWait
+          - PrecheckWait
+          - ResourceWait
+          - Pending
+          - Starting
+          - Executing
+          - Idle
+          - WaitingToRetry
+          - Completed
+          - CompletedKept
+          - Rescheduling
+          - Missing
+        type: string
+      currentStep:
+        format: int32
+        type: integer
+      debugMode:
+        type: boolean
+      dependOK:
+        type: boolean
+      description:
+        type: string
+      detailID:
+        format: int32
+        type: integer
+      displayName:
+        type: string
+      finalSeverity:
+        enum:
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+        type: string
+      finalStatus:
+        type: string
+      finalStatusCode:
+        format: int32
+        type: integer
+      halted:
+        type: boolean
+      held:
+        type: boolean
+      holdTimeUTC:
+        format: date-time
+        type: string
+      icon:
+        enum:
+          - Default
+          - NoChange
+          - Black
+          - Blue
+          - Graphite
+          - Green
+          - Purple
+          - Red
+          - White
+          - Yellow
+        type: string
+      ignoreResReq:
+        type: boolean
+      initiatorID:
+        format: int32
+        type: integer
+      initiatorType:
+        enum:
+          - Unknown
+          - ManualSubmit
+          - AutoSubmit
+          - RepeatSubmit
+          - Trigger
+          - Notify
+          - Recovery
+          - Precheck
+          - SubmitActivity
+          - Setup
+        type: string
+      jamsEntry:
+        format: int32
+        type: integer
+      jamsId:
+        type: string
+      jobID:
+        format: int32
+        type: integer
+      jobName:
+        type: string
+      jobStatus:
+        type: string
+      logFileActive:
+        type: boolean
+      logFilename:
+        type: string
+      masterEntry:
+        format: int32
+        type: integer
+      masterRON:
+        format: int32
+        type: integer
+      message:
+        type: string
+      missedWindowAction:
+        enum:
+          - NotSpecified
+          - AbortOrDelete
+          - Continue
+          - NoAction
+          - RescheduleOrContinue
+          - RestartAndReschedule
+        type: string
+      monitor:
+        type: boolean
+      nodeName:
+        type: string
+      note:
+        type: string
+      notifyOfMissedWindow:
+        type: boolean
+      notifyUser:
+        type: boolean
+      originalHoldTimeUTC:
+        format: date-time
+        type: string
+      parentFolderID:
+        format: int32
+        type: integer
+      permanent:
+        type: boolean
+      precheckCount:
+        format: int32
+        type: integer
+      precheckEntry:
+        format: int32
+        type: integer
+      precheckInterval:
+        type: string
+      precheckJobID:
+        format: int32
+        type: integer
+      precheckTimeUTC:
+        format: date-time
+        type: string
+      preprocessed:
+        type: boolean
+      processID:
+        format: int32
+        type: integer
+      restartable:
+        type: boolean
+      restartCount:
+        format: int32
+        type: integer
+      retainOption:
+        enum:
+          - NotSpecified
+          - Always
+          - Error
+          - Never
+          - Timed
+        type: string
+      retainTime:
+        type: string
+      ron:
+        format: int32
+        type: integer
+      runaway:
+        type: boolean
+      runawayElapsed:
+        type: string
+      runPriority:
+        format: int32
+        type: integer
+      scheduledTimeUTC:
+        format: date-time
+        type: string
+      scheduleFromTime:
+        type: string
+      scheduleToTime:
+        type: string
+      scheduleWindowID:
+        format: int32
+        type: integer
+      schedulingPriority:
+        format: int32
+        type: integer
+      setupID:
+        format: int32
+        type: integer
+      setupOk:
+        type: boolean
+      stalled:
+        type: boolean
+      stalledTime:
+        type: string
+      startTimeUTC:
+        format: date-time
+        type: string
+      step:
+        format: int32
+        type: integer
+      stepWait:
+        type: boolean
+      submitMethodName:
+        type: string
+      submitMethodID:
+        format: int32
+        type: integer
+      submittedBy:
+        type: string
+      suppressNotify:
+        type: boolean
+      tempFilename:
+        type: string
+      todaysDate:
+        format: date-time
+        type: string
+      userID:
+        format: int32
+        type: integer
+      userName:
+        type: string
+      version:
+        format: int32
+        type: integer
+      waitFor:
+        type: boolean
+  HoldEntry:
+    type: object
+    properties:
+      auditComment:
+        type: string
+  ReleaseEntry:
+    type: object
+    properties:
+      auditComment:
+        type: string
+      releaseType:
+        enum:
+          - None
+          - ManualHold
+          - TimedWait
+          - IgnoreDependencies
+          - IgnorePrecheck
+          - TimeSlotWait
+          - IgnoreResReq
+          - StepWait
+          - HaltedSetup
+          - RunAgain
+        type: string
+      forcePresent:
+        type: boolean
+      dependOk:
+        type: boolean
+  EntryParam:
+    type: object
+    properties:
+      dataType:
+        enum:
+          - Text
+          - Integer
+          - Date
+          - Time
+          - DateTime
+          - Float
+          - Unknown
+          - Boolean
+        type: string
+      defaultFormat:
+        type: string
+      jamsEntry:
+        format: int32
+        type: integer
+      loadedFrom:
+        type: string
+      parameterOrigin:
+        enum:
+          - Job
+          - Folder
+          - Method
+        type: string
+      paramName:
+        type: string
+      sequence:
+        format: int32
+        type: integer
+      value:
+        type: string
+  RescheduleEntry:
+    type: object
+    properties:
+      batchQueue:
+        type: string
+      agentNode:
+        type: string
+      holdTime:
+        format: date-time
+        type: string
+      held:
+        type: boolean
+      priority:
+        format: int32
+        type: integer
+      auditComment:
+        type: string
+  RestartEntry:
+    type: object
+    properties:
+      auditComment:
+        type: string
+      severity:
+        enum:
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+        type: string
+      hold:
+        type: boolean
+  CancelEntry:
+    type: object
+    properties:
+      force:
+        type: boolean
+      reprocess:
+        type: boolean
+      auditComment:
+        type: string
+      severity:
+        enum:
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+        type: string
+  EntryAuditTrail:
+    type: object
+    properties:
+      jamsId:
+        type: string
+      auditTime:
+        format: date-time
+        type: string
+      userName:
+        type: string
+      message:
+        type: string
+      comment:
+        type: string
+      details:
+        type: string
+  Folder:
+    type: object
+    properties:
+      acl:
+        $ref: '#/definitions/ACL'
+      batchQueueName:
+        type: string
+      batchQueueID:
+        format: int32
+        type: integer
+      description:
+        type: string
+      homeDirectory:
+        type: string
+      keepLogs:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      lastChangedBy:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      logLocation:
+        type: string
+      notifyEmail:
+        type: string
+      notifyJobID:
+        format: int32
+        type: integer
+      notifyJobName:
+        type: string
+      notifyJobNameIsRelative:
+        type: boolean
+      timestampLogs:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      userID:
+        format: int32
+        type: integer
+      notifyOther:
+        type: string
+      printLocation:
+        type: string
+      printQueue:
+        type: string
+      parameters:
+        type: array
+        items:
+          $ref: '#/definitions/Param'
+      alerts:
+        type: array
+        items:
+          $ref: '#/definitions/AlertReq'
+      schedulingPriorityModifier:
+        format: int32
+        type: integer
+      notifyUsers:
+        type: string
+      recoveryInstructions:
+        type: string
+      retainOption:
+        enum:
+          - NotSpecified
+          - Always
+          - Error
+          - Never
+          - Timed
+        type: string
+      retainTime:
+        type: string
+      runawayElapsedPer:
+        format: int32
+        type: integer
+      templateLibrary:
+        type: string
+      shortElapsedPer:
+        format: int32
+        type: integer
+      shortSeverity:
+        enum:
+          - NotSpecified
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+          - NoChange
+        type: string
+      stalledTime:
+        type: string
+      folderID:
+        format: int32
+        type: integer
+      folderName:
+        type: string
+      name:
+        type: string
+      parentFolderID:
+        format: int32
+        type: integer
+      parentFolderName:
+        type: string
+      userName:
+        type: string
+      requirements:
+        type: array
+        items:
+          $ref: '#/definitions/ResReq'
+      searchPath:
+        type: string
+  ACL:
+    type: object
+    properties:
+      genericACL:
+        type: array
+        items:
+          $ref: '#/definitions/ACE'
+  Param:
+    type: object
+    properties:
+      allowEntry:
+        type: boolean
+      dataType:
+        enum:
+          - Text
+          - Integer
+          - Date
+          - Time
+          - DateTime
+          - Float
+          - Unknown
+          - Boolean
+        type: string
+      defaultFormat:
+        type: string
+      defaultValue:
+        type: string
+      helpText:
+        type: string
+      hide:
+        type: boolean
+      jobID:
+        format: int32
+        type: integer
+      lastChangeUTC:
+        format: date-time
+        type: string
+      length:
+        format: int32
+        type: integer
+      mustFill:
+        type: boolean
+      parameterOrigin:
+        enum:
+          - Job
+          - Folder
+          - Method
+        type: string
+      paramName:
+        type: string
+      prompt:
+        type: string
+      required:
+        type: boolean
+      sequence:
+        format: int32
+        type: integer
+      uppercase:
+        type: boolean
+      validationData:
+        type: string
+      validationType:
+        enum:
+          - None
+          - Directory
+          - SaveFile
+          - OpenFile
+          - MaskedEdit
+          - Range
+          - Regex
+          - Select
+        type: string
+      variableID:
+        format: int32
+        type: integer
+      variableName:
+        type: string
+      variableNameIsRelative:
+        type: boolean
+  AlertReq:
+    type: object
+    properties:
+      alertID:
+        format: int32
+        type: integer
+      alertName:
+        type: string
+      isInherited:
+        type: boolean
+  ResReq:
+    type: object
+    properties:
+      autoRelease:
+        type: boolean
+      lastChangeUTC:
+        format: date-time
+        type: string
+      netQuantityRequired:
+        format: int32
+        type: integer
+      quantityInherited:
+        format: int32
+        type: integer
+      quantityRequired:
+        format: int32
+        type: integer
+      resourceID:
+        format: int32
+        type: integer
+      resourceName:
+        type: string
+      retainOnFailure:
+        type: boolean
+  ACE:
+    type: object
+    properties:
+      identifier:
+        type: string
+      flags:
+        type: string
+      access:
+        type: string
+  History:
+    type: object
+    properties:
+      batchQueue:
+        type: string
+      bufferedIOCount:
+        format: int32
+        type: integer
+      completionTimeUTC:
+        format: date-time
+        type: string
+      cpuTime:
+        type: string
+      debugMode:
+        type: boolean
+      directIOCount:
+        format: int32
+        type: integer
+      elapsedTime:
+        type: string
+      finalSeverity:
+        enum:
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+        type: string
+      finalStatus:
+        type: string
+      finalStatusCode:
+        format: int32
+        type: integer
+      folderID:
+        format: int32
+        type: integer
+      folderName:
+        type: string
+      holdTimeUTC:
+        format: date-time
+        type: string
+      initiatorID:
+        format: int32
+        type: integer
+      initiatorType:
+        enum:
+          - Unknown
+          - ManualSubmit
+          - AutoSubmit
+          - RepeatSubmit
+          - Trigger
+          - Notify
+          - Recovery
+          - Precheck
+          - SubmitActivity
+          - Setup
+        type: string
+      jamsEntry:
+        format: int32
+        type: integer
+      jamsId:
+        type: string
+      jobID:
+        format: int32
+        type: integer
+      jobName:
+        type: string
+      jobStatus:
+        type: string
+      logFilename:
+        type: string
+      masterRON:
+        format: int32
+        type: integer
+      nodeName:
+        type: string
+      note:
+        type: string
+      overrideJobName:
+        type: string
+      pageFaults:
+        format: int32
+        type: integer
+      processID:
+        format: int32
+        type: integer
+      restartCount:
+        format: int32
+        type: integer
+      ron:
+        format: int32
+        type: integer
+      scheduledTimeUTC:
+        format: date-time
+        type: string
+      setupID:
+        format: int32
+        type: integer
+      setupName:
+        type: string
+      startTimeUTC:
+        format: date-time
+        type: string
+      submittedBy:
+        type: string
+      userName:
+        type: string
+      workingSetPeak:
+        format: int64
+        type: integer
+  'ODataQueryOptions[History]':
+    type: object
+    properties:
+      ifMatch:
+        $ref: '#/definitions/Object'
+        readOnly: true
+      ifNoneMatch:
+        $ref: '#/definitions/Object'
+        readOnly: true
+      context:
+        $ref: '#/definitions/ODataQueryContext'
+        readOnly: true
+      request:
+        $ref: '#/definitions/Object'
+        readOnly: true
+      rawValues:
+        $ref: '#/definitions/ODataRawQueryOptions'
+        readOnly: true
+      selectExpand:
+        $ref: '#/definitions/SelectExpandQueryOption'
+        readOnly: true
+      filter:
+        $ref: '#/definitions/FilterQueryOption'
+        readOnly: true
+      orderBy:
+        $ref: '#/definitions/OrderByQueryOption'
+        readOnly: true
+      skip:
+        $ref: '#/definitions/SkipQueryOption'
+        readOnly: true
+      top:
+        $ref: '#/definitions/TopQueryOption'
+        readOnly: true
+      count:
+        $ref: '#/definitions/CountQueryOption'
+        readOnly: true
+      validator:
+        $ref: '#/definitions/ODataQueryValidator'
+  ODataQueryContext:
+    type: object
+    properties:
+      model:
+        $ref: '#/definitions/IEdmModel'
+        readOnly: true
+      elementType:
+        $ref: '#/definitions/IEdmType'
+        readOnly: true
+      navigationSource:
+        $ref: '#/definitions/IEdmNavigationSource'
+        readOnly: true
+      elementClrType:
+        type: string
+        readOnly: true
+      path:
+        $ref: '#/definitions/ODataPath'
+        readOnly: true
+  ODataRawQueryOptions:
+    type: object
+    properties:
+      filter:
+        type: string
+        readOnly: true
+      orderBy:
+        type: string
+        readOnly: true
+      top:
+        type: string
+        readOnly: true
+      skip:
+        type: string
+        readOnly: true
+      select:
+        type: string
+        readOnly: true
+      expand:
+        type: string
+        readOnly: true
+      count:
+        type: string
+        readOnly: true
+      format:
+        type: string
+        readOnly: true
+      skipToken:
+        type: string
+        readOnly: true
+      deltaToken:
+        type: string
+        readOnly: true
+  SelectExpandQueryOption:
+    type: object
+    properties:
+      context:
+        $ref: '#/definitions/ODataQueryContext'
+        readOnly: true
+      rawSelect:
+        type: string
+        readOnly: true
+      rawExpand:
+        type: string
+        readOnly: true
+      validator:
+        $ref: '#/definitions/SelectExpandQueryValidator'
+      selectExpandClause:
+        $ref: '#/definitions/SelectExpandClause'
+        readOnly: true
+      levelsMaxLiteralExpansionDepth:
+        format: int32
+        type: integer
+  FilterQueryOption:
+    type: object
+    properties:
+      context:
+        $ref: '#/definitions/ODataQueryContext'
+        readOnly: true
+      validator:
+        $ref: '#/definitions/FilterQueryValidator'
+      filterClause:
+        $ref: '#/definitions/FilterClause'
+        readOnly: true
+      rawValue:
+        type: string
+        readOnly: true
+  OrderByQueryOption:
+    type: object
+    properties:
+      context:
+        $ref: '#/definitions/ODataQueryContext'
+        readOnly: true
+      orderByNodes:
+        type: array
+        items:
+          $ref: '#/definitions/OrderByNode'
+        readOnly: true
+      rawValue:
+        type: string
+        readOnly: true
+      validator:
+        $ref: '#/definitions/OrderByQueryValidator'
+      orderByClause:
+        $ref: '#/definitions/OrderByClause'
+        readOnly: true
+  SkipQueryOption:
+    type: object
+    properties:
+      context:
+        $ref: '#/definitions/ODataQueryContext'
+        readOnly: true
+      rawValue:
+        type: string
+        readOnly: true
+      value:
+        format: int32
+        type: integer
+        readOnly: true
+      validator:
+        $ref: '#/definitions/SkipQueryValidator'
+  TopQueryOption:
+    type: object
+    properties:
+      context:
+        $ref: '#/definitions/ODataQueryContext'
+        readOnly: true
+      rawValue:
+        type: string
+        readOnly: true
+      value:
+        format: int32
+        type: integer
+        readOnly: true
+      validator:
+        $ref: '#/definitions/TopQueryValidator'
+  CountQueryOption:
+    type: object
+    properties:
+      context:
+        $ref: '#/definitions/ODataQueryContext'
+        readOnly: true
+      rawValue:
+        type: string
+        readOnly: true
+      value:
+        type: boolean
+        readOnly: true
+      validator:
+        $ref: '#/definitions/CountQueryValidator'
+  ODataQueryValidator:
+    type: object
+    properties: {}
+  IEdmModel:
+    type: object
+    properties:
+      schemaElements:
+        type: array
+        items:
+          $ref: '#/definitions/IEdmSchemaElement'
+        readOnly: true
+      vocabularyAnnotations:
+        type: array
+        items:
+          $ref: '#/definitions/IEdmVocabularyAnnotation'
+        readOnly: true
+      referencedModels:
+        type: array
+        items:
+          $ref: '#/definitions/IEdmModel'
+        readOnly: true
+      declaredNamespaces:
+        type: array
+        items:
+          type: string
+        readOnly: true
+      directValueAnnotationsManager:
+        $ref: '#/definitions/IEdmDirectValueAnnotationsManager'
+        readOnly: true
+      entityContainer:
+        $ref: '#/definitions/IEdmEntityContainer'
+        readOnly: true
+  IEdmType:
+    type: object
+    properties:
+      typeKind:
+        enum:
+          - None
+          - Primitive
+          - Entity
+          - Complex
+          - Collection
+          - EntityReference
+          - Enum
+          - TypeDefinition
+        type: string
+        readOnly: true
+  IEdmNavigationSource:
+    type: object
+    properties:
+      navigationPropertyBindings:
+        type: array
+        items:
+          $ref: '#/definitions/IEdmNavigationPropertyBinding'
+        readOnly: true
+      path:
+        $ref: '#/definitions/IEdmPathExpression'
+        readOnly: true
+      type:
+        $ref: '#/definitions/IEdmType'
+        readOnly: true
+  ODataPath:
+    type: object
+    properties:
+      edmType:
+        $ref: '#/definitions/IEdmType'
+        readOnly: true
+      navigationSource:
+        $ref: '#/definitions/IEdmNavigationSource'
+        readOnly: true
+      pathTemplate:
+        type: string
+        readOnly: true
+      segments:
+        type: array
+        items:
+          $ref: '#/definitions/ODataPathSegment'
+        readOnly: true
+  SelectExpandQueryValidator:
+    type: object
+    properties: {}
+  SelectExpandClause:
+    type: object
+    properties:
+      selectedItems:
+        type: array
+        items:
+          $ref: '#/definitions/SelectItem'
+        readOnly: true
+      allSelected:
+        type: boolean
+        readOnly: true
+  FilterQueryValidator:
+    type: object
+    properties: {}
+  FilterClause:
+    type: object
+    properties:
+      expression:
+        $ref: '#/definitions/SingleValueNode'
+        readOnly: true
+      rangeVariable:
+        $ref: '#/definitions/RangeVariable'
+        readOnly: true
+      itemType:
+        $ref: '#/definitions/IEdmTypeReference'
+        readOnly: true
+  OrderByNode:
+    type: object
+    properties:
+      direction:
+        enum:
+          - Ascending
+          - Descending
+        type: string
+        readOnly: true
+  OrderByQueryValidator:
+    type: object
+    properties: {}
+  OrderByClause:
+    type: object
+    properties:
+      thenBy:
+        $ref: '#/definitions/OrderByClause'
+        readOnly: true
+      expression:
+        $ref: '#/definitions/SingleValueNode'
+        readOnly: true
+      direction:
+        enum:
+          - Ascending
+          - Descending
+        type: string
+        readOnly: true
+      rangeVariable:
+        $ref: '#/definitions/RangeVariable'
+        readOnly: true
+      itemType:
+        $ref: '#/definitions/IEdmTypeReference'
+        readOnly: true
+  SkipQueryValidator:
+    type: object
+    properties: {}
+  TopQueryValidator:
+    type: object
+    properties: {}
+  CountQueryValidator:
+    type: object
+    properties: {}
+  IEdmSchemaElement:
+    type: object
+    properties:
+      schemaElementKind:
+        enum:
+          - None
+          - TypeDefinition
+          - ValueTerm
+          - Action
+          - EntityContainer
+          - Function
+        type: string
+        readOnly: true
+      namespace:
+        type: string
+        readOnly: true
+  IEdmVocabularyAnnotation:
+    type: object
+    properties:
+      qualifier:
+        type: string
+        readOnly: true
+      term:
+        $ref: '#/definitions/IEdmTerm'
+        readOnly: true
+      target:
+        $ref: '#/definitions/IEdmVocabularyAnnotatable'
+        readOnly: true
+  IEdmDirectValueAnnotationsManager:
+    type: object
+    properties: {}
+  IEdmEntityContainer:
+    type: object
+    properties:
+      elements:
+        type: array
+        items:
+          $ref: '#/definitions/IEdmEntityContainerElement'
+        readOnly: true
+  IEdmNavigationPropertyBinding:
+    type: object
+    properties:
+      navigationProperty:
+        $ref: '#/definitions/IEdmNavigationProperty'
+        readOnly: true
+      target:
+        $ref: '#/definitions/IEdmNavigationSource'
+        readOnly: true
+  IEdmPathExpression:
+    type: object
+    properties:
+      path:
+        type: array
+        items:
+          type: string
+        readOnly: true
+  ODataPathSegment:
+    type: object
+    properties:
+      segmentKind:
+        type: string
+        readOnly: true
+  SelectItem:
+    type: object
+    properties: {}
+  SingleValueNode:
+    type: object
+    properties:
+      typeReference:
+        $ref: '#/definitions/IEdmTypeReference'
+        readOnly: true
+      kind:
+        enum:
+          - None
+          - Constant
+          - Convert
+          - NonentityRangeVariableReference
+          - BinaryOperator
+          - UnaryOperator
+          - SingleValuePropertyAccess
+          - CollectionPropertyAccess
+          - SingleValueFunctionCall
+          - Any
+          - CollectionNavigationNode
+          - SingleNavigationNode
+          - SingleValueOpenPropertyAccess
+          - SingleEntityCast
+          - All
+          - EntityCollectionCast
+          - EntityRangeVariableReference
+          - SingleEntityFunctionCall
+          - CollectionFunctionCall
+          - EntityCollectionFunctionCall
+          - NamedFunctionParameter
+          - ParameterAlias
+          - EntitySet
+          - KeyLookup
+          - SearchTerm
+          - CollectionOpenPropertyAccess
+          - CollectionPropertyCast
+          - SingleValueCast
+        type: string
+        readOnly: true
+  RangeVariable:
+    type: object
+    properties:
+      name:
+        type: string
+        readOnly: true
+      typeReference:
+        $ref: '#/definitions/IEdmTypeReference'
+        readOnly: true
+      kind:
+        format: int32
+        type: integer
+        readOnly: true
+  IEdmTypeReference:
+    type: object
+    properties:
+      isNullable:
+        type: boolean
+        readOnly: true
+      definition:
+        $ref: '#/definitions/IEdmType'
+        readOnly: true
+  IEdmTerm:
+    type: object
+    properties:
+      termKind:
+        enum:
+          - None
+          - Type
+          - Value
+        type: string
+        readOnly: true
+  IEdmVocabularyAnnotatable:
+    type: object
+    properties: {}
+  IEdmEntityContainerElement:
+    type: object
+    properties:
+      containerElementKind:
+        enum:
+          - None
+          - EntitySet
+          - ActionImport
+          - FunctionImport
+          - Singleton
+        type: string
+        readOnly: true
+      container:
+        $ref: '#/definitions/IEdmEntityContainer'
+        readOnly: true
+  IEdmNavigationProperty:
+    type: object
+    properties:
+      partner:
+        $ref: '#/definitions/IEdmNavigationProperty'
+        readOnly: true
+      onDelete:
+        enum:
+          - None
+          - Cascade
+        type: string
+        readOnly: true
+      containsTarget:
+        type: boolean
+        readOnly: true
+      referentialConstraint:
+        $ref: '#/definitions/IEdmReferentialConstraint'
+        readOnly: true
+  IEdmReferentialConstraint:
+    type: object
+    properties:
+      propertyPairs:
+        type: array
+        items:
+          $ref: '#/definitions/EdmReferentialConstraintPropertyPair'
+        readOnly: true
+  EdmReferentialConstraintPropertyPair:
+    type: object
+    properties:
+      dependentProperty:
+        $ref: '#/definitions/IEdmStructuralProperty'
+        readOnly: true
+      principalProperty:
+        $ref: '#/definitions/IEdmStructuralProperty'
+        readOnly: true
+  IEdmStructuralProperty:
+    type: object
+    properties:
+      defaultValueString:
+        type: string
+        readOnly: true
+      concurrencyMode:
+        enum:
+          - None
+          - Fixed
+        type: string
+        readOnly: true
+  'PageResult[History]':
+    type: object
+    properties:
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/History'
+      nextPageLink:
+        type: string
+      count:
+        format: int64
+        type: integer
+  Job:
+    type: object
+    properties:
+      acl:
+        $ref: '#/definitions/ACL'
+      advanceWarning:
+        type: string
+      agentNode:
+        type: string
+      alerts:
+        type: array
+        items:
+          $ref: '#/definitions/AlertReq'
+      autoSubmit:
+        type: boolean
+      avgBufferedIOCount:
+        format: int32
+        type: integer
+      avgCount:
+        format: int32
+        type: integer
+      avgCpuTime:
+        type: string
+      avgDirectIOCount:
+        format: int32
+        type: integer
+      avgElapsedTime:
+        type: string
+      avgPageFaults:
+        format: int32
+        type: integer
+      avgWorkingSetPeak:
+        format: int64
+        type: integer
+      badPattern:
+        type: string
+      batchQueueID:
+        format: int32
+        type: integer
+      batchQueueName:
+        type: string
+      defaultDate:
+        type: string
+      defaultSubmitTime:
+        type: string
+      dependencies:
+        type: array
+        items:
+          $ref: '#/definitions/Dependency'
+      description:
+        type: string
+      exceptForDate:
+        type: string
+      goodPattern:
+        type: string
+      homeDirectory:
+        type: string
+      jobID:
+        format: int32
+        type: integer
+      jobName:
+        type: string
+      keepLogs:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      lastAutosubmitUTC:
+        format: date-time
+        type: string
+      lastChangedBy:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      lastErrorUTC:
+        format: date-time
+        type: string
+      lastFatalUTC:
+        format: date-time
+        type: string
+      lastInfoUTC:
+        format: date-time
+        type: string
+      lastResetUTC:
+        format: date-time
+        type: string
+      lastSuccessUTC:
+        format: date-time
+        type: string
+      lastWarningUTC:
+        format: date-time
+        type: string
+      logFilename:
+        type: string
+      maxBufferedIOCount:
+        format: int32
+        type: integer
+      maxCount:
+        format: int32
+        type: integer
+      maxCpuTime:
+        type: string
+      maxDirectIOCount:
+        format: int32
+        type: integer
+      maxElapsedTime:
+        type: string
+      maxPageFaults:
+        format: int32
+        type: integer
+      maxWorkingSetPeak:
+        format: int64
+        type: integer
+      minBufferedIOCount:
+        format: int32
+        type: integer
+      minCount:
+        format: int32
+        type: integer
+      minCpuTime:
+        type: string
+      minDirectIOCount:
+        format: int32
+        type: integer
+      minElapsedTime:
+        type: string
+      minPageFaults:
+        format: int32
+        type: integer
+      minWorkingSetPeak:
+        format: int64
+        type: integer
+      missedWindowAction:
+        enum:
+          - NotSpecified
+          - AbortOrDelete
+          - Continue
+          - NoAction
+          - RescheduleOrContinue
+          - RestartAndReschedule
+        type: string
+      nonWorkdayScheduling:
+        enum:
+          - Defer
+          - Ignore
+          - Schedule
+        type: string
+      notifyEMail:
+        type: string
+      notifyJobID:
+        format: int32
+        type: integer
+      notifyJobName:
+        type: string
+      notifyJobNameIsRelative:
+        type: boolean
+      notifyOfMissedWindow:
+        type: boolean
+      notifyOther:
+        type: string
+      notifySeverity:
+        enum:
+          - NotSpecified
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+          - Never
+        type: string
+      notifyUser:
+        type: boolean
+      notifyUsers:
+        type: string
+      parameters:
+        type: array
+        items:
+          $ref: '#/definitions/Param'
+      parentFolderID:
+        format: int32
+        type: integer
+      parentFolderName:
+        type: string
+      precheckInterval:
+        type: string
+      precheckJobID:
+        format: int32
+        type: integer
+      precheckJobName:
+        type: string
+      precheckJobNameIsRelative:
+        type: boolean
+      recoverJobID:
+        format: int32
+        type: integer
+      recoverJobName:
+        type: string
+      recoverJobNameIsRelative:
+        type: boolean
+      recoveryInstructions:
+        type: string
+      recoverySeverity:
+        enum:
+          - NotSpecified
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+          - Never
+        type: string
+      reports:
+        type: array
+        items:
+          $ref: '#/definitions/Report'
+      requirements:
+        type: array
+        items:
+          $ref: '#/definitions/ResReq'
+      restartable:
+        type: boolean
+      resubmitBase:
+        enum:
+          - NotSpecified
+          - EndTime
+          - ScheduledTime
+          - StartTime
+        type: string
+      resubmitDelay:
+        type: string
+      resubmitEnd:
+        type: string
+      resubmitOnError:
+        type: boolean
+      retainOption:
+        enum:
+          - NotSpecified
+          - Always
+          - Error
+          - Never
+          - Timed
+        type: string
+      retainTime:
+        type: string
+      retryCount:
+        format: int32
+        type: integer
+      retryInterval:
+        type: string
+      runawayAction:
+        enum:
+          - NotSpecified
+          - NoAction
+          - Notify
+          - CancelSuccess
+          - CancelInfo
+          - CancelWarning
+          - CancelError
+        type: string
+      runawayElapsed:
+        type: string
+      runawayElapsedPer:
+        format: int32
+        type: integer
+      runPriority:
+        format: int32
+        type: integer
+      scheduledDate:
+        type: string
+      scheduledDateEnd:
+        format: date-time
+        type: string
+      scheduledDateStart:
+        format: date-time
+        type: string
+      scheduledTime:
+        type: string
+      scheduleFromTime:
+        type: string
+      scheduleToTime:
+        type: string
+      scheduleWindowID:
+        format: int32
+        type: integer
+      scheduleWindowName:
+        type: string
+      schedulingPriorityModifier:
+        format: int32
+        type: integer
+      shortElapsed:
+        type: string
+      shortElapsedPer:
+        format: int32
+        type: integer
+      shortSeverity:
+        enum:
+          - NotSpecified
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+          - NoChange
+        type: string
+      slaTime:
+        type: string
+      source:
+        type: string
+      specificInformational:
+        type: string
+      specificValues:
+        type: string
+      specificWarning:
+        type: string
+      stalledTime:
+        type: string
+      submitMethodID:
+        format: int32
+        type: integer
+      submitMethodName:
+        type: string
+      submitOnHold:
+        type: boolean
+      suppressMenuDisplay:
+        type: boolean
+      timestampLogs:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      timeZoneID:
+        format: int32
+        type: integer
+      timeZoneName:
+        type: string
+      userID:
+        format: int32
+        type: integer
+      userName:
+        type: string
+      workingSetDefault:
+        format: int32
+        type: integer
+      workingSetMax:
+        format: int32
+        type: integer
+      workingSetQuota:
+        format: int32
+        type: integer
+  Dependency:
+    type: object
+    properties:
+      dependencyName:
+        type: string
+      dependencyType:
+        enum:
+          - None
+          - Entry
+          - File
+          - Job
+          - Network
+          - Setup
+          - RemoteSetup
+          - Variable
+        type: string
+      dependID:
+        format: int32
+        type: integer
+      description:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+  Report:
+    type: object
+    properties:
+      copies:
+        format: int32
+        type: integer
+      description:
+        type: string
+      fullFilename:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      logicalName:
+        type: string
+      printForm:
+        type: string
+      printQualifiers:
+        type: string
+      printQueue:
+        type: string
+      reportID:
+        type: string
+      retentionDays:
+        format: int32
+        type: integer
+  Resource:
+    type: object
+    properties:
+      acl:
+        $ref: '#/definitions/ACL'
+      lastChangeUTC:
+        format: date-time
+        type: string
+      resourceName:
+        type: string
+      resourceID:
+        format: int32
+        type: integer
+      quantityAvailable:
+        format: int32
+        type: integer
+      quantityInUse:
+        format: int32
+        type: integer
+      routineName:
+        type: string
+      nodeSpecific:
+        type: boolean
+      description:
+        type: string
+      resourceDetails:
+        type: array
+        items:
+          $ref: '#/definitions/ResourceDetail'
+  ResourceDetail:
+    type: object
+    properties:
+      nodeName:
+        type: string
+      quantityAvailable:
+        format: int32
+        type: integer
+  Setup:
+    type: object
+    properties:
+      acl:
+        $ref: '#/definitions/ACL'
+      advanceWarning:
+        type: string
+      alerts:
+        type: array
+        items:
+          $ref: '#/definitions/AlertReq'
+      autoSubmit:
+        type: boolean
+      avgCount:
+        format: int32
+        type: integer
+      avgElapsedTime:
+        type: string
+      avgJobCount:
+        format: int32
+        type: integer
+      batchQueueID:
+        format: int32
+        type: integer
+      batchQueueName:
+        type: string
+      defaultDate:
+        type: string
+      defaultSubmitTime:
+        type: string
+      dependencies:
+        type: array
+        items:
+          $ref: '#/definitions/Dependency'
+      description:
+        type: string
+      exceptForDate:
+        type: string
+      jobs:
+        type: array
+        items:
+          $ref: '#/definitions/SetupJob'
+      lastAutosubmitUTC:
+        format: date-time
+        type: string
+      lastBadUTC:
+        format: date-time
+        type: string
+      lastChangedBy:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      lastGoodUTC:
+        format: date-time
+        type: string
+      lastResetUTC:
+        format: date-time
+        type: string
+      logFilename:
+        type: string
+      keepLogs:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      timestampLogs:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      maxCount:
+        format: int32
+        type: integer
+      maxElapsedTime:
+        type: string
+      maxJobCount:
+        format: int32
+        type: integer
+      minCount:
+        format: int32
+        type: integer
+      minElapsedTime:
+        type: string
+      minJobCount:
+        format: int32
+        type: integer
+      missedWindowAction:
+        enum:
+          - NotSpecified
+          - AbortOrDelete
+          - Continue
+          - NoAction
+          - RescheduleOrContinue
+          - RestartAndReschedule
+        type: string
+      notifyEMail:
+        type: string
+      notifyJobID:
+        format: int32
+        type: integer
+      notifyJobName:
+        type: string
+      notifyJobNameIsRelative:
+        type: boolean
+      notifyOfMissedWindow:
+        type: boolean
+      notifyOther:
+        type: string
+      notifySeverity:
+        enum:
+          - Failure
+          - Never
+          - Success
+        type: string
+      notifyUser:
+        type: boolean
+      notifyUsers:
+        type: string
+      parentFolderId:
+        format: int32
+        type: integer
+      parentFolderName:
+        type: string
+      precheckJobName:
+        type: string
+      prechkInterval:
+        type: string
+      precheckJobNameIsRelative:
+        type: boolean
+      prechkJobID:
+        format: int32
+        type: integer
+      qualifiedName:
+        type: string
+      recoverJobNameIsRelative:
+        type: boolean
+      recoverJobID:
+        format: int32
+        type: integer
+      recoverJobName:
+        type: string
+      recoverSeverity:
+        enum:
+          - Failure
+          - Never
+          - Success
+        type: string
+      recoveryInstructions:
+        type: string
+      references:
+        type: array
+        items:
+          $ref: '#/definitions/SetupRef'
+      requirements:
+        type: array
+        items:
+          $ref: '#/definitions/ResReq'
+      restartable:
+        type: boolean
+      resubmitBase:
+        enum:
+          - NotSpecified
+          - EndTime
+          - ScheduledTime
+          - StartTime
+        type: string
+      resubmitDelay:
+        type: string
+      resubmitEnd:
+        type: string
+      resubmitOnError:
+        type: boolean
+      retainOption:
+        enum:
+          - NotSpecified
+          - Always
+          - Error
+          - Never
+          - Timed
+        type: string
+      retainTime:
+        type: string
+      retryCount:
+        format: int32
+        type: integer
+      retryInterval:
+        type: string
+      runawayAction:
+        enum:
+          - NotSpecified
+          - NoAction
+          - Notify
+          - CancelSuccess
+          - CancelInfo
+          - CancelWarning
+          - CancelError
+        type: string
+      runawayElapsed:
+        type: string
+      runawayElapsedPer:
+        format: int32
+        type: integer
+      scheduledDate:
+        type: string
+      scheduledDateEnd:
+        format: date-time
+        type: string
+      scheduledDateStart:
+        format: date-time
+        type: string
+      scheduledTime:
+        type: string
+      schedulingPriorityModifier:
+        format: int32
+        type: integer
+      scheduleWindowName:
+        type: string
+      setupID:
+        format: int32
+        type: integer
+      setupName:
+        type: string
+      shortElapsed:
+        type: string
+      shortElapsedPer:
+        format: int32
+        type: integer
+      failShort:
+        type: boolean
+      slaTime:
+        type: string
+      stalledTime:
+        type: string
+      submitOnHold:
+        type: boolean
+      submitTime:
+        type: string
+      suppressMenuDisplay:
+        type: boolean
+      timeZoneID:
+        format: int32
+        type: integer
+      timeZoneName:
+        type: string
+      defaultUserName:
+        type: string
+      scheduleFromTime:
+        type: string
+      scheduleToTime:
+        type: string
+      scheduleWindowID:
+        format: int32
+        type: integer
+      nonWorkdayScheduling:
+        enum:
+          - Defer
+          - Ignore
+          - Schedule
+        type: string
+  SetupJob:
+    type: object
+    properties:
+      agentNode:
+        type: string
+      alerts:
+        type: array
+        items:
+          $ref: '#/definitions/Alert'
+      avgBufferedIOCount:
+        format: int32
+        type: integer
+      avgCount:
+        format: int32
+        type: integer
+      avgCpuTime:
+        type: string
+      avgDirectIOCount:
+        format: int32
+        type: integer
+      avgElapsedTime:
+        type: string
+      avgPageFaults:
+        format: int32
+        type: integer
+      avgWorkingSetPeak:
+        format: int32
+        type: integer
+      batchQueueID:
+        format: int32
+        type: integer
+      batchQueueName:
+        type: string
+      description:
+        type: string
+      detailID:
+        format: int32
+        type: integer
+      exceptForDate:
+        type: string
+      failureAction:
+        enum:
+          - NotSpecified
+          - Halt
+          - Fail
+          - Continue
+        type: string
+      isRelative:
+        type: boolean
+      jobDescription:
+        type: string
+      jobID:
+        format: int32
+        type: integer
+      jobName:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      logFilename:
+        type: string
+      maxBufferedIOCount:
+        format: int32
+        type: integer
+      maxCount:
+        format: int32
+        type: integer
+      maxCpuTime:
+        type: string
+      maxDirectIOCount:
+        format: int32
+        type: integer
+      maxElapsedTime:
+        type: string
+      maxPageFaults:
+        format: int32
+        type: integer
+      maxWorkingSetPeak:
+        format: int32
+        type: integer
+      minBufferedIOCount:
+        format: int32
+        type: integer
+      minCount:
+        format: int32
+        type: integer
+      minCpuTime:
+        type: string
+      minDirectIOCount:
+        format: int32
+        type: integer
+      minElapsedTime:
+        type: string
+      minimumSeverity:
+        enum:
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+        type: string
+      minPageFaults:
+        format: int32
+        type: integer
+      minWorkingSetPeak:
+        format: int32
+        type: integer
+      missedWindowAction:
+        enum:
+          - NotSpecified
+          - AbortOrDelete
+          - Continue
+          - NoAction
+          - RescheduleOrContinue
+          - RestartAndReschedule
+        type: string
+      nonWorkdayScheduling:
+        enum:
+          - Defer
+          - Ignore
+          - Schedule
+        type: string
+      notifyEMail:
+        type: string
+      notifyJobID:
+        format: int32
+        type: integer
+      notifyJobName:
+        type: string
+      notifyJobNameIsRelative:
+        type: boolean
+      notifyOfMissedWindow:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      notifyOther:
+        type: string
+      notifySeverity:
+        enum:
+          - NotSpecified
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+          - Never
+        type: string
+      notifyUsers:
+        type: string
+      overrideDescription:
+        type: string
+      overrideName:
+        type: string
+      precheckInterval:
+        type: string
+      precheckJobID:
+        format: int32
+        type: integer
+      precheckJobName:
+        type: string
+      precheckJobNameIsRelative:
+        type: boolean
+      recoverJobID:
+        format: int32
+        type: integer
+      recoverJobName:
+        type: string
+      recoverJobNameIsRelative:
+        type: boolean
+      recoverySeverity:
+        enum:
+          - NotSpecified
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+          - Never
+        type: string
+      reports:
+        type: array
+        items:
+          $ref: '#/definitions/SetupJobReport'
+      retryCount:
+        format: int32
+        type: integer
+      retryInterval:
+        type: string
+      runawayAction:
+        enum:
+          - NotSpecified
+          - NoAction
+          - Notify
+          - CancelSuccess
+          - CancelInfo
+          - CancelWarning
+          - CancelError
+        type: string
+      runawayElapsed:
+        type: string
+      runawayElapsedPer:
+        format: int32
+        type: integer
+      runPriority:
+        format: int32
+        type: integer
+      scheduledDate:
+        type: string
+      scheduleFromTime:
+        type: string
+      scheduleToTime:
+        type: string
+      scheduleWindowID:
+        format: int32
+        type: integer
+      scheduleWindowName:
+        type: string
+      schedulingPriorityModifier:
+        format: int32
+        type: integer
+      setupID:
+        format: int32
+        type: integer
+      shortElapsed:
+        type: string
+      shortElapsedPer:
+        format: int32
+        type: integer
+      shortSeverity:
+        enum:
+          - NotSpecified
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+          - NoChange
+        type: string
+      stalledTime:
+        type: string
+      step:
+        format: int32
+        type: integer
+      submitOnHold:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      userID:
+        format: int32
+        type: integer
+      userName:
+        type: string
+      waitFor:
+        type: boolean
+  SetupRef:
+    type: object
+    properties:
+      referenceID:
+        format: int32
+        type: integer
+      name:
+        type: string
+      type:
+        enum:
+          - Setup
+          - Event
+          - Action
+          - Precheck
+          - Recovery
+          - JobDepend
+          - SetupDepend
+          - JobSince
+          - SetupSince
+          - Notify
+          - SetupPrecheck
+          - SetupRecovery
+          - SetupNotify
+          - FolderNotify
+        type: string
+      description:
+        type: string
+      folderPath:
+        type: string
+  Alert:
+    type: object
+    properties:
+      alertID:
+        format: int32
+        type: integer
+      alertName:
+        type: string
+      description:
+        type: string
+      detailText:
+        type: string
+      eventList:
+        type: array
+        items:
+          enum:
+            - Unknown
+            - SchedulerStarted
+            - SchedulerStopping
+            - EntrySubmitted
+            - EntryStarting
+            - EntryStarted
+            - EntryDone
+            - EntryCompleted
+            - EntrySucceeded
+            - EntryFailed
+            - EntryStalled
+            - EntryShort
+            - EntryRunaway
+            - EntryCouldMissSLA
+            - EntryMissedSLA
+            - EntryHeld
+            - EntryReleased
+            - EntryMissedWindow
+            - EntryRecovery
+            - QueueStarted
+            - QueueStopped
+            - SetupHalted
+            - SetupResumed
+            - TransactionFailed
+            - FileWatchFailed
+            - ActivityTimeLimit
+            - TriggerFileWatchFailed
+            - EntryFileWatchFailed
+            - ActivitySubmitEntry
+          type: string
+      handlerList:
+        type: string
+      inheritanceName:
+        type: string
+      lastChangedBy:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      notifyNames:
+        type: string
+      summaryText:
+        type: string
+  SetupJobReport:
+    type: object
+    properties:
+      copies:
+        format: int32
+        type: integer
+      fullFilename:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      overriden:
+        type: boolean
+      printForm:
+        type: string
+      printQualifiers:
+        type: string
+      printQueue:
+        type: string
+      reportID:
+        type: string
+      retentionDays:
+        format: int32
+        type: integer
+  SubmitInfo:
+    type: object
+    properties:
+      afterTimeUTC:
+        format: date-time
+        type: string
+      batchQueueID:
+        format: int32
+        type: integer
+      batchQueueName:
+        type: string
+      debugMode:
+        type: boolean
+      description:
+        type: string
+      failShort:
+        type: boolean
+      folderID:
+        format: int32
+        type: integer
+      folderName:
+        type: string
+      hold:
+        type: boolean
+      jamsEntry:
+        format: int32
+        type: integer
+      jamsId:
+        type: string
+      jobs:
+        type: array
+        items:
+          $ref: '#/definitions/SubmitJob'
+      logFile:
+        type: boolean
+      logFilename:
+        type: string
+      logLocation:
+        type: string
+      manageAccess:
+        type: boolean
+      missedWindowAction:
+        enum:
+          - NotSpecified
+          - AbortOrDelete
+          - Continue
+          - NoAction
+          - RescheduleOrContinue
+          - RestartAndReschedule
+        type: string
+      name:
+        type: string
+      note:
+        type: string
+      notifyOfMissedWindow:
+        type: boolean
+      notifyUser:
+        type: boolean
+      overrideName:
+        type: string
+      parameters:
+        type: array
+        items:
+          $ref: '#/definitions/SubmitParameter'
+      precheckInterval:
+        type: string
+      precheckJobID:
+        format: int32
+        type: integer
+      restartable:
+        type: boolean
+      resultText:
+        type: string
+      retainOption:
+        enum:
+          - NotSpecified
+          - Always
+          - Error
+          - Never
+          - Timed
+        type: string
+      retainTime:
+        type: string
+      ron:
+        format: int32
+        type: integer
+      runawayElapsed:
+        type: string
+      scheduleFromTime:
+        type: string
+      scheduleToTime:
+        type: string
+      scheduleWindowID:
+        format: int32
+        type: integer
+      schedulingPriority:
+        format: int32
+        type: integer
+      setSymbols:
+        type: boolean
+      shortElapsed:
+        type: string
+      stalledTime:
+        type: string
+      submitID:
+        format: int32
+        type: integer
+      submitIsSimple:
+        type: boolean
+      submittedBy:
+        type: string
+      submitType:
+        enum:
+          - Unknown
+          - Job
+          - Setup
+          - JobID
+          - SetupID
+        type: string
+      suppressNotify:
+        type: boolean
+      testSubmit:
+        type: boolean
+      timestampLogs:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      userID:
+        format: int32
+        type: integer
+      userName:
+        type: string
+      useSymbols:
+        type: boolean
+  SubmitJob:
+    type: object
+    properties:
+      agentNode:
+        type: string
+      allowEditSource:
+        type: boolean
+      altUserName:
+        type: string
+      batchQueueID:
+        format: int32
+        type: integer
+      batchQueueName:
+        type: string
+      description:
+        type: string
+      detailID:
+        format: int32
+        type: integer
+      folderID:
+        format: int32
+        type: integer
+      folderName:
+        type: string
+      hold:
+        type: boolean
+      inSchedule:
+        type: boolean
+      jobID:
+        format: int32
+        type: integer
+      keepLogs:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      logFile:
+        type: boolean
+      logFilename:
+        type: string
+      logLocation:
+        type: string
+      minimumSeverity:
+        enum:
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+        type: string
+      missedWindowAction:
+        enum:
+          - NotSpecified
+          - AbortOrDelete
+          - Continue
+          - NoAction
+          - RescheduleOrContinue
+          - RestartAndReschedule
+        type: string
+      name:
+        type: string
+      notifyOfMissedWindow:
+        type: boolean
+      notifyUser:
+        type: boolean
+      overrideName:
+        type: string
+      precheckInterval:
+        type: string
+      precheckJobID:
+        format: int32
+        type: integer
+      requiresSnapshot:
+        type: boolean
+      restartable:
+        type: boolean
+      runawayElapsed:
+        type: string
+      runPriority:
+        format: int32
+        type: integer
+      scheduleFromTime:
+        type: string
+      scheduleToTime:
+        type: string
+      scheduleWindowID:
+        format: int32
+        type: integer
+      schedulingPriority:
+        format: int32
+        type: integer
+      shortElapsed:
+        type: string
+      shortSeverity:
+        enum:
+          - NotSpecified
+          - Success
+          - Info
+          - Warning
+          - Error
+          - Fatal
+          - NoChange
+        type: string
+      source:
+        type: string
+      sourceModified:
+        type: boolean
+      stalledTime:
+        type: string
+      step:
+        format: int32
+        type: integer
+      submitMethodID:
+        format: int32
+        type: integer
+      timestampLogs:
+        enum:
+          - 'False'
+          - 'True'
+          - NotSpecified
+        type: string
+      userID:
+        format: int32
+        type: integer
+      userName:
+        type: string
+      waitFor:
+        type: boolean
+  SubmitParameter:
+    type: object
+    properties:
+      allowEntry:
+        type: boolean
+      dataType:
+        enum:
+          - Text
+          - Integer
+          - Date
+          - Time
+          - DateTime
+          - Float
+          - Unknown
+          - Boolean
+        type: string
+      defaultFormat:
+        type: string
+      detailID:
+        format: int32
+        type: integer
+      globalName:
+        type: string
+      globalOverride:
+        type: boolean
+      helpText:
+        type: string
+      hide:
+        type: boolean
+      jobID:
+        format: int32
+        type: integer
+      length:
+        format: int32
+        type: integer
+      mustFill:
+        type: boolean
+      parameterOrigin:
+        enum:
+          - Job
+          - Folder
+          - Method
+        type: string
+      paramID:
+        format: int32
+        type: integer
+      paramName:
+        type: string
+      paramValue:
+        type: string
+      prompt:
+        type: string
+      required:
+        type: boolean
+      uppercase:
+        type: boolean
+      validationData:
+        type: string
+      validationType:
+        enum:
+          - None
+          - Directory
+          - SaveFile
+          - OpenFile
+          - MaskedEdit
+          - Range
+          - Regex
+          - Select
+        type: string
+  MenuEntry:
+    type: object
+    properties:
+      menuName:
+        type: string
+      menuType:
+        enum:
+          - Menu
+          - Folder
+          - Job
+          - Setup
+        type: string
+      menuText:
+        type: string
+      id:
+        format: int32
+        type: integer
+  NestedMenuEntry:
+    type: object
+    properties:
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/NestedMenuEntry'
+      menuName:
+        type: string
+      menuType:
+        enum:
+          - Menu
+          - Folder
+          - Job
+          - Setup
+        type: string
+      menuText:
+        type: string
+      id:
+        format: int32
+        type: integer
+  Tenant:
+    type: object
+    properties:
+      companyName:
+        type: string
+      title:
+        type: string
+      theme:
+        type: string
+      serverVersion:
+        $ref: '#/definitions/Version'
+  Version:
+    type: object
+    properties:
+      major:
+        format: int32
+        type: integer
+        readOnly: true
+      minor:
+        format: int32
+        type: integer
+        readOnly: true
+      build:
+        format: int32
+        type: integer
+        readOnly: true
+      revision:
+        format: int32
+        type: integer
+        readOnly: true
+      majorRevision:
+        format: int32
+        type: integer
+        readOnly: true
+      minorRevision:
+        format: int32
+        type: integer
+        readOnly: true
+  Theme:
+    type: object
+    properties:
+      name:
+        type: string
+      siteTitle:
+        type: string
+  Trigger:
+    type: object
+    properties:
+      triggerID:
+        format: int32
+        type: integer
+      triggerName:
+        type: string
+      qualifiedName:
+        type: string
+      description:
+        type: string
+      parentFolderID:
+        format: int32
+        type: integer
+        readOnly: true
+      parentFolderName:
+        type: string
+      status:
+        enum:
+          - Enabled
+          - Disabled
+          - Fired
+        type: string
+      userName:
+        type: string
+      resetWhenFired:
+        type: boolean
+      lastChangeUTC:
+        format: date-time
+        type: string
+      lastResetUTC:
+        format: date-time
+        type: string
+      lastFiredUTC:
+        format: date-time
+        type: string
+      events:
+        type: array
+        items:
+          $ref: '#/definitions/TriggerEvent'
+      actions:
+        type: array
+        items:
+          $ref: '#/definitions/TriggerAction'
+  TriggerEvent:
+    type: object
+    properties:
+      eventID:
+        format: int32
+        type: integer
+      eventName:
+        type: string
+      description:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      eventType:
+        enum:
+          - File
+          - Job
+          - Mail
+          - Setup
+          - Variable
+        type: string
+      eventHappenedUTC:
+        format: date-time
+        type: string
+      eventIsTrue:
+        type: boolean
+  TriggerAction:
+    type: object
+    properties:
+      actionID:
+        format: int32
+        type: integer
+      actionName:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      description:
+        type: string
+      actionType:
+        enum:
+          - SubmitJob
+          - SubmitSetup
+        type: string
+  UserSecurity:
+    type: object
+    properties:
+      acl:
+        $ref: '#/definitions/ACL'
+      description:
+        type: string
+      fingerprint:
+        format: byte
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      logonUserName:
+        type: string
+      password:
+        type: string
+      privateKey:
+        format: byte
+        type: string
+      publicKey:
+        type: string
+      userID:
+        format: int32
+        type: integer
+      userName:
+        type: string
+  Variable:
+    type: object
+    properties:
+      acl:
+        $ref: '#/definitions/ACL'
+      currentLength:
+        format: int32
+        type: integer
+      dataType:
+        enum:
+          - Text
+          - Integer
+          - Date
+          - Time
+          - DateTime
+          - Float
+          - Unknown
+          - Boolean
+        type: string
+      description:
+        type: string
+      lastChangedBy:
+        type: string
+      lastChangeUTC:
+        format: date-time
+        type: string
+      parentFolderId:
+        format: int32
+        type: integer
+      parentFolderName:
+        type: string
+      value:
+        type: string
+      variableId:
+        format: int32
+        type: integer
+      variableName:
+        type: string
+
