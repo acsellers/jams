@@ -100,7 +100,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AgentApi = (*AgentApiService)(&c.common)
 	c.AppMenuApi = (*AppMenuApiService)(&c.common)
-	c.AuthenticationApi = (*AuthenticationApiService)(&c.common)
 	c.BatchQueueApi = (*BatchQueueApiService)(&c.common)
 	c.CfgApi = (*CfgApiService)(&c.common)
 	c.DateApi = (*DateApiService)(&c.common)
@@ -127,19 +126,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 func atoi(in string) (int, error) {
 	return strconv.Atoi(in)
-}
-
-// selectHeaderAccept join all accept types and return
-func selectHeaderAccept(accepts []string) string {
-	if len(accepts) == 0 {
-		return ""
-	}
-
-	if contains(accepts, "application/json") {
-		return "application/json"
-	}
-
-	return strings.Join(accepts, ",")
 }
 
 // contains is a case insenstive match, finding needle in a haystack
