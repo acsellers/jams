@@ -40,12 +40,12 @@ func (a *ConfigAPI) DeleteConfig(ctx context.Context, name string) (string, erro
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "DELETE", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -101,12 +101,12 @@ func (a *ConfigAPI) Configs(ctx context.Context) ([]Cfg, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -163,12 +163,12 @@ func (a *ConfigAPI) ConfigByName(ctx context.Context, name string) (Cfg, error) 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -225,12 +225,12 @@ func (a *ConfigAPI) CreateConfig(ctx context.Context, config Cfg) (Cfg, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &config, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "POST", &config, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -287,12 +287,12 @@ func (a *ConfigAPI) UpdateConfig(ctx context.Context, config Cfg) (Cfg, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &config, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &config, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}

@@ -43,12 +43,12 @@ func (a *JobAPI) DeleteJob(ctx context.Context, name string) (string, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -105,12 +105,12 @@ func (a *JobAPI) JobByID(ctx context.Context, id int) (Job, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -167,12 +167,12 @@ func (a *JobAPI) JobByName(ctx context.Context, name string) (Job, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -228,12 +228,12 @@ func (a *JobAPI) Jobs(ctx context.Context) ([]Job, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -294,12 +294,12 @@ func (a *JobAPI) JobsByFolder(ctx context.Context, folderName string, name strin
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -356,12 +356,12 @@ func (a *JobAPI) JobsByFolderID(ctx context.Context, id int) ([]Job, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -418,12 +418,12 @@ func (a *JobAPI) CreateJob(ctx context.Context, job Job) (Job, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &job, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "POST", &job, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -480,12 +480,12 @@ func (a *JobAPI) UpdateJob(ctx context.Context, job Job) (Job, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &job, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &job, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}

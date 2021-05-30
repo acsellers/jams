@@ -40,12 +40,12 @@ func (a *BatchQueueAPI) DeleteBatchQueue(ctx context.Context, name string) (stri
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "DELETE", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -101,12 +101,12 @@ func (a *BatchQueueAPI) BatchQueues(ctx context.Context) ([]BatchQueue, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -163,12 +163,12 @@ func (a *BatchQueueAPI) BatchQueueByID(ctx context.Context, id int) (BatchQueue,
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -225,12 +225,12 @@ func (a *BatchQueueAPI) BatchQueueByName(ctx context.Context, name string) (Batc
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -287,12 +287,12 @@ func (a *BatchQueueAPI) CreateBatchQueue(ctx context.Context, batchqueue BatchQu
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &batchqueue, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "POST", &batchqueue, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -349,12 +349,12 @@ func (a *BatchQueueAPI) UpdateBatchQueue(ctx context.Context, batchqueue BatchQu
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &batchqueue, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &batchqueue, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -411,12 +411,12 @@ func (a *BatchQueueAPI) StartBatchQueue(ctx context.Context, name string) (strin
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "POST", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -473,12 +473,12 @@ func (a *BatchQueueAPI) StopBatchQueue(ctx context.Context, name string) (string
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "POST", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}

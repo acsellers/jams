@@ -61,12 +61,12 @@ func (a *DateAPI) EvaluateDate(ctx context.Context, date string, localVarOptiona
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -124,12 +124,12 @@ func (a *DateAPI) UpdateDate(ctx context.Context, dateTypeName string, date time
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}

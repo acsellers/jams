@@ -39,12 +39,12 @@ func (a *SubmitMenuAPI) NestedMenu(ctx context.Context) ([]NestedMenuEntry, erro
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -100,12 +100,12 @@ func (a *SubmitMenuAPI) SubmitMenu(ctx context.Context) ([]MenuEntry, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -163,12 +163,12 @@ func (a *SubmitMenuAPI) SubmitMenuByName(ctx context.Context, menuType, name str
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -226,12 +226,12 @@ func (a *SubmitMenuAPI) SubmitMenuByID(ctx context.Context, menuType string, id 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}

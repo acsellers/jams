@@ -41,12 +41,12 @@ func (a *HistoryAPI) History(ctx context.Context) ([]History, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -102,12 +102,12 @@ func (a *HistoryAPI) HistoryOdata(ctx context.Context) (PageResultHistory, error
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -184,12 +184,12 @@ func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCou
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -266,12 +266,12 @@ func (a *HistoryAPI) SetupLog(ctx context.Context, setupName string, ron, restar
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}

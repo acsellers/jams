@@ -41,12 +41,12 @@ func (a *AgentAPI) DeleteAgent(ctx context.Context, name string) (string, error)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "DELETE", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -103,12 +103,12 @@ func (a *AgentAPI) Agents(ctx context.Context) ([]Agent, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -159,19 +159,19 @@ func (a *AgentAPI) AgentByID(ctx context.Context, id int) (Agent, error) {
 	var returnValue Agent
 
 	// create path and map variables
-	apiPath := fmt.Sprintf("/api/agent/%d", a.client.cfg.BasePath, id)
+	apiPath := fmt.Sprintf("%s/api/agent/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -228,12 +228,12 @@ func (a *AgentAPI) AgentByName(ctx context.Context, name string) (Agent, error) 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -290,12 +290,12 @@ func (a *AgentAPI) CreateAgent(ctx context.Context, agent Agent) (Agent, error) 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &agent, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "POST", &agent, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -352,12 +352,12 @@ func (a *AgentAPI) UpdateAgent(ctx context.Context, agent Agent) (Agent, error) 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &agent, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &agent, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}

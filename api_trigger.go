@@ -43,12 +43,12 @@ func (a *TriggerAPI) DeleteTrigger(ctx context.Context, name string) (string, er
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "DELETE", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -108,12 +108,12 @@ func (a *TriggerAPI) DisableTrigger(ctx context.Context, name string) (string, e
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "POST", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -173,12 +173,12 @@ func (a *TriggerAPI) EnableTrigger(ctx context.Context, name string) (string, er
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "POST", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -235,12 +235,12 @@ func (a *TriggerAPI) TriggerByName(ctx context.Context, name string) (Trigger, e
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -297,12 +297,12 @@ func (a *TriggerAPI) TriggersByFolderID(ctx context.Context, id int) ([]Trigger,
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -359,12 +359,12 @@ func (a *TriggerAPI) CreateTrigger(ctx context.Context, trigger Trigger) (Trigge
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &trigger, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "POST", &trigger, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -421,12 +421,12 @@ func (a *TriggerAPI) UpdateTrigger(ctx context.Context, trigger Trigger) (Trigge
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &trigger, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &trigger, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -486,12 +486,12 @@ func (a *TriggerAPI) ResetTrigger(ctx context.Context, name string) (string, err
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "POST", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}

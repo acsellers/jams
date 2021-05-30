@@ -54,12 +54,12 @@ func (a *EntryAPI) EntryDownload(ctx context.Context, entryId int, localVarOptio
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -115,12 +115,12 @@ func (a *EntryAPI) Entries(ctx context.Context) ([]Entry, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -178,12 +178,12 @@ func (a *EntryAPI) EntryParameter(ctx context.Context, id int, name string) (Ent
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -240,12 +240,12 @@ func (a *EntryAPI) EntryParameters(ctx context.Context, id int) ([]EntryParam, e
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -302,12 +302,12 @@ func (a *EntryAPI) EntryByID(ctx context.Context, id int) (Entry, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -365,12 +365,12 @@ func (a *EntryAPI) CancelEntry(ctx context.Context, id int, cancelEntry CancelEn
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &cancelEntry, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &cancelEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return err
 	}
@@ -412,12 +412,12 @@ func (a *EntryAPI) UpdateEntryParameter(ctx context.Context, id int, name, value
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", nil, headers, url.Values{})
 	if err != nil {
 		return err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return err
 	}
@@ -458,12 +458,12 @@ func (a *EntryAPI) RescheduleEntry(ctx context.Context, id int, rescheduleEntry 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &rescheduleEntry, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &rescheduleEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return err
 	}
@@ -504,12 +504,12 @@ func (a *EntryAPI) RestartEntry(ctx context.Context, id int, restartEntry Restar
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &restartEntry, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &restartEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return err
 	}
@@ -559,12 +559,12 @@ func (a *EntryAPI) UpdateStatus(ctx context.Context, id int, status string, icon
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", nil, headers, queryParams)
+	r, err := a.client.buildRequest(apiPath, "PUT", nil, headers, queryParams)
 	if err != nil {
 		return err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return err
 	}
@@ -605,12 +605,12 @@ func (a *EntryAPI) HoldEntry(ctx context.Context, id int, holdEntry HoldEntry) e
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &holdEntry, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &holdEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return err
 	}
@@ -651,12 +651,12 @@ func (a *EntryAPI) ReleaseEntry(ctx context.Context, id int, releaseEntry Releas
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &releaseEntry, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "PUT", &releaseEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}
 
-	response, err := a.client.Call(r)
+	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
 		return err
 	}

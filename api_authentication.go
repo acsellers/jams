@@ -40,12 +40,12 @@ func (client *APIClient) UserInfo(ctx context.Context) (Authentication, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
+	r, err := client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
 
-	response, err := client.Call(r)
+	response, err := client.Call(ctx, r)
 	if err != nil || response == nil {
 		return returnValue, err
 	}
@@ -102,12 +102,12 @@ func (client *APIClient) Login(ctx context.Context, loginData LoginData) error {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := client.prepareRequest(ctx, apiPath, "POST", &loginData, headers, url.Values{})
+	r, err := client.buildRequest(apiPath, "POST", &loginData, headers, url.Values{})
 	if err != nil {
 		return err
 	}
 
-	response, err := client.Call(r)
+	response, err := client.Call(ctx, r)
 	if err != nil || response == nil {
 		return err
 	}

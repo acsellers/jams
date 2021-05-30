@@ -106,27 +106,31 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 }
 
 // Call do the request.
-func (c *APIClient) Call(request *http.Request) (*http.Response, error) {
-	request.Header.Add("Authorization", "Bearer "+c.auth.AccessToken)
+func (c *APIClient) Call(ctx context.Context, request *http.Request) (*http.Response, error) {
+	if ctx != nil {
+		request = request.WithContext(ctx)
+	}
+	if c.auth != nil {
+		request.Header.Add("Authorization", "Bearer "+c.auth.AccessToken)
+	}
 	return c.cfg.HTTPClient.Do(request)
 }
 
-// prepareRequest build the request
-func (c *APIClient) prepareRequest(
-	ctx context.Context,
-	path string, method string,
+// buildRequest build the request
+func (c *APIClient) buildRequest(
+	path, method string,
 	postBody interface{},
-	headerParams map[string]string,
+	headers map[string]string,
 	queryParams url.Values) (localVarRequest *http.Request, err error) {
 
 	var body *bytes.Buffer
 
 	// Detect postBody type and post.
 	if postBody != nil {
-		contentType := headerParams["Content-Type"]
+		contentType := headers["Content-Type"]
 		if contentType == "" {
 			contentType = detectContentType(postBody)
-			headerParams["Content-Type"] = contentType
+			headers["Content-Type"] = contentType
 		}
 
 		body, err = setBody(postBody, contentType)
@@ -163,12 +167,12 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// add header parameters, if any
-	if len(headerParams) > 0 {
-		headers := http.Header{}
-		for h, v := range headerParams {
-			headers.Set(h, v)
+	if len(headers) > 0 {
+		finalheaders := http.Header{}
+		for h, v := range headers {
+			finalheaders.Set(h, v)
 		}
-		localVarRequest.Header = headers
+		localVarRequest.Header = finalheaders
 	}
 
 	// Override request host, if applicable
@@ -178,12 +182,6 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-
-	if ctx != nil {
-		// add context to the request
-		localVarRequest = localVarRequest.WithContext(ctx)
-
-	}
 
 	for header, value := range c.cfg.DefaultHeader {
 		localVarRequest.Header.Add(header, value)
