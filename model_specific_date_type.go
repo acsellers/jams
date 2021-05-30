@@ -10,6 +10,6 @@
 package jams
 
 type SpecificDateType struct {
-	Sequence     int32  `json:"sequence,omitempty"`
+	Sequence     int    `json:"sequence,omitempty"`
 	SpecificType string `json:"specificType,omitempty"`
 }

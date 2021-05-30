@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -35,16 +34,13 @@ func (a *ConfigAPI) DeleteConfig(ctx context.Context, name string) (string, erro
 	var returnValue string
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/cfg/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/cfg/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -102,12 +98,10 @@ func (a *ConfigAPI) Configs(ctx context.Context) ([]Cfg, error) {
 	apiPath := a.client.cfg.BasePath + "/api/cfg"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -163,16 +157,13 @@ func (a *ConfigAPI) ConfigByName(ctx context.Context, name string) (Cfg, error) 
 	var returnValue Cfg
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/cfg/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/cfg/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -231,12 +222,10 @@ func (a *ConfigAPI) CreateConfig(ctx context.Context, config Cfg) (Cfg, error) {
 	apiPath := a.client.cfg.BasePath + "/api/cfg"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &config, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &config, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -295,12 +284,10 @@ func (a *ConfigAPI) UpdateConfig(ctx context.Context, config Cfg) (Cfg, error) {
 	apiPath := a.client.cfg.BasePath + "/api/cfg"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &config, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &config, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

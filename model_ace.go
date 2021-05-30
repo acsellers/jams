@@ -9,7 +9,7 @@
 
 package jams
 
-type Ace struct {
+type ACE struct {
 	Identifier string `json:"identifier,omitempty"`
 	Flags      string `json:"flags,omitempty"`
 	Access     string `json:"access,omitempty"`

@@ -14,14 +14,14 @@ import (
 )
 
 type Setup struct {
-	Acl                        *Acl         `json:"acl,omitempty"`
+	ACL                        *ACL         `json:"acl,omitempty"`
 	AdvanceWarning             string       `json:"advanceWarning,omitempty"`
-	Alerts                     []AlertReq   `json:"alerts,omitempty"`
+	Alerts                     []AlertLink  `json:"alerts,omitempty"`
 	AutoSubmit                 bool         `json:"autoSubmit,omitempty"`
-	AvgCount                   int32        `json:"avgCount,omitempty"`
+	AvgCount                   int          `json:"avgCount,omitempty"`
 	AvgElapsedTime             string       `json:"avgElapsedTime,omitempty"`
-	AvgJobCount                int32        `json:"avgJobCount,omitempty"`
-	BatchQueueID               int32        `json:"batchQueueID,omitempty"`
+	AvgJobCount                int          `json:"avgJobCount,omitempty"`
+	BatchQueueID               int          `json:"batchQueueID,omitempty"`
 	BatchQueueName             string       `json:"batchQueueName,omitempty"`
 	DefaultDate                string       `json:"defaultDate,omitempty"`
 	DefaultSubmitTime          string       `json:"defaultSubmitTime,omitempty"`
@@ -38,15 +38,15 @@ type Setup struct {
 	LogFilename                string       `json:"logFilename,omitempty"`
 	KeepLogs                   string       `json:"keepLogs,omitempty"`
 	TimestampLogs              string       `json:"timestampLogs,omitempty"`
-	MaxCount                   int32        `json:"maxCount,omitempty"`
+	MaxCount                   int          `json:"maxCount,omitempty"`
 	MaxElapsedTime             string       `json:"maxElapsedTime,omitempty"`
-	MaxJobCount                int32        `json:"maxJobCount,omitempty"`
-	MinCount                   int32        `json:"minCount,omitempty"`
+	MaxJobCount                int          `json:"maxJobCount,omitempty"`
+	MinCount                   int          `json:"minCount,omitempty"`
 	MinElapsedTime             string       `json:"minElapsedTime,omitempty"`
-	MinJobCount                int32        `json:"minJobCount,omitempty"`
+	MinJobCount                int          `json:"minJobCount,omitempty"`
 	MissedWindowAction         string       `json:"missedWindowAction,omitempty"`
 	NotifyEMail                string       `json:"notifyEMail,omitempty"`
-	NotifyJobID                int32        `json:"notifyJobID,omitempty"`
+	NotifyJobID                int          `json:"notifyJobID,omitempty"`
 	NotifyJobName              string       `json:"notifyJobName,omitempty"`
 	NotifyJobNameIsRelative    bool         `json:"notifyJobNameIsRelative,omitempty"`
 	NotifyOfMissedWindow       bool         `json:"notifyOfMissedWindow,omitempty"`
@@ -54,15 +54,15 @@ type Setup struct {
 	NotifySeverity             string       `json:"notifySeverity,omitempty"`
 	NotifyUser                 bool         `json:"notifyUser,omitempty"`
 	NotifyUsers                string       `json:"notifyUsers,omitempty"`
-	ParentFolderId             int32        `json:"parentFolderId,omitempty"`
+	ParentFolderId             int          `json:"parentFolderId,omitempty"`
 	ParentFolderName           string       `json:"parentFolderName,omitempty"`
 	PrecheckJobName            string       `json:"precheckJobName,omitempty"`
 	PrechkInterval             string       `json:"prechkInterval,omitempty"`
 	PrecheckJobNameIsRelative  bool         `json:"precheckJobNameIsRelative,omitempty"`
-	PrechkJobID                int32        `json:"prechkJobID,omitempty"`
+	PrechkJobID                int          `json:"prechkJobID,omitempty"`
 	QualifiedName              string       `json:"qualifiedName,omitempty"`
 	RecoverJobNameIsRelative   bool         `json:"recoverJobNameIsRelative,omitempty"`
-	RecoverJobID               int32        `json:"recoverJobID,omitempty"`
+	RecoverJobID               int          `json:"recoverJobID,omitempty"`
 	RecoverJobName             string       `json:"recoverJobName,omitempty"`
 	RecoverSeverity            string       `json:"recoverSeverity,omitempty"`
 	RecoveryInstructions       string       `json:"recoveryInstructions,omitempty"`
@@ -75,32 +75,32 @@ type Setup struct {
 	ResubmitOnError            bool         `json:"resubmitOnError,omitempty"`
 	RetainOption               string       `json:"retainOption,omitempty"`
 	RetainTime                 string       `json:"retainTime,omitempty"`
-	RetryCount                 int32        `json:"retryCount,omitempty"`
+	RetryCount                 int          `json:"retryCount,omitempty"`
 	RetryInterval              string       `json:"retryInterval,omitempty"`
 	RunawayAction              string       `json:"runawayAction,omitempty"`
 	RunawayElapsed             string       `json:"runawayElapsed,omitempty"`
-	RunawayElapsedPer          int32        `json:"runawayElapsedPer,omitempty"`
+	RunawayElapsedPer          int          `json:"runawayElapsedPer,omitempty"`
 	ScheduledDate              string       `json:"scheduledDate,omitempty"`
 	ScheduledDateEnd           time.Time    `json:"scheduledDateEnd,omitempty"`
 	ScheduledDateStart         time.Time    `json:"scheduledDateStart,omitempty"`
 	ScheduledTime              string       `json:"scheduledTime,omitempty"`
-	SchedulingPriorityModifier int32        `json:"schedulingPriorityModifier,omitempty"`
+	SchedulingPriorityModifier int          `json:"schedulingPriorityModifier,omitempty"`
 	ScheduleWindowName         string       `json:"scheduleWindowName,omitempty"`
-	SetupID                    int32        `json:"setupID,omitempty"`
+	SetupID                    int          `json:"setupID,omitempty"`
 	SetupName                  string       `json:"setupName,omitempty"`
 	ShortElapsed               string       `json:"shortElapsed,omitempty"`
-	ShortElapsedPer            int32        `json:"shortElapsedPer,omitempty"`
+	ShortElapsedPer            int          `json:"shortElapsedPer,omitempty"`
 	FailShort                  bool         `json:"failShort,omitempty"`
 	SlaTime                    string       `json:"slaTime,omitempty"`
 	StalledTime                string       `json:"stalledTime,omitempty"`
 	SubmitOnHold               bool         `json:"submitOnHold,omitempty"`
 	SubmitTime                 string       `json:"submitTime,omitempty"`
 	SuppressMenuDisplay        bool         `json:"suppressMenuDisplay,omitempty"`
-	TimeZoneID                 int32        `json:"timeZoneID,omitempty"`
+	TimeZoneID                 int          `json:"timeZoneID,omitempty"`
 	TimeZoneName               string       `json:"timeZoneName,omitempty"`
 	DefaultUserName            string       `json:"defaultUserName,omitempty"`
 	ScheduleFromTime           string       `json:"scheduleFromTime,omitempty"`
 	ScheduleToTime             string       `json:"scheduleToTime,omitempty"`
-	ScheduleWindowID           int32        `json:"scheduleWindowID,omitempty"`
+	ScheduleWindowID           int          `json:"scheduleWindowID,omitempty"`
 	NonWorkdayScheduling       string       `json:"nonWorkdayScheduling,omitempty"`
 }

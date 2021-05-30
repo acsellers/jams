@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -37,12 +36,10 @@ func (a *SubmitMenuAPI) NestedMenu(ctx context.Context) ([]NestedMenuEntry, erro
 	apiPath := a.client.cfg.BasePath + "/api/SubmitMenu/Nested"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -100,12 +97,10 @@ func (a *SubmitMenuAPI) SubmitMenu(ctx context.Context) ([]MenuEntry, error) {
 	apiPath := a.client.cfg.BasePath + "/api/SubmitMenu"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -158,21 +153,17 @@ SubmitMenuAPI Gets a submit menu.
 
 @return []MenuEntry
 */
-func (a *SubmitMenuAPI) SubmitMenuByName(ctx context.Context, menuType string, name string) ([]MenuEntry, error) {
+func (a *SubmitMenuAPI) SubmitMenuByName(ctx context.Context, menuType, name string) ([]MenuEntry, error) {
 	var returnValue []MenuEntry
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/SubmitMenu/{menuType}/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"menuType"+"}", fmt.Sprintf("%v", menuType), -1)
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/SubmitMenu/%s/%s", a.client.cfg.BasePath, menuType, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -225,21 +216,17 @@ SubmitMenuAPI Gets the entries in a branch of a submit menu. Use GetSubmitMenuBy
 
 @return []MenuEntry
 */
-func (a *SubmitMenuAPI) SubmitMenuByID(ctx context.Context, menuType string, id int32) ([]MenuEntry, error) {
+func (a *SubmitMenuAPI) SubmitMenuByID(ctx context.Context, menuType string, id int) ([]MenuEntry, error) {
 	var returnValue []MenuEntry
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/SubmitMenu/{menuType}/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"menuType"+"}", fmt.Sprintf("%v", menuType), -1)
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/SubmitMenu/%s/%d", a.client.cfg.BasePath, menuType, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -37,10 +36,10 @@ func (a *TriggerAPI) DeleteTrigger(ctx context.Context, name string) (string, er
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/trigger"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -102,10 +101,10 @@ func (a *TriggerAPI) DisableTrigger(ctx context.Context, name string) (string, e
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/trigger/disable"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -167,10 +166,10 @@ func (a *TriggerAPI) EnableTrigger(ctx context.Context, name string) (string, er
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/trigger/enable"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -230,16 +229,13 @@ func (a *TriggerAPI) TriggerByName(ctx context.Context, name string) (Trigger, e
 	var returnValue Trigger
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/trigger/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/trigger/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -291,20 +287,17 @@ TriggerAPI Gets all trigger definitions by parent folder ID
 
 @return []Trigger
 */
-func (a *TriggerAPI) TriggersByFolderID(ctx context.Context, id int32) ([]Trigger, error) {
+func (a *TriggerAPI) TriggersByFolderID(ctx context.Context, id int) ([]Trigger, error) {
 	var returnValue []Trigger
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/trigger/folder/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/trigger/folder/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -363,12 +356,10 @@ func (a *TriggerAPI) CreateTrigger(ctx context.Context, trigger Trigger) (Trigge
 	apiPath := a.client.cfg.BasePath + "/api/trigger"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &trigger, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &trigger, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -427,12 +418,10 @@ func (a *TriggerAPI) UpdateTrigger(ctx context.Context, trigger Trigger) (Trigge
 	apiPath := a.client.cfg.BasePath + "/api/trigger"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &trigger, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &trigger, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -490,10 +479,10 @@ func (a *TriggerAPI) ResetTrigger(ctx context.Context, name string) (string, err
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/trigger/reset"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 

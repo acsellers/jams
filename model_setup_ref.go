@@ -10,7 +10,7 @@
 package jams
 
 type SetupRef struct {
-	ReferenceID int32  `json:"referenceID,omitempty"`
+	ReferenceID int    `json:"referenceID,omitempty"`
 	Name        string `json:"name,omitempty"`
 	Type_       string `json:"type,omitempty"`
 	Description string `json:"description,omitempty"`

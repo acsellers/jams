@@ -16,7 +16,7 @@ import (
 type Dependency struct {
 	DependencyName string    `json:"dependencyName,omitempty"`
 	DependencyType string    `json:"dependencyType,omitempty"`
-	DependID       int32     `json:"dependID,omitempty"`
+	DependID       int       `json:"dependID,omitempty"`
 	Description    string    `json:"description,omitempty"`
 	LastChangeUTC  time.Time `json:"lastChangeUTC,omitempty"`
 }

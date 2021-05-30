@@ -13,5 +13,5 @@ type MenuEntry struct {
 	MenuName string `json:"menuName,omitempty"`
 	MenuType string `json:"menuType,omitempty"`
 	MenuText string `json:"menuText,omitempty"`
-	Id       int32  `json:"id,omitempty"`
+	Id       int    `json:"id,omitempty"`
 }

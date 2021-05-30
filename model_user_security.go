@@ -22,6 +22,6 @@ type UserSecurity struct {
 	Password      string    `json:"password,omitempty"`
 	PrivateKey    string    `json:"privateKey,omitempty"`
 	PublicKey     string    `json:"publicKey,omitempty"`
-	UserID        int32     `json:"userID,omitempty"`
+	UserID        int       `json:"userID,omitempty"`
 	UserName      string    `json:"userName,omitempty"`
 }

@@ -11,5 +11,5 @@ package jams
 
 type ResourceDetail struct {
 	NodeName          string `json:"nodeName,omitempty"`
-	QuantityAvailable int32  `json:"quantityAvailable,omitempty"`
+	QuantityAvailable int    `json:"quantityAvailable,omitempty"`
 }

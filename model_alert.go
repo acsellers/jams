@@ -14,7 +14,7 @@ import (
 )
 
 type Alert struct {
-	AlertID         int32     `json:"alertID,omitempty"`
+	AlertID         int       `json:"alertID,omitempty"`
 	AlertName       string    `json:"alertName,omitempty"`
 	Description     string    `json:"description,omitempty"`
 	DetailText      string    `json:"detailText,omitempty"`

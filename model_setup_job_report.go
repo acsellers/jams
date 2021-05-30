@@ -14,7 +14,7 @@ import (
 )
 
 type SetupJobReport struct {
-	Copies          int32     `json:"copies,omitempty"`
+	Copies          int       `json:"copies,omitempty"`
 	FullFilename    string    `json:"fullFilename,omitempty"`
 	LastChangeUTC   time.Time `json:"lastChangeUTC,omitempty"`
 	Overriden       bool      `json:"overriden,omitempty"`
@@ -22,5 +22,5 @@ type SetupJobReport struct {
 	PrintQualifiers string    `json:"printQualifiers,omitempty"`
 	PrintQueue      string    `json:"printQueue,omitempty"`
 	ReportID        string    `json:"reportID,omitempty"`
-	RetentionDays   int32     `json:"retentionDays,omitempty"`
+	RetentionDays   int       `json:"retentionDays,omitempty"`
 }

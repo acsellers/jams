@@ -12,6 +12,6 @@ package jams
 type SkipQueryOption struct {
 	Context   *ODataQueryContext  `json:"context,omitempty"`
 	RawValue  string              `json:"rawValue,omitempty"`
-	Value     int32               `json:"value,omitempty"`
+	Value     int                 `json:"value,omitempty"`
 	Validator *SkipQueryValidator `json:"validator,omitempty"`
 }

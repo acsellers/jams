@@ -14,7 +14,7 @@ import (
 )
 
 type TriggerEvent struct {
-	EventID          int32     `json:"eventID,omitempty"`
+	EventID          int       `json:"eventID,omitempty"`
 	EventName        string    `json:"eventName,omitempty"`
 	Description      string    `json:"description,omitempty"`
 	LastChangeUTC    time.Time `json:"lastChangeUTC,omitempty"`

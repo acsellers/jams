@@ -38,13 +38,10 @@ func (a *ThemeApiService) Theme(ctx context.Context) (Theme, error) {
 	apiPath := a.client.cfg.BasePath + "/api/theme"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

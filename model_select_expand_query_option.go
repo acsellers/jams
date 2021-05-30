@@ -15,5 +15,5 @@ type SelectExpandQueryOption struct {
 	RawExpand                      string                      `json:"rawExpand,omitempty"`
 	Validator                      *SelectExpandQueryValidator `json:"validator,omitempty"`
 	SelectExpandClause             *SelectExpandClause         `json:"selectExpandClause,omitempty"`
-	LevelsMaxLiteralExpansionDepth int32                       `json:"levelsMaxLiteralExpansionDepth,omitempty"`
+	LevelsMaxLiteralExpansionDepth int                         `json:"levelsMaxLiteralExpansionDepth,omitempty"`
 }

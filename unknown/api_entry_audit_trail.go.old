@@ -36,16 +36,13 @@ func (a *EntryAuditTrailApiService) EntryAuditTrails(ctx context.Context, jamsId
 	var returnValue []EntryAuditTrail
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/EntryAuditTrail/{jamsId}"
-	apiPath = strings.Replace(apiPath, "{"+"jamsId"+"}", fmt.Sprintf("%v", jamsId), -1)
+	apiPath := fmt.Sprintf("%s/api/EntryAuditTrail/%s", a.client.cfg.BasePath, jamsId)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

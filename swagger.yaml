@@ -102,7 +102,7 @@ paths:
           in: path
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -320,7 +320,7 @@ paths:
           description: ID of the BatchQueue
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -699,7 +699,7 @@ paths:
           description: ''
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -803,7 +803,7 @@ paths:
           description: The JAMS entry to get.
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -829,7 +829,7 @@ paths:
           description: The JAMS entry to hold.
           required: true
           type: integer
-          format: int32
+          format: int
         - name: holdEntry
           in: body
           description: A Models.HoldEntry.
@@ -859,7 +859,7 @@ paths:
           description: The JAMS entry to release.
           required: true
           type: integer
-          format: int32
+          format: int
         - name: releaseEntry
           in: body
           description: A Models.ReleaseEntry.
@@ -888,7 +888,7 @@ paths:
           description: The JAMS entry for which to get parameters.
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -915,7 +915,7 @@ paths:
           description: The JAMS entry for which to get the parameter.
           required: true
           type: integer
-          format: int32
+          format: int
         - name: name
           in: path
           description: The name of the parameter to return.
@@ -941,7 +941,7 @@ paths:
           description: The JAMS entry to update.
           required: true
           type: integer
-          format: int32
+          format: int
         - name: name
           in: path
           description: The name of the parameter to update.
@@ -970,7 +970,7 @@ paths:
           description: The JAMS entry to update.
           required: true
           type: integer
-          format: int32
+          format: int
         - name: status
           in: query
           description: The new status message.
@@ -1025,7 +1025,7 @@ paths:
           description: The JAMS entry to reschedule.
           required: true
           type: integer
-          format: int32
+          format: int
         - name: rescheduleEntry
           in: body
           description: A Models.RescheduleEntry.
@@ -1055,7 +1055,7 @@ paths:
           description: The JAMS entry to restart.
           required: true
           type: integer
-          format: int32
+          format: int
         - name: restartEntry
           in: body
           description: A Models.RestartEntry.
@@ -1085,7 +1085,7 @@ paths:
           description: The JAMS entry to cancel.
           required: true
           type: integer
-          format: int32
+          format: int
         - name: cancelEntry
           in: body
           description: A Models.CancelEntry.
@@ -1114,7 +1114,7 @@ paths:
           description: The Entry Id
           required: true
           type: integer
-          format: int32
+          format: int
         - name: isPreview
           in: query
           description: 'If true, returns first 512 kB of log file. If false or omitted, returns log file as attachment'
@@ -1170,7 +1170,7 @@ paths:
           description: ID of the parent folder.
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -1243,7 +1243,7 @@ paths:
           description: ID of the folder definition.
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -1435,13 +1435,13 @@ paths:
           description: The RON number
           required: true
           type: integer
-          format: int32
+          format: int
         - name: restartCount
           in: path
           description: The Restart Count
           required: true
           type: integer
-          format: int32
+          format: int
         - name: isPreview
           in: query
           description: 'If true, returns first 512 kB of log file. If false or omitted, returns log file as attachment'
@@ -1476,13 +1476,13 @@ paths:
           description: The RON number
           required: true
           type: integer
-          format: int32
+          format: int
         - name: restartCount
           in: path
           description: The Restart Count
           required: true
           type: integer
-          format: int32
+          format: int
         - name: isPreview
           in: query
           description: 'If true, returns first 512 kB of log file. If false or omitted, returns log file as attachment'
@@ -1613,7 +1613,7 @@ paths:
           description: The ID of the Job.
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -1692,7 +1692,7 @@ paths:
           description: ID of the folder definition
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -1814,7 +1814,7 @@ paths:
           description: ID of the resource
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -1891,7 +1891,7 @@ paths:
           description: The true or false value of node specific
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2017,7 +2017,7 @@ paths:
           description: The ID of the Setup definition
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2066,7 +2066,7 @@ paths:
           description: ID of the folder definition
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2146,7 +2146,7 @@ paths:
           description: The ID of the Job.
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2171,7 +2171,7 @@ paths:
           description: The ID of the Setup.
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2226,7 +2226,7 @@ paths:
           description: The ID of the folder or menu that should be retrieved.
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2343,7 +2343,7 @@ paths:
           description: The Trigger Id
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2614,7 +2614,7 @@ paths:
           description: The id of the UserSecurity.
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2799,7 +2799,7 @@ paths:
           description: ''
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2824,7 +2824,7 @@ paths:
           description: ID of the folder definition
           required: true
           type: integer
-          format: int32
+          format: int
       responses:
         '200':
           description: OK
@@ -2875,7 +2875,7 @@ definitions:
       agentName:
         type: string
       agentID:
-        format: int32
+        format: int
         type: integer
       agentType:
         enum:
@@ -2897,17 +2897,17 @@ definitions:
       platform:
         type: string
       jobCount:
-        format: int32
+        format: int
         type: integer
       jobLimit:
-        format: int32
+        format: int
         type: integer
       licenseAllocated:
         type: boolean
       online:
         type: boolean
       port:
-        format: int32
+        format: int
         type: integer
       timeOffset:
         type: string
@@ -2924,7 +2924,7 @@ definitions:
     type: object
     properties:
       id:
-        format: int32
+        format: int
         type: integer
       label:
         type: string
@@ -2965,17 +2965,17 @@ definitions:
     type: object
     properties:
       queueID:
-        format: int32
+        format: int
         type: integer
       queueName:
         type: string
       description:
         type: string
       jobCount:
-        format: int32
+        format: int
         type: integer
       jobLimit:
-        format: int32
+        format: int
         type: integer
       lastChangeUTC:
         format: date-time
@@ -3028,7 +3028,7 @@ definitions:
         items:
           $ref: '#/definitions/DateDetail'
       dateTypeID:
-        format: int32
+        format: int
         type: integer
       dateTypeType:
         type: string
@@ -3045,7 +3045,7 @@ definitions:
     type: object
     properties:
       dateTypeID:
-        format: int32
+        format: int
         type: integer
       dateTypeType:
         type: string
@@ -3069,7 +3069,7 @@ definitions:
     type: object
     properties:
       sequence:
-        format: int32
+        format: int
         type: integer
       specificType:
         type: string
@@ -3081,7 +3081,7 @@ definitions:
       altUserName:
         type: string
       batchQueueID:
-        format: int32
+        format: int
         type: integer
       batchQueueName:
         type: string
@@ -3110,7 +3110,7 @@ definitions:
           - Missing
         type: string
       currentStep:
-        format: int32
+        format: int
         type: integer
       debugMode:
         type: boolean
@@ -3119,7 +3119,7 @@ definitions:
       description:
         type: string
       detailID:
-        format: int32
+        format: int
         type: integer
       displayName:
         type: string
@@ -3134,7 +3134,7 @@ definitions:
       finalStatus:
         type: string
       finalStatusCode:
-        format: int32
+        format: int
         type: integer
       halted:
         type: boolean
@@ -3159,7 +3159,7 @@ definitions:
       ignoreResReq:
         type: boolean
       initiatorID:
-        format: int32
+        format: int
         type: integer
       initiatorType:
         enum:
@@ -3175,12 +3175,12 @@ definitions:
           - Setup
         type: string
       jamsEntry:
-        format: int32
+        format: int
         type: integer
       jamsId:
         type: string
       jobID:
-        format: int32
+        format: int
         type: integer
       jobName:
         type: string
@@ -3191,10 +3191,10 @@ definitions:
       logFilename:
         type: string
       masterEntry:
-        format: int32
+        format: int
         type: integer
       masterRON:
-        format: int32
+        format: int
         type: integer
       message:
         type: string
@@ -3221,20 +3221,20 @@ definitions:
         format: date-time
         type: string
       parentFolderID:
-        format: int32
+        format: int
         type: integer
       permanent:
         type: boolean
       precheckCount:
-        format: int32
+        format: int
         type: integer
       precheckEntry:
-        format: int32
+        format: int
         type: integer
       precheckInterval:
         type: string
       precheckJobID:
-        format: int32
+        format: int
         type: integer
       precheckTimeUTC:
         format: date-time
@@ -3242,12 +3242,12 @@ definitions:
       preprocessed:
         type: boolean
       processID:
-        format: int32
+        format: int
         type: integer
       restartable:
         type: boolean
       restartCount:
-        format: int32
+        format: int
         type: integer
       retainOption:
         enum:
@@ -3260,14 +3260,14 @@ definitions:
       retainTime:
         type: string
       ron:
-        format: int32
+        format: int
         type: integer
       runaway:
         type: boolean
       runawayElapsed:
         type: string
       runPriority:
-        format: int32
+        format: int
         type: integer
       scheduledTimeUTC:
         format: date-time
@@ -3277,13 +3277,13 @@ definitions:
       scheduleToTime:
         type: string
       scheduleWindowID:
-        format: int32
+        format: int
         type: integer
       schedulingPriority:
-        format: int32
+        format: int
         type: integer
       setupID:
-        format: int32
+        format: int
         type: integer
       setupOk:
         type: boolean
@@ -3295,14 +3295,14 @@ definitions:
         format: date-time
         type: string
       step:
-        format: int32
+        format: int
         type: integer
       stepWait:
         type: boolean
       submitMethodName:
         type: string
       submitMethodID:
-        format: int32
+        format: int
         type: integer
       submittedBy:
         type: string
@@ -3314,12 +3314,12 @@ definitions:
         format: date-time
         type: string
       userID:
-        format: int32
+        format: int
         type: integer
       userName:
         type: string
       version:
-        format: int32
+        format: int
         type: integer
       waitFor:
         type: boolean
@@ -3367,7 +3367,7 @@ definitions:
       defaultFormat:
         type: string
       jamsEntry:
-        format: int32
+        format: int
         type: integer
       loadedFrom:
         type: string
@@ -3380,7 +3380,7 @@ definitions:
       paramName:
         type: string
       sequence:
-        format: int32
+        format: int
         type: integer
       value:
         type: string
@@ -3397,7 +3397,7 @@ definitions:
       held:
         type: boolean
       priority:
-        format: int32
+        format: int
         type: integer
       auditComment:
         type: string
@@ -3457,7 +3457,7 @@ definitions:
       batchQueueName:
         type: string
       batchQueueID:
-        format: int32
+        format: int
         type: integer
       description:
         type: string
@@ -3479,7 +3479,7 @@ definitions:
       notifyEmail:
         type: string
       notifyJobID:
-        format: int32
+        format: int
         type: integer
       notifyJobName:
         type: string
@@ -3492,7 +3492,7 @@ definitions:
           - NotSpecified
         type: string
       userID:
-        format: int32
+        format: int
         type: integer
       notifyOther:
         type: string
@@ -3507,9 +3507,9 @@ definitions:
       alerts:
         type: array
         items:
-          $ref: '#/definitions/AlertReq'
+          $ref: '#/definitions/AlertLink'
       schedulingPriorityModifier:
-        format: int32
+        format: int
         type: integer
       notifyUsers:
         type: string
@@ -3526,12 +3526,12 @@ definitions:
       retainTime:
         type: string
       runawayElapsedPer:
-        format: int32
+        format: int
         type: integer
       templateLibrary:
         type: string
       shortElapsedPer:
-        format: int32
+        format: int
         type: integer
       shortSeverity:
         enum:
@@ -3546,14 +3546,14 @@ definitions:
       stalledTime:
         type: string
       folderID:
-        format: int32
+        format: int
         type: integer
       folderName:
         type: string
       name:
         type: string
       parentFolderID:
-        format: int32
+        format: int
         type: integer
       parentFolderName:
         type: string
@@ -3597,13 +3597,13 @@ definitions:
       hide:
         type: boolean
       jobID:
-        format: int32
+        format: int
         type: integer
       lastChangeUTC:
         format: date-time
         type: string
       length:
-        format: int32
+        format: int
         type: integer
       mustFill:
         type: boolean
@@ -3620,7 +3620,7 @@ definitions:
       required:
         type: boolean
       sequence:
-        format: int32
+        format: int
         type: integer
       uppercase:
         type: boolean
@@ -3638,17 +3638,17 @@ definitions:
           - Select
         type: string
       variableID:
-        format: int32
+        format: int
         type: integer
       variableName:
         type: string
       variableNameIsRelative:
         type: boolean
-  AlertReq:
+  AlertLink:
     type: object
     properties:
       alertID:
-        format: int32
+        format: int
         type: integer
       alertName:
         type: string
@@ -3663,16 +3663,16 @@ definitions:
         format: date-time
         type: string
       netQuantityRequired:
-        format: int32
+        format: int
         type: integer
       quantityInherited:
-        format: int32
+        format: int
         type: integer
       quantityRequired:
-        format: int32
+        format: int
         type: integer
       resourceID:
-        format: int32
+        format: int
         type: integer
       resourceName:
         type: string
@@ -3693,7 +3693,7 @@ definitions:
       batchQueue:
         type: string
       bufferedIOCount:
-        format: int32
+        format: int
         type: integer
       completionTimeUTC:
         format: date-time
@@ -3703,7 +3703,7 @@ definitions:
       debugMode:
         type: boolean
       directIOCount:
-        format: int32
+        format: int
         type: integer
       elapsedTime:
         type: string
@@ -3718,10 +3718,10 @@ definitions:
       finalStatus:
         type: string
       finalStatusCode:
-        format: int32
+        format: int
         type: integer
       folderID:
-        format: int32
+        format: int
         type: integer
       folderName:
         type: string
@@ -3729,7 +3729,7 @@ definitions:
         format: date-time
         type: string
       initiatorID:
-        format: int32
+        format: int
         type: integer
       initiatorType:
         enum:
@@ -3745,12 +3745,12 @@ definitions:
           - Setup
         type: string
       jamsEntry:
-        format: int32
+        format: int
         type: integer
       jamsId:
         type: string
       jobID:
-        format: int32
+        format: int
         type: integer
       jobName:
         type: string
@@ -3759,7 +3759,7 @@ definitions:
       logFilename:
         type: string
       masterRON:
-        format: int32
+        format: int
         type: integer
       nodeName:
         type: string
@@ -3768,22 +3768,22 @@ definitions:
       overrideJobName:
         type: string
       pageFaults:
-        format: int32
+        format: int
         type: integer
       processID:
-        format: int32
+        format: int
         type: integer
       restartCount:
-        format: int32
+        format: int
         type: integer
       ron:
-        format: int32
+        format: int
         type: integer
       scheduledTimeUTC:
         format: date-time
         type: string
       setupID:
-        format: int32
+        format: int
         type: integer
       setupName:
         type: string
@@ -3904,7 +3904,7 @@ definitions:
         $ref: '#/definitions/SelectExpandClause'
         readOnly: true
       levelsMaxLiteralExpansionDepth:
-        format: int32
+        format: int
         type: integer
   FilterQueryOption:
     type: object
@@ -3949,7 +3949,7 @@ definitions:
         type: string
         readOnly: true
       value:
-        format: int32
+        format: int
         type: integer
         readOnly: true
       validator:
@@ -3964,7 +3964,7 @@ definitions:
         type: string
         readOnly: true
       value:
-        format: int32
+        format: int
         type: integer
         readOnly: true
       validator:
@@ -4245,7 +4245,7 @@ definitions:
         $ref: '#/definitions/IEdmTypeReference'
         readOnly: true
       kind:
-        format: int32
+        format: int
         type: integer
         readOnly: true
   IEdmTypeReference:
@@ -4356,24 +4356,24 @@ definitions:
       alerts:
         type: array
         items:
-          $ref: '#/definitions/AlertReq'
+          $ref: '#/definitions/AlertLink'
       autoSubmit:
         type: boolean
       avgBufferedIOCount:
-        format: int32
+        format: int
         type: integer
       avgCount:
-        format: int32
+        format: int
         type: integer
       avgCpuTime:
         type: string
       avgDirectIOCount:
-        format: int32
+        format: int
         type: integer
       avgElapsedTime:
         type: string
       avgPageFaults:
-        format: int32
+        format: int
         type: integer
       avgWorkingSetPeak:
         format: int64
@@ -4381,7 +4381,7 @@ definitions:
       badPattern:
         type: string
       batchQueueID:
-        format: int32
+        format: int
         type: integer
       batchQueueName:
         type: string
@@ -4402,7 +4402,7 @@ definitions:
       homeDirectory:
         type: string
       jobID:
-        format: int32
+        format: int
         type: integer
       jobName:
         type: string
@@ -4441,39 +4441,39 @@ definitions:
       logFilename:
         type: string
       maxBufferedIOCount:
-        format: int32
+        format: int
         type: integer
       maxCount:
-        format: int32
+        format: int
         type: integer
       maxCpuTime:
         type: string
       maxDirectIOCount:
-        format: int32
+        format: int
         type: integer
       maxElapsedTime:
         type: string
       maxPageFaults:
-        format: int32
+        format: int
         type: integer
       maxWorkingSetPeak:
         format: int64
         type: integer
       minBufferedIOCount:
-        format: int32
+        format: int
         type: integer
       minCount:
-        format: int32
+        format: int
         type: integer
       minCpuTime:
         type: string
       minDirectIOCount:
-        format: int32
+        format: int
         type: integer
       minElapsedTime:
         type: string
       minPageFaults:
-        format: int32
+        format: int
         type: integer
       minWorkingSetPeak:
         format: int64
@@ -4496,7 +4496,7 @@ definitions:
       notifyEMail:
         type: string
       notifyJobID:
-        format: int32
+        format: int
         type: integer
       notifyJobName:
         type: string
@@ -4525,21 +4525,21 @@ definitions:
         items:
           $ref: '#/definitions/Param'
       parentFolderID:
-        format: int32
+        format: int
         type: integer
       parentFolderName:
         type: string
       precheckInterval:
         type: string
       precheckJobID:
-        format: int32
+        format: int
         type: integer
       precheckJobName:
         type: string
       precheckJobNameIsRelative:
         type: boolean
       recoverJobID:
-        format: int32
+        format: int
         type: integer
       recoverJobName:
         type: string
@@ -4591,7 +4591,7 @@ definitions:
       retainTime:
         type: string
       retryCount:
-        format: int32
+        format: int
         type: integer
       retryInterval:
         type: string
@@ -4608,10 +4608,10 @@ definitions:
       runawayElapsed:
         type: string
       runawayElapsedPer:
-        format: int32
+        format: int
         type: integer
       runPriority:
-        format: int32
+        format: int
         type: integer
       scheduledDate:
         type: string
@@ -4628,17 +4628,17 @@ definitions:
       scheduleToTime:
         type: string
       scheduleWindowID:
-        format: int32
+        format: int
         type: integer
       scheduleWindowName:
         type: string
       schedulingPriorityModifier:
-        format: int32
+        format: int
         type: integer
       shortElapsed:
         type: string
       shortElapsedPer:
-        format: int32
+        format: int
         type: integer
       shortSeverity:
         enum:
@@ -4663,7 +4663,7 @@ definitions:
       stalledTime:
         type: string
       submitMethodID:
-        format: int32
+        format: int
         type: integer
       submitMethodName:
         type: string
@@ -4678,23 +4678,23 @@ definitions:
           - NotSpecified
         type: string
       timeZoneID:
-        format: int32
+        format: int
         type: integer
       timeZoneName:
         type: string
       userID:
-        format: int32
+        format: int
         type: integer
       userName:
         type: string
       workingSetDefault:
-        format: int32
+        format: int
         type: integer
       workingSetMax:
-        format: int32
+        format: int
         type: integer
       workingSetQuota:
-        format: int32
+        format: int
         type: integer
   Dependency:
     type: object
@@ -4713,7 +4713,7 @@ definitions:
           - Variable
         type: string
       dependID:
-        format: int32
+        format: int
         type: integer
       description:
         type: string
@@ -4724,7 +4724,7 @@ definitions:
     type: object
     properties:
       copies:
-        format: int32
+        format: int
         type: integer
       description:
         type: string
@@ -4744,7 +4744,7 @@ definitions:
       reportID:
         type: string
       retentionDays:
-        format: int32
+        format: int
         type: integer
   Resource:
     type: object
@@ -4757,13 +4757,13 @@ definitions:
       resourceName:
         type: string
       resourceID:
-        format: int32
+        format: int
         type: integer
       quantityAvailable:
-        format: int32
+        format: int
         type: integer
       quantityInUse:
-        format: int32
+        format: int
         type: integer
       routineName:
         type: string
@@ -4781,7 +4781,7 @@ definitions:
       nodeName:
         type: string
       quantityAvailable:
-        format: int32
+        format: int
         type: integer
   Setup:
     type: object
@@ -4793,19 +4793,19 @@ definitions:
       alerts:
         type: array
         items:
-          $ref: '#/definitions/AlertReq'
+          $ref: '#/definitions/AlertLink'
       autoSubmit:
         type: boolean
       avgCount:
-        format: int32
+        format: int
         type: integer
       avgElapsedTime:
         type: string
       avgJobCount:
-        format: int32
+        format: int
         type: integer
       batchQueueID:
-        format: int32
+        format: int
         type: integer
       batchQueueName:
         type: string
@@ -4857,20 +4857,20 @@ definitions:
           - NotSpecified
         type: string
       maxCount:
-        format: int32
+        format: int
         type: integer
       maxElapsedTime:
         type: string
       maxJobCount:
-        format: int32
+        format: int
         type: integer
       minCount:
-        format: int32
+        format: int
         type: integer
       minElapsedTime:
         type: string
       minJobCount:
-        format: int32
+        format: int
         type: integer
       missedWindowAction:
         enum:
@@ -4884,7 +4884,7 @@ definitions:
       notifyEMail:
         type: string
       notifyJobID:
-        format: int32
+        format: int
         type: integer
       notifyJobName:
         type: string
@@ -4905,7 +4905,7 @@ definitions:
       notifyUsers:
         type: string
       parentFolderId:
-        format: int32
+        format: int
         type: integer
       parentFolderName:
         type: string
@@ -4916,14 +4916,14 @@ definitions:
       precheckJobNameIsRelative:
         type: boolean
       prechkJobID:
-        format: int32
+        format: int
         type: integer
       qualifiedName:
         type: string
       recoverJobNameIsRelative:
         type: boolean
       recoverJobID:
-        format: int32
+        format: int
         type: integer
       recoverJobName:
         type: string
@@ -4969,7 +4969,7 @@ definitions:
       retainTime:
         type: string
       retryCount:
-        format: int32
+        format: int
         type: integer
       retryInterval:
         type: string
@@ -4986,7 +4986,7 @@ definitions:
       runawayElapsed:
         type: string
       runawayElapsedPer:
-        format: int32
+        format: int
         type: integer
       scheduledDate:
         type: string
@@ -4999,19 +4999,19 @@ definitions:
       scheduledTime:
         type: string
       schedulingPriorityModifier:
-        format: int32
+        format: int
         type: integer
       scheduleWindowName:
         type: string
       setupID:
-        format: int32
+        format: int
         type: integer
       setupName:
         type: string
       shortElapsed:
         type: string
       shortElapsedPer:
-        format: int32
+        format: int
         type: integer
       failShort:
         type: boolean
@@ -5026,7 +5026,7 @@ definitions:
       suppressMenuDisplay:
         type: boolean
       timeZoneID:
-        format: int32
+        format: int
         type: integer
       timeZoneName:
         type: string
@@ -5037,7 +5037,7 @@ definitions:
       scheduleToTime:
         type: string
       scheduleWindowID:
-        format: int32
+        format: int
         type: integer
       nonWorkdayScheduling:
         enum:
@@ -5055,33 +5055,33 @@ definitions:
         items:
           $ref: '#/definitions/Alert'
       avgBufferedIOCount:
-        format: int32
+        format: int
         type: integer
       avgCount:
-        format: int32
+        format: int
         type: integer
       avgCpuTime:
         type: string
       avgDirectIOCount:
-        format: int32
+        format: int
         type: integer
       avgElapsedTime:
         type: string
       avgPageFaults:
-        format: int32
+        format: int
         type: integer
       avgWorkingSetPeak:
-        format: int32
+        format: int
         type: integer
       batchQueueID:
-        format: int32
+        format: int
         type: integer
       batchQueueName:
         type: string
       description:
         type: string
       detailID:
-        format: int32
+        format: int
         type: integer
       exceptForDate:
         type: string
@@ -5097,7 +5097,7 @@ definitions:
       jobDescription:
         type: string
       jobID:
-        format: int32
+        format: int
         type: integer
       jobName:
         type: string
@@ -5107,34 +5107,34 @@ definitions:
       logFilename:
         type: string
       maxBufferedIOCount:
-        format: int32
+        format: int
         type: integer
       maxCount:
-        format: int32
+        format: int
         type: integer
       maxCpuTime:
         type: string
       maxDirectIOCount:
-        format: int32
+        format: int
         type: integer
       maxElapsedTime:
         type: string
       maxPageFaults:
-        format: int32
+        format: int
         type: integer
       maxWorkingSetPeak:
-        format: int32
+        format: int
         type: integer
       minBufferedIOCount:
-        format: int32
+        format: int
         type: integer
       minCount:
-        format: int32
+        format: int
         type: integer
       minCpuTime:
         type: string
       minDirectIOCount:
-        format: int32
+        format: int
         type: integer
       minElapsedTime:
         type: string
@@ -5147,10 +5147,10 @@ definitions:
           - Fatal
         type: string
       minPageFaults:
-        format: int32
+        format: int
         type: integer
       minWorkingSetPeak:
-        format: int32
+        format: int
         type: integer
       missedWindowAction:
         enum:
@@ -5170,7 +5170,7 @@ definitions:
       notifyEMail:
         type: string
       notifyJobID:
-        format: int32
+        format: int
         type: integer
       notifyJobName:
         type: string
@@ -5203,14 +5203,14 @@ definitions:
       precheckInterval:
         type: string
       precheckJobID:
-        format: int32
+        format: int
         type: integer
       precheckJobName:
         type: string
       precheckJobNameIsRelative:
         type: boolean
       recoverJobID:
-        format: int32
+        format: int
         type: integer
       recoverJobName:
         type: string
@@ -5231,7 +5231,7 @@ definitions:
         items:
           $ref: '#/definitions/SetupJobReport'
       retryCount:
-        format: int32
+        format: int
         type: integer
       retryInterval:
         type: string
@@ -5248,10 +5248,10 @@ definitions:
       runawayElapsed:
         type: string
       runawayElapsedPer:
-        format: int32
+        format: int
         type: integer
       runPriority:
-        format: int32
+        format: int
         type: integer
       scheduledDate:
         type: string
@@ -5260,20 +5260,20 @@ definitions:
       scheduleToTime:
         type: string
       scheduleWindowID:
-        format: int32
+        format: int
         type: integer
       scheduleWindowName:
         type: string
       schedulingPriorityModifier:
-        format: int32
+        format: int
         type: integer
       setupID:
-        format: int32
+        format: int
         type: integer
       shortElapsed:
         type: string
       shortElapsedPer:
-        format: int32
+        format: int
         type: integer
       shortSeverity:
         enum:
@@ -5288,7 +5288,7 @@ definitions:
       stalledTime:
         type: string
       step:
-        format: int32
+        format: int
         type: integer
       submitOnHold:
         enum:
@@ -5297,7 +5297,7 @@ definitions:
           - NotSpecified
         type: string
       userID:
-        format: int32
+        format: int
         type: integer
       userName:
         type: string
@@ -5307,7 +5307,7 @@ definitions:
     type: object
     properties:
       referenceID:
-        format: int32
+        format: int
         type: integer
       name:
         type: string
@@ -5336,7 +5336,7 @@ definitions:
     type: object
     properties:
       alertID:
-        format: int32
+        format: int
         type: integer
       alertName:
         type: string
@@ -5395,7 +5395,7 @@ definitions:
     type: object
     properties:
       copies:
-        format: int32
+        format: int
         type: integer
       fullFilename:
         type: string
@@ -5413,7 +5413,7 @@ definitions:
       reportID:
         type: string
       retentionDays:
-        format: int32
+        format: int
         type: integer
   SubmitInfo:
     type: object
@@ -5422,7 +5422,7 @@ definitions:
         format: date-time
         type: string
       batchQueueID:
-        format: int32
+        format: int
         type: integer
       batchQueueName:
         type: string
@@ -5433,14 +5433,14 @@ definitions:
       failShort:
         type: boolean
       folderID:
-        format: int32
+        format: int
         type: integer
       folderName:
         type: string
       hold:
         type: boolean
       jamsEntry:
-        format: int32
+        format: int
         type: integer
       jamsId:
         type: string
@@ -5482,7 +5482,7 @@ definitions:
       precheckInterval:
         type: string
       precheckJobID:
-        format: int32
+        format: int
         type: integer
       restartable:
         type: boolean
@@ -5499,7 +5499,7 @@ definitions:
       retainTime:
         type: string
       ron:
-        format: int32
+        format: int
         type: integer
       runawayElapsed:
         type: string
@@ -5508,10 +5508,10 @@ definitions:
       scheduleToTime:
         type: string
       scheduleWindowID:
-        format: int32
+        format: int
         type: integer
       schedulingPriority:
-        format: int32
+        format: int
         type: integer
       setSymbols:
         type: boolean
@@ -5520,7 +5520,7 @@ definitions:
       stalledTime:
         type: string
       submitID:
-        format: int32
+        format: int
         type: integer
       submitIsSimple:
         type: boolean
@@ -5545,7 +5545,7 @@ definitions:
           - NotSpecified
         type: string
       userID:
-        format: int32
+        format: int
         type: integer
       userName:
         type: string
@@ -5561,17 +5561,17 @@ definitions:
       altUserName:
         type: string
       batchQueueID:
-        format: int32
+        format: int
         type: integer
       batchQueueName:
         type: string
       description:
         type: string
       detailID:
-        format: int32
+        format: int
         type: integer
       folderID:
-        format: int32
+        format: int
         type: integer
       folderName:
         type: string
@@ -5580,7 +5580,7 @@ definitions:
       inSchedule:
         type: boolean
       jobID:
-        format: int32
+        format: int
         type: integer
       keepLogs:
         enum:
@@ -5622,7 +5622,7 @@ definitions:
       precheckInterval:
         type: string
       precheckJobID:
-        format: int32
+        format: int
         type: integer
       requiresSnapshot:
         type: boolean
@@ -5631,17 +5631,17 @@ definitions:
       runawayElapsed:
         type: string
       runPriority:
-        format: int32
+        format: int
         type: integer
       scheduleFromTime:
         type: string
       scheduleToTime:
         type: string
       scheduleWindowID:
-        format: int32
+        format: int
         type: integer
       schedulingPriority:
-        format: int32
+        format: int
         type: integer
       shortElapsed:
         type: string
@@ -5662,10 +5662,10 @@ definitions:
       stalledTime:
         type: string
       step:
-        format: int32
+        format: int
         type: integer
       submitMethodID:
-        format: int32
+        format: int
         type: integer
       timestampLogs:
         enum:
@@ -5674,7 +5674,7 @@ definitions:
           - NotSpecified
         type: string
       userID:
-        format: int32
+        format: int
         type: integer
       userName:
         type: string
@@ -5699,7 +5699,7 @@ definitions:
       defaultFormat:
         type: string
       detailID:
-        format: int32
+        format: int
         type: integer
       globalName:
         type: string
@@ -5710,10 +5710,10 @@ definitions:
       hide:
         type: boolean
       jobID:
-        format: int32
+        format: int
         type: integer
       length:
-        format: int32
+        format: int
         type: integer
       mustFill:
         type: boolean
@@ -5724,7 +5724,7 @@ definitions:
           - Method
         type: string
       paramID:
-        format: int32
+        format: int
         type: integer
       paramName:
         type: string
@@ -5764,7 +5764,7 @@ definitions:
       menuText:
         type: string
       id:
-        format: int32
+        format: int
         type: integer
   NestedMenuEntry:
     type: object
@@ -5785,7 +5785,7 @@ definitions:
       menuText:
         type: string
       id:
-        format: int32
+        format: int
         type: integer
   Tenant:
     type: object
@@ -5802,27 +5802,27 @@ definitions:
     type: object
     properties:
       major:
-        format: int32
+        format: int
         type: integer
         readOnly: true
       minor:
-        format: int32
+        format: int
         type: integer
         readOnly: true
       build:
-        format: int32
+        format: int
         type: integer
         readOnly: true
       revision:
-        format: int32
+        format: int
         type: integer
         readOnly: true
       majorRevision:
-        format: int32
+        format: int
         type: integer
         readOnly: true
       minorRevision:
-        format: int32
+        format: int
         type: integer
         readOnly: true
   Theme:
@@ -5836,7 +5836,7 @@ definitions:
     type: object
     properties:
       triggerID:
-        format: int32
+        format: int
         type: integer
       triggerName:
         type: string
@@ -5845,7 +5845,7 @@ definitions:
       description:
         type: string
       parentFolderID:
-        format: int32
+        format: int
         type: integer
         readOnly: true
       parentFolderName:
@@ -5881,7 +5881,7 @@ definitions:
     type: object
     properties:
       eventID:
-        format: int32
+        format: int
         type: integer
       eventName:
         type: string
@@ -5907,7 +5907,7 @@ definitions:
     type: object
     properties:
       actionID:
-        format: int32
+        format: int
         type: integer
       actionName:
         type: string
@@ -5944,7 +5944,7 @@ definitions:
       publicKey:
         type: string
       userID:
-        format: int32
+        format: int
         type: integer
       userName:
         type: string
@@ -5954,7 +5954,7 @@ definitions:
       acl:
         $ref: '#/definitions/ACL'
       currentLength:
-        format: int32
+        format: int
         type: integer
       dataType:
         enum:
@@ -5975,14 +5975,14 @@ definitions:
         format: date-time
         type: string
       parentFolderId:
-        format: int32
+        format: int
         type: integer
       parentFolderName:
         type: string
       value:
         type: string
       variableId:
-        format: int32
+        format: int
         type: integer
       variableName:
         type: string

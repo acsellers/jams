@@ -13,16 +13,16 @@ type SubmitParameter struct {
 	AllowEntry      bool   `json:"allowEntry,omitempty"`
 	DataType        string `json:"dataType,omitempty"`
 	DefaultFormat   string `json:"defaultFormat,omitempty"`
-	DetailID        int32  `json:"detailID,omitempty"`
+	DetailID        int    `json:"detailID,omitempty"`
 	GlobalName      string `json:"globalName,omitempty"`
 	GlobalOverride  bool   `json:"globalOverride,omitempty"`
 	HelpText        string `json:"helpText,omitempty"`
 	Hide            bool   `json:"hide,omitempty"`
-	JobID           int32  `json:"jobID,omitempty"`
-	Length          int32  `json:"length,omitempty"`
+	JobID           int    `json:"jobID,omitempty"`
+	Length          int    `json:"length,omitempty"`
 	MustFill        bool   `json:"mustFill,omitempty"`
 	ParameterOrigin string `json:"parameterOrigin,omitempty"`
-	ParamID         int32  `json:"paramID,omitempty"`
+	ParamID         int    `json:"paramID,omitempty"`
 	ParamName       string `json:"paramName,omitempty"`
 	ParamValue      string `json:"paramValue,omitempty"`
 	Prompt          string `json:"prompt,omitempty"`

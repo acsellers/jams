@@ -10,10 +10,10 @@
 package jams
 
 type Version struct {
-	Major         int32 `json:"major,omitempty"`
-	Minor         int32 `json:"minor,omitempty"`
-	Build         int32 `json:"build,omitempty"`
-	Revision      int32 `json:"revision,omitempty"`
-	MajorRevision int32 `json:"majorRevision,omitempty"`
-	MinorRevision int32 `json:"minorRevision,omitempty"`
+	Major         int `json:"major,omitempty"`
+	Minor         int `json:"minor,omitempty"`
+	Build         int `json:"build,omitempty"`
+	Revision      int `json:"revision,omitempty"`
+	MajorRevision int `json:"majorRevision,omitempty"`
+	MinorRevision int `json:"minorRevision,omitempty"`
 }

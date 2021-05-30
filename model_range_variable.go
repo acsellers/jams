@@ -12,5 +12,5 @@ package jams
 type RangeVariable struct {
 	Name          string             `json:"name,omitempty"`
 	TypeReference *IEdmTypeReference `json:"typeReference,omitempty"`
-	Kind          int32              `json:"kind,omitempty"`
+	Kind          int                `json:"kind,omitempty"`
 }

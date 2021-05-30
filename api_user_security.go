@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -35,16 +34,13 @@ func (a *UserSecurityAPI) DeleteUser(ctx context.Context, name string) (string, 
 	var returnValue string
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/usersecurity/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/usersecurity/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -102,12 +98,10 @@ func (a *UserSecurityAPI) Users(ctx context.Context) ([]UserSecurity, error) {
 	apiPath := a.client.cfg.BasePath + "/api/usersecurity"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -163,16 +157,13 @@ func (a *UserSecurityAPI) UserByName(ctx context.Context, name string) (UserSecu
 	var returnValue UserSecurity
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/usersecurity/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/usersecurity/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -224,20 +215,17 @@ UserSecurityAPI Get the User with the specified ID.
 
 @return UserSecurity
 */
-func (a *UserSecurityAPI) UserByID(ctx context.Context, id int32) (UserSecurity, error) {
+func (a *UserSecurityAPI) UserByID(ctx context.Context, id int) (UserSecurity, error) {
 	var returnValue UserSecurity
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/usersecurity/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/usersecurity/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -296,12 +284,10 @@ func (a *UserSecurityAPI) CreateUser(ctx context.Context, user UserSecurity) (Us
 	apiPath := a.client.cfg.BasePath + "/api/usersecurity/user"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &user, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &user, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -360,12 +346,10 @@ func (a *UserSecurityAPI) UpdateUser(ctx context.Context, user UserSecurity) (Us
 	apiPath := a.client.cfg.BasePath + "/api/usersecurity/user"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &user, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &user, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

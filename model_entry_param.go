@@ -12,10 +12,10 @@ package jams
 type EntryParam struct {
 	DataType        string `json:"dataType,omitempty"`
 	DefaultFormat   string `json:"defaultFormat,omitempty"`
-	JamsEntry       int32  `json:"jamsEntry,omitempty"`
+	JamsEntry       int    `json:"jamsEntry,omitempty"`
 	LoadedFrom      string `json:"loadedFrom,omitempty"`
 	ParameterOrigin string `json:"parameterOrigin,omitempty"`
 	ParamName       string `json:"paramName,omitempty"`
-	Sequence        int32  `json:"sequence,omitempty"`
+	Sequence        int    `json:"sequence,omitempty"`
 	Value           string `json:"value,omitempty"`
 }

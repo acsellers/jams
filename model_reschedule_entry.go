@@ -18,6 +18,6 @@ type RescheduleEntry struct {
 	AgentNode    string    `json:"agentNode,omitempty"`
 	HoldTime     time.Time `json:"holdTime,omitempty"`
 	Held         bool      `json:"held,omitempty"`
-	Priority     int32     `json:"priority,omitempty"`
+	Priority     int       `json:"priority,omitempty"`
 	AuditComment string    `json:"auditComment,omitempty"`
 }

@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -37,10 +36,10 @@ func (a *FolderAPI) DeleteFolder(ctx context.Context, qualifiedName string) (str
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/folder"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("qualifiedName", parameterToString(qualifiedName, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -96,20 +95,17 @@ FolderAPI Get full folder definition by ID
 
 @return Folder
 */
-func (a *FolderAPI) FolderByID(ctx context.Context, id int32) (Folder, error) {
+func (a *FolderAPI) FolderByID(ctx context.Context, id int) (Folder, error) {
 	var returnValue Folder
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/folder/details/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/folder/details/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -165,16 +161,13 @@ func (a *FolderAPI) FolderByName(ctx context.Context, name string) (Folder, erro
 	var returnValue Folder
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/folder/details/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/folder/details/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -226,20 +219,17 @@ FolderAPI Gets all child folder definitions of selected folder by ID
 
 @return []Folder
 */
-func (a *FolderAPI) FoldersByParentID(ctx context.Context, id int32) ([]Folder, error) {
+func (a *FolderAPI) FoldersByParentID(ctx context.Context, id int) ([]Folder, error) {
 	var returnValue []Folder
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/folder/folder/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/folder/folder/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -295,16 +285,13 @@ func (a *FolderAPI) FoldersByParentName(ctx context.Context, name string) ([]Fol
 	var returnValue []Folder
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/folder/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/folder/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -362,12 +349,10 @@ func (a *FolderAPI) SubFoldersOfRootFolder(ctx context.Context) ([]Folder, error
 	apiPath := a.client.cfg.BasePath + "/api/folder/folder/root"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -426,12 +411,10 @@ func (a *FolderAPI) CreateFolder(ctx context.Context, folder Folder) (Folder, er
 	apiPath := a.client.cfg.BasePath + "/api/folder"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &folder, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &folder, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -490,12 +473,10 @@ func (a *FolderAPI) UpdateFolder(ctx context.Context, folder Folder) (Folder, er
 	apiPath := a.client.cfg.BasePath + "/api/folder"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &folder, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &folder, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

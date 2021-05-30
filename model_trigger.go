@@ -14,11 +14,11 @@ import (
 )
 
 type Trigger struct {
-	TriggerID        int32           `json:"triggerID,omitempty"`
+	TriggerID        int             `json:"triggerID,omitempty"`
 	TriggerName      string          `json:"triggerName,omitempty"`
 	QualifiedName    string          `json:"qualifiedName,omitempty"`
 	Description      string          `json:"description,omitempty"`
-	ParentFolderID   int32           `json:"parentFolderID,omitempty"`
+	ParentFolderID   int             `json:"parentFolderID,omitempty"`
 	ParentFolderName string          `json:"parentFolderName,omitempty"`
 	Status           string          `json:"status,omitempty"`
 	UserName         string          `json:"userName,omitempty"`

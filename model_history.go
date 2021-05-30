@@ -15,36 +15,36 @@ import (
 
 type History struct {
 	BatchQueue        string    `json:"batchQueue,omitempty"`
-	BufferedIOCount   int32     `json:"bufferedIOCount,omitempty"`
+	BufferedIOCount   int       `json:"bufferedIOCount,omitempty"`
 	CompletionTimeUTC time.Time `json:"completionTimeUTC,omitempty"`
 	CpuTime           string    `json:"cpuTime,omitempty"`
 	DebugMode         bool      `json:"debugMode,omitempty"`
-	DirectIOCount     int32     `json:"directIOCount,omitempty"`
+	DirectIOCount     int       `json:"directIOCount,omitempty"`
 	ElapsedTime       string    `json:"elapsedTime,omitempty"`
 	FinalSeverity     string    `json:"finalSeverity,omitempty"`
 	FinalStatus       string    `json:"finalStatus,omitempty"`
-	FinalStatusCode   int32     `json:"finalStatusCode,omitempty"`
-	FolderID          int32     `json:"folderID,omitempty"`
+	FinalStatusCode   int       `json:"finalStatusCode,omitempty"`
+	FolderID          int       `json:"folderID,omitempty"`
 	FolderName        string    `json:"folderName,omitempty"`
 	HoldTimeUTC       time.Time `json:"holdTimeUTC,omitempty"`
-	InitiatorID       int32     `json:"initiatorID,omitempty"`
+	InitiatorID       int       `json:"initiatorID,omitempty"`
 	InitiatorType     string    `json:"initiatorType,omitempty"`
-	JamsEntry         int32     `json:"jamsEntry,omitempty"`
+	JamsEntry         int       `json:"jamsEntry,omitempty"`
 	JamsId            string    `json:"jamsId,omitempty"`
-	JobID             int32     `json:"jobID,omitempty"`
+	JobID             int       `json:"jobID,omitempty"`
 	JobName           string    `json:"jobName,omitempty"`
 	JobStatus         string    `json:"jobStatus,omitempty"`
 	LogFilename       string    `json:"logFilename,omitempty"`
-	MasterRON         int32     `json:"masterRON,omitempty"`
+	MasterRON         int       `json:"masterRON,omitempty"`
 	NodeName          string    `json:"nodeName,omitempty"`
 	Note              string    `json:"note,omitempty"`
 	OverrideJobName   string    `json:"overrideJobName,omitempty"`
-	PageFaults        int32     `json:"pageFaults,omitempty"`
-	ProcessID         int32     `json:"processID,omitempty"`
-	RestartCount      int32     `json:"restartCount,omitempty"`
-	Ron               int32     `json:"ron,omitempty"`
+	PageFaults        int       `json:"pageFaults,omitempty"`
+	ProcessID         int       `json:"processID,omitempty"`
+	RestartCount      int       `json:"restartCount,omitempty"`
+	Ron               int       `json:"ron,omitempty"`
 	ScheduledTimeUTC  time.Time `json:"scheduledTimeUTC,omitempty"`
-	SetupID           int32     `json:"setupID,omitempty"`
+	SetupID           int       `json:"setupID,omitempty"`
 	SetupName         string    `json:"setupName,omitempty"`
 	StartTimeUTC      time.Time `json:"startTimeUTC,omitempty"`
 	SubmittedBy       string    `json:"submittedBy,omitempty"`

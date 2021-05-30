@@ -10,7 +10,7 @@
 package jams
 
 type AppMenuItem struct {
-	Id      int32         `json:"id,omitempty"`
+	Id      int           `json:"id,omitempty"`
 	Label   string        `json:"label,omitempty"`
 	Icon    string        `json:"icon,omitempty"`
 	Url     string        `json:"url,omitempty"`

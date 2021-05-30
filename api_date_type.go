@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -37,10 +36,10 @@ func (a *DateTypeAPI) DeleteDateType(ctx context.Context, name string) (Object, 
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/datetype"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -102,12 +101,10 @@ func (a *DateTypeAPI) DateTypes(ctx context.Context) ([]DateType, error) {
 	apiPath := a.client.cfg.BasePath + "/api/datetype"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -163,16 +160,13 @@ func (a *DateTypeAPI) DateTypeByName(ctx context.Context, name string) (DateType
 	var returnValue DateType
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/datetype/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/datetype/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -224,20 +218,17 @@ DateTypeAPI Get the DateType with the specified ID.
 
 @return DateType
 */
-func (a *DateTypeAPI) DateTypeByID(ctx context.Context, id int32) (DateType, error) {
+func (a *DateTypeAPI) DateTypeByID(ctx context.Context, id int) (DateType, error) {
 	var returnValue DateType
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/datetype/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/datetype/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -296,12 +287,10 @@ func (a *DateTypeAPI) CreateDateType(ctx context.Context, dateType DateType) (Ob
 	apiPath := a.client.cfg.BasePath + "/api/datetype/dateType"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &dateType, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &dateType, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -360,12 +349,10 @@ func (a *DateTypeAPI) UpdateDateType(ctx context.Context, dateType DateType) (Ob
 	apiPath := a.client.cfg.BasePath + "/api/datetype/dateType"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &dateType, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &dateType, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 
 	"github.com/antihax/optional"
 )
@@ -39,12 +38,10 @@ func (a *HistoryAPI) History(ctx context.Context) ([]History, error) {
 	apiPath := a.client.cfg.BasePath + "/api/history"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -102,12 +99,10 @@ func (a *HistoryAPI) HistoryOdata(ctx context.Context) (PageResultHistory, error
 	apiPath := a.client.cfg.BasePath + "/api/history/odata"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -168,21 +163,24 @@ type HistoryApiHistoryGetJobLogOpts struct {
 	IsPreview optional.Bool
 }
 
-func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron int32, restartCount int32, localVarOptionals *HistoryApiHistoryGetJobLogOpts) (Object, error) {
+func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCount int, localVarOptionals *HistoryApiHistoryGetJobLogOpts) (Object, error) {
 	var returnValue Object
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/history/job/log/{jobName}/{ron}/{restartCount}"
-	apiPath = strings.Replace(apiPath, "{"+"jobName"+"}", fmt.Sprintf("%v", jobName), -1)
-	apiPath = strings.Replace(apiPath, "{"+"ron"+"}", fmt.Sprintf("%v", ron), -1)
-	apiPath = strings.Replace(apiPath, "{"+"restartCount"+"}", fmt.Sprintf("%v", restartCount), -1)
+	apiPath := fmt.Sprintf(
+		"%s/api/history/job/log/%s/%d/%d",
+		a.client.cfg.BasePath,
+		jobName,
+		ron,
+		restartCount,
+	)
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	if localVarOptionals != nil && localVarOptionals.IsPreview.IsSet() {
 		queryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
 	}
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -247,21 +245,24 @@ type HistoryApiHistoryGetSetupLogOpts struct {
 	IsPreview optional.Bool
 }
 
-func (a *HistoryAPI) SetupLog(ctx context.Context, setupName string, ron int32, restartCount int32, localVarOptionals *HistoryApiHistoryGetSetupLogOpts) (Object, error) {
+func (a *HistoryAPI) SetupLog(ctx context.Context, setupName string, ron, restartCount int, localVarOptionals *HistoryApiHistoryGetSetupLogOpts) (Object, error) {
 	var returnValue Object
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/history/setup/log/{setupName}/{ron}/{restartCount}"
-	apiPath = strings.Replace(apiPath, "{"+"setupName"+"}", fmt.Sprintf("%v", setupName), -1)
-	apiPath = strings.Replace(apiPath, "{"+"ron"+"}", fmt.Sprintf("%v", ron), -1)
-	apiPath = strings.Replace(apiPath, "{"+"restartCount"+"}", fmt.Sprintf("%v", restartCount), -1)
+	apiPath := fmt.Sprintf(
+		"%s/api/history/setup/log/%s/%d/%d",
+		a.client.cfg.BasePath,
+		setupName,
+		ron,
+		restartCount,
+	)
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	if localVarOptionals != nil && localVarOptionals.IsPreview.IsSet() {
 		queryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
 	}
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 

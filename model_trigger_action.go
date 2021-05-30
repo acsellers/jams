@@ -14,7 +14,7 @@ import (
 )
 
 type TriggerAction struct {
-	ActionID      int32     `json:"actionID,omitempty"`
+	ActionID      int       `json:"actionID,omitempty"`
 	ActionName    string    `json:"actionName,omitempty"`
 	LastChangeUTC time.Time `json:"lastChangeUTC,omitempty"`
 	Description   string    `json:"description,omitempty"`

@@ -15,17 +15,17 @@ import (
 
 type Agent struct {
 	AgentName        string    `json:"agentName,omitempty"`
-	AgentID          int32     `json:"agentID,omitempty"`
+	AgentID          int       `json:"agentID,omitempty"`
 	AgentType        string    `json:"agentType,omitempty"`
 	Description      string    `json:"description,omitempty"`
 	LastChangeUTC    time.Time `json:"lastChangeUTC,omitempty"`
 	LastChangedBy    string    `json:"lastChangedBy,omitempty"`
 	Platform         string    `json:"platform,omitempty"`
-	JobCount         int32     `json:"jobCount,omitempty"`
-	JobLimit         int32     `json:"jobLimit,omitempty"`
+	JobCount         int       `json:"jobCount,omitempty"`
+	JobLimit         int       `json:"jobLimit,omitempty"`
 	LicenseAllocated bool      `json:"licenseAllocated,omitempty"`
 	Online           bool      `json:"online,omitempty"`
-	Port             int32     `json:"port,omitempty"`
+	Port             int       `json:"port,omitempty"`
 	TimeOffset       string    `json:"timeOffset,omitempty"`
 	Username         string    `json:"username,omitempty"`
 	AgentState       string    `json:"agentState,omitempty"`

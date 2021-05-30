@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 	"time"
 
 	"github.com/antihax/optional"
@@ -119,17 +118,13 @@ func (a *DateAPI) UpdateDate(ctx context.Context, dateTypeName string, date time
 	var returnValue Object
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/date/{dateTypeName}/{date}"
-	apiPath = strings.Replace(apiPath, "{"+"dateTypeName"+"}", fmt.Sprintf("%v", dateTypeName), -1)
-	apiPath = strings.Replace(apiPath, "{"+"date"+"}", fmt.Sprintf("%v", date), -1)
+	apiPath := fmt.Sprintf("%s/api/date/%s/%s", a.client.cfg.BasePath, dateTypeName, date.Format(time.RFC3339))
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

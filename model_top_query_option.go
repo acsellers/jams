@@ -12,6 +12,6 @@ package jams
 type TopQueryOption struct {
 	Context   *ODataQueryContext `json:"context,omitempty"`
 	RawValue  string             `json:"rawValue,omitempty"`
-	Value     int32              `json:"value,omitempty"`
+	Value     int                `json:"value,omitempty"`
 	Validator *TopQueryValidator `json:"validator,omitempty"`
 }

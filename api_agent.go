@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -35,8 +34,7 @@ func (a *AgentAPI) DeleteAgent(ctx context.Context, name string) (string, error)
 	var returnValue string
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/agent/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/agent/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
 
@@ -101,12 +99,11 @@ func (a *AgentAPI) Agents(ctx context.Context) ([]Agent, error) {
 	apiPath := a.client.cfg.BasePath + "/api/agent"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -158,20 +155,18 @@ AgentAPI Get the Agent with the specified agentID.
 
 @return Agent
 */
-func (a *AgentAPI) AgentByID(ctx context.Context, id int32) (Agent, error) {
+func (a *AgentAPI) AgentByID(ctx context.Context, id int) (Agent, error) {
 	var returnValue Agent
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/agent/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("/api/agent/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
 
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -227,16 +222,13 @@ func (a *AgentAPI) AgentByName(ctx context.Context, name string) (Agent, error) 
 	var returnValue Agent
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/agent/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/agent/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -295,12 +287,10 @@ func (a *AgentAPI) CreateAgent(ctx context.Context, agent Agent) (Agent, error) 
 	apiPath := a.client.cfg.BasePath + "/api/agent"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &agent, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &agent, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -359,12 +349,10 @@ func (a *AgentAPI) UpdateAgent(ctx context.Context, agent Agent) (Agent, error) 
 	apiPath := a.client.cfg.BasePath + "/api/agent"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &agent, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &agent, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

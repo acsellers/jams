@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -38,10 +37,10 @@ func (a *VariableAPI) ChangeVariableValue(ctx context.Context, name string, valu
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/variable/setvalue"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -103,10 +102,10 @@ func (a *VariableAPI) DeleteVariable(ctx context.Context, name string) (string, 
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/variable"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -168,12 +167,10 @@ func (a *VariableAPI) Variables(ctx context.Context) ([]Variable, error) {
 	apiPath := a.client.cfg.BasePath + "/api/variable"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -225,20 +222,17 @@ VariableAPI Get the Variable with the specified ID.
 
 @return Variable
 */
-func (a *VariableAPI) VariableByID(ctx context.Context, id int32) (Variable, error) {
+func (a *VariableAPI) VariableByID(ctx context.Context, id int) (Variable, error) {
 	var returnValue Variable
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/variable/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/variable/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -290,20 +284,17 @@ VariableAPI Gets a list of variables under the specified folder definition by ID
 
 @return []Variable
 */
-func (a *VariableAPI) VariablesByFolderID(ctx context.Context, id int32) ([]Variable, error) {
+func (a *VariableAPI) VariablesByFolderID(ctx context.Context, id int) ([]Variable, error) {
 	var returnValue []Variable
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/variable/folder/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/variable/folder/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -362,12 +353,10 @@ func (a *VariableAPI) CreateVariable(ctx context.Context, variable Variable) (Va
 	apiPath := a.client.cfg.BasePath + "/api/variable"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &variable, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &variable, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -426,12 +415,10 @@ func (a *VariableAPI) UpdateVariable(ctx context.Context, var_ Variable) (Variab
 	apiPath := a.client.cfg.BasePath + "/api/variable"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &var_, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &var_, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

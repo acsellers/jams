@@ -14,11 +14,11 @@ import (
 )
 
 type BatchQueue struct {
-	QueueID       int32       `json:"queueID,omitempty"`
+	QueueID       int         `json:"queueID,omitempty"`
 	QueueName     string      `json:"queueName,omitempty"`
 	Description   string      `json:"description,omitempty"`
-	JobCount      int32       `json:"jobCount,omitempty"`
-	JobLimit      int32       `json:"jobLimit,omitempty"`
+	JobCount      int         `json:"jobCount,omitempty"`
+	JobLimit      int         `json:"jobLimit,omitempty"`
 	LastChangeUTC time.Time   `json:"lastChangeUTC,omitempty"`
 	LastChangedBy string      `json:"lastChangedBy,omitempty"`
 	Started       bool        `json:"started,omitempty"`

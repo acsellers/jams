@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -35,16 +34,13 @@ func (a *BatchQueueAPI) DeleteBatchQueue(ctx context.Context, name string) (stri
 	var returnValue string
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/batchqueue/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/batchqueue/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -102,12 +98,10 @@ func (a *BatchQueueAPI) BatchQueues(ctx context.Context) ([]BatchQueue, error) {
 	apiPath := a.client.cfg.BasePath + "/api/batchqueue"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -159,20 +153,17 @@ BatchQueueAPI Gets a batch queue definition by ID
 
 @return BatchQueue
 */
-func (a *BatchQueueAPI) BatchQueueByID(ctx context.Context, id int32) (BatchQueue, error) {
+func (a *BatchQueueAPI) BatchQueueByID(ctx context.Context, id int) (BatchQueue, error) {
 	var returnValue BatchQueue
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/batchqueue/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/batchqueue/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -228,16 +219,13 @@ func (a *BatchQueueAPI) BatchQueueByName(ctx context.Context, name string) (Batc
 	var returnValue BatchQueue
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/batchqueue/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/batchqueue/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -296,12 +284,10 @@ func (a *BatchQueueAPI) CreateBatchQueue(ctx context.Context, batchqueue BatchQu
 	apiPath := a.client.cfg.BasePath + "/api/batchqueue"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &batchqueue, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &batchqueue, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -360,12 +346,10 @@ func (a *BatchQueueAPI) UpdateBatchQueue(ctx context.Context, batchqueue BatchQu
 	apiPath := a.client.cfg.BasePath + "/api/batchqueue"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &batchqueue, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &batchqueue, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -421,16 +405,13 @@ func (a *BatchQueueAPI) StartBatchQueue(ctx context.Context, name string) (strin
 	var returnValue string
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/batchqueue/start/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/batchqueue/start/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -486,16 +467,13 @@ func (a *BatchQueueAPI) StopBatchQueue(ctx context.Context, name string) (string
 	var returnValue string
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/batchqueue/stop/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/batchqueue/stop/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

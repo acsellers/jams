@@ -16,10 +16,10 @@ import (
 type ResReq struct {
 	AutoRelease         bool      `json:"autoRelease,omitempty"`
 	LastChangeUTC       time.Time `json:"lastChangeUTC,omitempty"`
-	NetQuantityRequired int32     `json:"netQuantityRequired,omitempty"`
-	QuantityInherited   int32     `json:"quantityInherited,omitempty"`
-	QuantityRequired    int32     `json:"quantityRequired,omitempty"`
-	ResourceID          int32     `json:"resourceID,omitempty"`
+	NetQuantityRequired int       `json:"netQuantityRequired,omitempty"`
+	QuantityInherited   int       `json:"quantityInherited,omitempty"`
+	QuantityRequired    int       `json:"quantityRequired,omitempty"`
+	ResourceID          int       `json:"resourceID,omitempty"`
 	ResourceName        string    `json:"resourceName,omitempty"`
 	RetainOnFailure     bool      `json:"retainOnFailure,omitempty"`
 }

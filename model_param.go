@@ -20,19 +20,19 @@ type Param struct {
 	DefaultValue           string    `json:"defaultValue,omitempty"`
 	HelpText               string    `json:"helpText,omitempty"`
 	Hide                   bool      `json:"hide,omitempty"`
-	JobID                  int32     `json:"jobID,omitempty"`
+	JobID                  int       `json:"jobID,omitempty"`
 	LastChangeUTC          time.Time `json:"lastChangeUTC,omitempty"`
-	Length                 int32     `json:"length,omitempty"`
+	Length                 int       `json:"length,omitempty"`
 	MustFill               bool      `json:"mustFill,omitempty"`
 	ParameterOrigin        string    `json:"parameterOrigin,omitempty"`
 	ParamName              string    `json:"paramName,omitempty"`
 	Prompt                 string    `json:"prompt,omitempty"`
 	Required               bool      `json:"required,omitempty"`
-	Sequence               int32     `json:"sequence,omitempty"`
+	Sequence               int       `json:"sequence,omitempty"`
 	Uppercase              bool      `json:"uppercase,omitempty"`
 	ValidationData         string    `json:"validationData,omitempty"`
 	ValidationType         string    `json:"validationType,omitempty"`
-	VariableID             int32     `json:"variableID,omitempty"`
+	VariableID             int       `json:"variableID,omitempty"`
 	VariableName           string    `json:"variableName,omitempty"`
 	VariableNameIsRelative bool      `json:"variableNameIsRelative,omitempty"`
 }

@@ -9,8 +9,8 @@
 
 package jams
 
-type AlertReq struct {
-	AlertID     int32  `json:"alertID,omitempty"`
+type AlertLink struct {
+	AlertID     int    `json:"alertID,omitempty"`
 	AlertName   string `json:"alertName,omitempty"`
 	IsInherited bool   `json:"isInherited,omitempty"`
 }

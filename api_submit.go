@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -37,10 +36,10 @@ func (a *SubmitAPI) SubmitInfoByName(ctx context.Context, name string) (SubmitIn
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/submit"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -96,20 +95,17 @@ SubmitAPI Get the submit info for a Setup with the specified ID
 
 @return SubmitInfo
 */
-func (a *SubmitAPI) SubmitInfoBySetupID(ctx context.Context, id int32) (SubmitInfo, error) {
+func (a *SubmitAPI) SubmitInfoBySetupID(ctx context.Context, id int) (SubmitInfo, error) {
 	var returnValue SubmitInfo
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/submit/setup/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/submit/setup/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -161,20 +157,17 @@ SubmitAPI Get the submit info for a Job with the specified ID
 
 @return SubmitInfo
 */
-func (a *SubmitAPI) SubmitInfoByJobID(ctx context.Context, id int32) (SubmitInfo, error) {
+func (a *SubmitAPI) SubmitInfoByJobID(ctx context.Context, id int) (SubmitInfo, error) {
 	var returnValue SubmitInfo
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/submit/job/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/submit/job/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -233,12 +226,10 @@ func (a *SubmitAPI) CreateSubmitInfo(ctx context.Context, si SubmitInfo) (Submit
 	apiPath := a.client.cfg.BasePath + "/api/submit"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &si, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &si, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

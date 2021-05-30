@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -37,10 +36,10 @@ func (a *JobAPI) DeleteJob(ctx context.Context, name string) (string, error) {
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/job"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -96,20 +95,17 @@ JobAPI Get the Job with the specified ID.
 
 @return Job
 */
-func (a *JobAPI) JobByID(ctx context.Context, id int32) (Job, error) {
+func (a *JobAPI) JobByID(ctx context.Context, id int) (Job, error) {
 	var returnValue Job
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/job/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/job/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -165,16 +161,13 @@ func (a *JobAPI) JobByName(ctx context.Context, name string) (Job, error) {
 	var returnValue Job
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/job/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/job/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -232,12 +225,10 @@ func (a *JobAPI) Jobs(ctx context.Context) ([]Job, error) {
 	apiPath := a.client.cfg.BasePath + "/api/job"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -294,13 +285,12 @@ func (a *JobAPI) JobsByFolder(ctx context.Context, folderName string, name strin
 	var returnValue []Job
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/job/folder/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/job/folder/%s", a.client.cfg.BasePath, name)
+
+	queryParams := url.Values{}
+	queryParams.Add("folderName", parameterToString(folderName, ""))
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
-	queryParams.Add("folderName", parameterToString(folderName, ""))
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -356,20 +346,17 @@ JobAPI Gets all jobs in the Folder with the specified ID
 
 @return []Job
 */
-func (a *JobAPI) JobsByFolderID(ctx context.Context, id int32) ([]Job, error) {
+func (a *JobAPI) JobsByFolderID(ctx context.Context, id int) ([]Job, error) {
 	var returnValue []Job
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/job/folder/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/job/folder/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -428,12 +415,10 @@ func (a *JobAPI) CreateJob(ctx context.Context, job Job) (Job, error) {
 	apiPath := a.client.cfg.BasePath + "/api/job"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &job, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &job, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -492,12 +477,10 @@ func (a *JobAPI) UpdateJob(ctx context.Context, job Job) (Job, error) {
 	apiPath := a.client.cfg.BasePath + "/api/job"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &job, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &job, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

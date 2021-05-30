@@ -14,7 +14,7 @@ import (
 )
 
 type DateDetail struct {
-	DateTypeID    int32     `json:"dateTypeID,omitempty"`
+	DateTypeID    int       `json:"dateTypeID,omitempty"`
 	DateTypeType  string    `json:"dateTypeType,omitempty"`
 	Description   string    `json:"description,omitempty"`
 	LastChangeUTC time.Time `json:"lastChangeUTC,omitempty"`

@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -37,10 +36,10 @@ func (a *SetupAPI) DeleteSetup(ctx context.Context, name string) (string, error)
 	// create path and map variables
 	apiPath := a.client.cfg.BasePath + "/api/setup"
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("name", parameterToString(name, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -102,12 +101,10 @@ func (a *SetupAPI) Setups(ctx context.Context) ([]Setup, error) {
 	apiPath := a.client.cfg.BasePath + "/api/setup"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -159,20 +156,17 @@ SetupAPI Get the Setup with the specified ID.
 
 @return Setup
 */
-func (a *SetupAPI) SetupByID(ctx context.Context, id int32) (Setup, error) {
+func (a *SetupAPI) SetupByID(ctx context.Context, id int) (Setup, error) {
 	var returnValue Setup
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/setup/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/setup/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -228,16 +222,13 @@ func (a *SetupAPI) SetupByName(ctx context.Context, name string) (Setup, error) 
 	var returnValue Setup
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/setup/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/setup/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -289,20 +280,17 @@ SetupAPI Gets all Setups in the folder with the specified ID
 
 @return []Setup
 */
-func (a *SetupAPI) SetupsByFolderID(ctx context.Context, id int32) ([]Setup, error) {
+func (a *SetupAPI) SetupsByFolderID(ctx context.Context, id int) ([]Setup, error) {
 	var returnValue []Setup
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/setup/folder/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/setup/folder/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -361,12 +349,10 @@ func (a *SetupAPI) CreateSetup(ctx context.Context, setup Setup) (Setup, error) 
 	apiPath := a.client.cfg.BasePath + "/api/setup"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &setup, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &setup, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -425,12 +411,10 @@ func (a *SetupAPI) UpdateSetup(ctx context.Context, setup Setup) (Setup, error) 
 	apiPath := a.client.cfg.BasePath + "/api/setup"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &setup, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &setup, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}

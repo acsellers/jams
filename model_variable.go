@@ -15,14 +15,14 @@ import (
 
 type Variable struct {
 	ACL              *ACL      `json:"acl,omitempty"`
-	CurrentLength    int32     `json:"currentLength,omitempty"`
+	CurrentLength    int       `json:"currentLength,omitempty"`
 	DataType         string    `json:"dataType,omitempty"`
 	Description      string    `json:"description,omitempty"`
 	LastChangedBy    string    `json:"lastChangedBy,omitempty"`
 	LastChangeUTC    time.Time `json:"lastChangeUTC,omitempty"`
-	ParentFolderId   int32     `json:"parentFolderId,omitempty"`
+	ParentFolderId   int       `json:"parentFolderId,omitempty"`
 	ParentFolderName string    `json:"parentFolderName,omitempty"`
 	Value            string    `json:"value,omitempty"`
-	VariableId       int32     `json:"variableId,omitempty"`
+	VariableId       int       `json:"variableId,omitempty"`
 	VariableName     string    `json:"variableName,omitempty"`
 }

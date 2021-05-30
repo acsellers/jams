@@ -21,10 +21,8 @@ var (
 	_ context.Context
 )
 
-type AuthenticationAPI service
-
 /*
-AuthenticationAPI Provides information about the authenticated user
+UserInfo Provides information about the authenticated user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return Authentication
@@ -39,12 +37,10 @@ func (client *APIClient) UserInfo(ctx context.Context) (Authentication, error) {
 	apiPath := client.cfg.BasePath + "/api/authentication"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -103,12 +99,10 @@ func (client *APIClient) Login(ctx context.Context, loginData LoginData) error {
 	apiPath := client.cfg.BasePath + "/api/authentication/login"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := client.prepareRequest(ctx, apiPath, "POST", &loginData, headers, queryParams)
+	r, err := client.prepareRequest(ctx, apiPath, "POST", &loginData, headers, url.Values{})
 	if err != nil {
 		return err
 	}

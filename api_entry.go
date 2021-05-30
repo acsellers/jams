@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 
 	"github.com/antihax/optional"
 )
@@ -40,19 +39,18 @@ type EntryApiEntryDownloadOpts struct {
 	IsPreview optional.Bool
 }
 
-func (a *EntryAPI) EntryDownload(ctx context.Context, entryId int32, localVarOptionals *EntryApiEntryDownloadOpts) (Object, error) {
+func (a *EntryAPI) EntryDownload(ctx context.Context, entryId int, localVarOptionals *EntryApiEntryDownloadOpts) (Object, error) {
 	var returnValue Object
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/log/{entryId}"
-	apiPath = strings.Replace(apiPath, "{"+"entryId"+"}", fmt.Sprintf("%v", entryId), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/log/%d", a.client.cfg.BasePath, entryId)
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	if localVarOptionals != nil && localVarOptionals.IsPreview.IsSet() {
 		queryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
 	}
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -114,12 +112,10 @@ func (a *EntryAPI) Entries(ctx context.Context) ([]Entry, error) {
 	apiPath := a.client.cfg.BasePath + "/api/entry"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -172,21 +168,17 @@ EntryAPI Gets parameter value for a given entry.
 
 @return EntryParam
 */
-func (a *EntryAPI) EntryParameter(ctx context.Context, id int32, name string) (EntryParam, error) {
+func (a *EntryAPI) EntryParameter(ctx context.Context, id int, name string) (EntryParam, error) {
 	var returnValue EntryParam
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/parameter/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d/parameter/%s", a.client.cfg.BasePath, id, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -238,20 +230,17 @@ EntryAPI Gets parameter list for a given entry.
 
 @return []EntryParam
 */
-func (a *EntryAPI) EntryParameters(ctx context.Context, id int32) ([]EntryParam, error) {
+func (a *EntryAPI) EntryParameters(ctx context.Context, id int) ([]EntryParam, error) {
 	var returnValue []EntryParam
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/parameter"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d/parameter", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -303,20 +292,17 @@ EntryAPI Gets Entry information with the specified ID
 
 @return Entry
 */
-func (a *EntryAPI) EntryByID(ctx context.Context, id int32) (Entry, error) {
+func (a *EntryAPI) EntryByID(ctx context.Context, id int) (Entry, error) {
 	var returnValue Entry
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -369,20 +355,17 @@ EntryAPI Cancels a JAMS entry.
 
 
 */
-func (a *EntryAPI) CancelEntry(ctx context.Context, id int32, cancelEntry CancelEntry) error {
+func (a *EntryAPI) CancelEntry(ctx context.Context, id int, cancelEntry CancelEntry) error {
 	var ()
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/cancel"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d/cancel", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &cancelEntry, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &cancelEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}
@@ -419,22 +402,17 @@ EntryAPI Sets parameter value for a given entry.
 
 
 */
-func (a *EntryAPI) UpdateEntryParameter(ctx context.Context, id int32, name string, value string) error {
+func (a *EntryAPI) UpdateEntryParameter(ctx context.Context, id int, name, value string) error {
 	var ()
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/parameter/{name}/{value}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
-	apiPath = strings.Replace(apiPath, "{"+"value"+"}", fmt.Sprintf("%v", value), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d/parameter/%s/%s", a.client.cfg.BasePath, id, name, value)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", nil, headers, url.Values{})
 	if err != nil {
 		return err
 	}
@@ -470,20 +448,17 @@ EntryAPI Reschedules a JAMS entry.
 
 
 */
-func (a *EntryAPI) RescheduleEntry(ctx context.Context, id int32, rescheduleEntry RescheduleEntry) error {
+func (a *EntryAPI) RescheduleEntry(ctx context.Context, id int, rescheduleEntry RescheduleEntry) error {
 	var ()
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/reschedule"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d/reschedule", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &rescheduleEntry, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &rescheduleEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}
@@ -519,20 +494,17 @@ EntryAPI Restarts a JAMS entry.
 
 
 */
-func (a *EntryAPI) RestartEntry(ctx context.Context, id int32, restartEntry RestartEntry) error {
+func (a *EntryAPI) RestartEntry(ctx context.Context, id int, restartEntry RestartEntry) error {
 	var ()
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/restart"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d/restart", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &restartEntry, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &restartEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}
@@ -571,20 +543,19 @@ EntryAPI Sets the status message for an entry.
 
 
 */
-func (a *EntryAPI) UpdateStatus(ctx context.Context, id int32, status string, icon string, message string, permanent bool) error {
+func (a *EntryAPI) UpdateStatus(ctx context.Context, id int, status string, icon string, message string, permanent bool) error {
 	var ()
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/status"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d/status", a.client.cfg.BasePath, id)
 
-	headers := make(map[string]string)
 	queryParams := url.Values{}
-
 	queryParams.Add("status", parameterToString(status, ""))
 	queryParams.Add("icon", parameterToString(icon, ""))
 	queryParams.Add("message", parameterToString(message, ""))
 	queryParams.Add("permanent", parameterToString(permanent, ""))
+
+	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
@@ -624,20 +595,17 @@ EntryAPI Holds an Entry with the specified ID, with the              specified H
 
 
 */
-func (a *EntryAPI) HoldEntry(ctx context.Context, id int32, holdEntry HoldEntry) error {
+func (a *EntryAPI) HoldEntry(ctx context.Context, id int, holdEntry HoldEntry) error {
 	var ()
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/hold"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d/hold", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &holdEntry, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &holdEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}
@@ -673,20 +641,17 @@ EntryAPI Releases a CurJob with the specified ID              to Run Again, with
 
 
 */
-func (a *EntryAPI) ReleaseEntry(ctx context.Context, id int32, releaseEntry ReleaseEntry) error {
+func (a *EntryAPI) ReleaseEntry(ctx context.Context, id int, releaseEntry ReleaseEntry) error {
 	var ()
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/entry/{id}/release"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/entry/%d/release", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &releaseEntry, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &releaseEntry, headers, url.Values{})
 	if err != nil {
 		return err
 	}

@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -35,16 +34,13 @@ func (a *ResourceAPI) DeleteResource(ctx context.Context, name string) (string, 
 	var returnValue string
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/resource/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/resource/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "DELETE", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -102,12 +98,10 @@ func (a *ResourceAPI) Resources(ctx context.Context) ([]Resource, error) {
 	apiPath := a.client.cfg.BasePath + "/api/resource"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -159,20 +153,17 @@ ResourceAPI Gets a resource by ID
 
 @return Resource
 */
-func (a *ResourceAPI) ResourceByID(ctx context.Context, id int32) (Resource, error) {
+func (a *ResourceAPI) ResourceByID(ctx context.Context, id int) (Resource, error) {
 	var returnValue Resource
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/resource/{id}"
-	apiPath = strings.Replace(apiPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
+	apiPath := fmt.Sprintf("%s/api/resource/%d", a.client.cfg.BasePath, id)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -228,16 +219,13 @@ func (a *ResourceAPI) ResourceByName(ctx context.Context, name string) (Resource
 	var returnValue Resource
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/resource/{name}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	apiPath := fmt.Sprintf("%s/api/resource/%s", a.client.cfg.BasePath, name)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "GET", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -296,12 +284,10 @@ func (a *ResourceAPI) CreateResource(ctx context.Context, resource Resource) (Re
 	apiPath := a.client.cfg.BasePath + "/api/resource"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &resource, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", &resource, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -360,12 +346,10 @@ func (a *ResourceAPI) UpdateResource(ctx context.Context, resource Resource) (Re
 	apiPath := a.client.cfg.BasePath + "/api/resource"
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &resource, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "PUT", &resource, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
@@ -418,21 +402,17 @@ ResourceAPI Change the value of quantity available on a resource
 
 @return Resource
 */
-func (a *ResourceAPI) ResourceSetQuantityAvailable(ctx context.Context, name string, available int32) (Resource, error) {
+func (a *ResourceAPI) ResourceSetQuantityAvailable(ctx context.Context, name string, available int) (Resource, error) {
 	var returnValue Resource
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/resource/setquantityavailable/{name}/{available}"
-	apiPath = strings.Replace(apiPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
-	apiPath = strings.Replace(apiPath, "{"+"available"+"}", fmt.Sprintf("%v", available), -1)
+	apiPath := fmt.Sprintf("%s/api/resource/setquantityavailable/%s/%d", a.client.cfg.BasePath, name, available)
 
 	headers := make(map[string]string)
-	queryParams := url.Values{}
-
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, queryParams)
+	r, err := a.client.prepareRequest(ctx, apiPath, "POST", nil, headers, url.Values{})
 	if err != nil {
 		return returnValue, err
 	}
