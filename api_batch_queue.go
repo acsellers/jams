@@ -25,10 +25,10 @@ type BatchQueueAPI service
 
 /*
 BatchQueueAPI Delete the batch queue definition by name.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the batch queue to delete.
 
-@return string
+returns string
 */
 func (a *BatchQueueAPI) DeleteBatchQueue(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -87,9 +87,9 @@ func (a *BatchQueueAPI) DeleteBatchQueue(ctx context.Context, name string) (stri
 
 /*
 BatchQueueAPI Gets all batch queue definitions
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []BatchQueue
+returns []BatchQueue
 */
 func (a *BatchQueueAPI) BatchQueues(ctx context.Context) ([]BatchQueue, error) {
 	var returnValue []BatchQueue
@@ -148,10 +148,10 @@ func (a *BatchQueueAPI) BatchQueues(ctx context.Context) ([]BatchQueue, error) {
 
 /*
 BatchQueueAPI Gets a batch queue definition by ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id ID of the BatchQueue
 
-@return BatchQueue
+returns BatchQueue
 */
 func (a *BatchQueueAPI) BatchQueueByID(ctx context.Context, id int) (BatchQueue, error) {
 	var returnValue BatchQueue
@@ -210,10 +210,10 @@ func (a *BatchQueueAPI) BatchQueueByID(ctx context.Context, id int) (BatchQueue,
 
 /*
 BatchQueueAPI Gets a batch queue definition by name
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the BatchQueue
 
-@return BatchQueue
+returns BatchQueue
 */
 func (a *BatchQueueAPI) BatchQueueByName(ctx context.Context, name string) (BatchQueue, error) {
 	var returnValue BatchQueue
@@ -272,10 +272,10 @@ func (a *BatchQueueAPI) BatchQueueByName(ctx context.Context, name string) (Batc
 
 /*
 BatchQueueAPI Adds a new batch queue definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param batchqueue The BatchQueue object.
 
-@return BatchQueue
+returns BatchQueue
 */
 func (a *BatchQueueAPI) CreateBatchQueue(ctx context.Context, batchqueue BatchQueue) (BatchQueue, error) {
 	var returnValue BatchQueue
@@ -334,10 +334,10 @@ func (a *BatchQueueAPI) CreateBatchQueue(ctx context.Context, batchqueue BatchQu
 
 /*
 BatchQueueAPI Updates an existing batch queue
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param batchqueue Batch queue definition to be updated
 
-@return BatchQueue
+returns BatchQueue
 */
 func (a *BatchQueueAPI) UpdateBatchQueue(ctx context.Context, batchqueue BatchQueue) (BatchQueue, error) {
 	var returnValue BatchQueue
@@ -396,10 +396,10 @@ func (a *BatchQueueAPI) UpdateBatchQueue(ctx context.Context, batchqueue BatchQu
 
 /*
 BatchQueueAPI Starts a  batch queue
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the queue to start
 
-@return string
+returns string
 */
 func (a *BatchQueueAPI) StartBatchQueue(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -458,10 +458,10 @@ func (a *BatchQueueAPI) StartBatchQueue(ctx context.Context, name string) (strin
 
 /*
 BatchQueueAPI Stops a batch queue
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the queue to stop
 
-@return string
+returns string
 */
 func (a *BatchQueueAPI) StopBatchQueue(ctx context.Context, name string) (string, error) {
 	var returnValue string

@@ -25,10 +25,10 @@ type JobAPI service
 
 /*
 JobAPI Deletes a Job by name.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the Job to delete
 
-@return string
+returns string
 */
 func (a *JobAPI) DeleteJob(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -90,10 +90,10 @@ func (a *JobAPI) DeleteJob(ctx context.Context, name string) (string, error) {
 
 /*
 JobAPI Get the Job with the specified ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The ID of the Job.
 
-@return Job
+returns Job
 */
 func (a *JobAPI) JobByID(ctx context.Context, id int) (Job, error) {
 	var returnValue Job
@@ -152,10 +152,10 @@ func (a *JobAPI) JobByID(ctx context.Context, id int) (Job, error) {
 
 /*
 JobAPI Get the Job with the specified name.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the Job
 
-@return Job
+returns Job
 */
 func (a *JobAPI) JobByName(ctx context.Context, name string) (Job, error) {
 	var returnValue Job
@@ -214,9 +214,9 @@ func (a *JobAPI) JobByName(ctx context.Context, name string) (Job, error) {
 
 /*
 JobAPI Gets a list of all jobs
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []Job
+returns []Job
 */
 func (a *JobAPI) Jobs(ctx context.Context) ([]Job, error) {
 	var returnValue []Job
@@ -275,11 +275,11 @@ func (a *JobAPI) Jobs(ctx context.Context) ([]Job, error) {
 
 /*
 JobAPI Gets Jobs in the Folder with the specified name
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param folderName The name of the Folder to return Jobs from.
  * @param name
 
-@return []Job
+returns []Job
 */
 func (a *JobAPI) JobsByFolder(ctx context.Context, folderName string, name string) ([]Job, error) {
 	var returnValue []Job
@@ -341,10 +341,10 @@ func (a *JobAPI) JobsByFolder(ctx context.Context, folderName string, name strin
 
 /*
 JobAPI Gets all jobs in the Folder with the specified ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id ID of the folder definition
 
-@return []Job
+returns []Job
 */
 func (a *JobAPI) JobsByFolderID(ctx context.Context, id int) ([]Job, error) {
 	var returnValue []Job
@@ -403,10 +403,10 @@ func (a *JobAPI) JobsByFolderID(ctx context.Context, id int) ([]Job, error) {
 
 /*
 JobAPI Creates a new Job object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param job A Models.Job object
 
-@return Job
+returns Job
 */
 func (a *JobAPI) CreateJob(ctx context.Context, job Job) (Job, error) {
 	var returnValue Job
@@ -465,10 +465,10 @@ func (a *JobAPI) CreateJob(ctx context.Context, job Job) (Job, error) {
 
 /*
 JobAPI Updates an existing Job object or creates new definition if it doesn't exist.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param job A Models.Job object
 
-@return Job
+returns Job
 */
 func (a *JobAPI) UpdateJob(ctx context.Context, job Job) (Job, error) {
 	var returnValue Job

@@ -25,10 +25,10 @@ type ResourceAPI service
 
 /*
 ResourceAPI Delete the resource definition by name
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the resource to delete
 
-@return string
+returns string
 */
 func (a *ResourceAPI) DeleteResource(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -87,9 +87,9 @@ func (a *ResourceAPI) DeleteResource(ctx context.Context, name string) (string, 
 
 /*
 ResourceAPI Gets all resources
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []Resource
+returns []Resource
 */
 func (a *ResourceAPI) Resources(ctx context.Context) ([]Resource, error) {
 	var returnValue []Resource
@@ -148,10 +148,10 @@ func (a *ResourceAPI) Resources(ctx context.Context) ([]Resource, error) {
 
 /*
 ResourceAPI Gets a resource by ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id ID of the resource
 
-@return Resource
+returns Resource
 */
 func (a *ResourceAPI) ResourceByID(ctx context.Context, id int) (Resource, error) {
 	var returnValue Resource
@@ -210,10 +210,10 @@ func (a *ResourceAPI) ResourceByID(ctx context.Context, id int) (Resource, error
 
 /*
 ResourceAPI Gets a resource by name
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the resource
 
-@return Resource
+returns Resource
 */
 func (a *ResourceAPI) ResourceByName(ctx context.Context, name string) (Resource, error) {
 	var returnValue Resource
@@ -272,10 +272,10 @@ func (a *ResourceAPI) ResourceByName(ctx context.Context, name string) (Resource
 
 /*
 ResourceAPI Add a new resource definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param resource The resource definition
 
-@return Resource
+returns Resource
 */
 func (a *ResourceAPI) CreateResource(ctx context.Context, resource Resource) (Resource, error) {
 	var returnValue Resource
@@ -334,10 +334,10 @@ func (a *ResourceAPI) CreateResource(ctx context.Context, resource Resource) (Re
 
 /*
 ResourceAPI Updates an existing resource
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param resource Resource definition to be updated
 
-@return Resource
+returns Resource
 */
 func (a *ResourceAPI) UpdateResource(ctx context.Context, resource Resource) (Resource, error) {
 	var returnValue Resource
@@ -396,11 +396,11 @@ func (a *ResourceAPI) UpdateResource(ctx context.Context, resource Resource) (Re
 
 /*
 ResourceAPI Change the value of quantity available on a resource
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the resource
  * @param available The true or false value of node specific
 
-@return Resource
+returns Resource
 */
 func (a *ResourceAPI) ResourceSetQuantityAvailable(ctx context.Context, name string, available int) (Resource, error) {
 	var returnValue Resource

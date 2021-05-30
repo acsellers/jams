@@ -25,10 +25,10 @@ type FolderAPI service
 
 /*
 FolderAPI Deletes a folder definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param qualifiedName The fully qualified name of the folder
 
-@return string
+returns string
 */
 func (a *FolderAPI) DeleteFolder(ctx context.Context, qualifiedName string) (string, error) {
 	var returnValue string
@@ -90,10 +90,10 @@ func (a *FolderAPI) DeleteFolder(ctx context.Context, qualifiedName string) (str
 
 /*
 FolderAPI Get full folder definition by ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id ID of the folder definition.
 
-@return Folder
+returns Folder
 */
 func (a *FolderAPI) FolderByID(ctx context.Context, id int) (Folder, error) {
 	var returnValue Folder
@@ -152,10 +152,10 @@ func (a *FolderAPI) FolderByID(ctx context.Context, id int) (Folder, error) {
 
 /*
 FolderAPI Get full folder definition by name.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the folder definition.
 
-@return Folder
+returns Folder
 */
 func (a *FolderAPI) FolderByName(ctx context.Context, name string) (Folder, error) {
 	var returnValue Folder
@@ -214,10 +214,10 @@ func (a *FolderAPI) FolderByName(ctx context.Context, name string) (Folder, erro
 
 /*
 FolderAPI Gets all child folder definitions of selected folder by ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id ID of the parent folder.
 
-@return []Folder
+returns []Folder
 */
 func (a *FolderAPI) FoldersByParentID(ctx context.Context, id int) ([]Folder, error) {
 	var returnValue []Folder
@@ -276,10 +276,10 @@ func (a *FolderAPI) FoldersByParentID(ctx context.Context, id int) ([]Folder, er
 
 /*
 FolderAPI Gets all child folder definitions of selected folder by name
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the parent folder.
 
-@return []Folder
+returns []Folder
 */
 func (a *FolderAPI) FoldersByParentName(ctx context.Context, name string) ([]Folder, error) {
 	var returnValue []Folder
@@ -338,9 +338,9 @@ func (a *FolderAPI) FoldersByParentName(ctx context.Context, name string) ([]Fol
 
 /*
 FolderAPI Gets all child folder definitions of the root folder
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []Folder
+returns []Folder
 */
 func (a *FolderAPI) SubFoldersOfRootFolder(ctx context.Context) ([]Folder, error) {
 	var returnValue []Folder
@@ -399,10 +399,10 @@ func (a *FolderAPI) SubFoldersOfRootFolder(ctx context.Context) ([]Folder, error
 
 /*
 FolderAPI Adds a new folder definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param folder The folder definition
 
-@return Folder
+returns Folder
 */
 func (a *FolderAPI) CreateFolder(ctx context.Context, folder Folder) (Folder, error) {
 	var returnValue Folder
@@ -461,10 +461,10 @@ func (a *FolderAPI) CreateFolder(ctx context.Context, folder Folder) (Folder, er
 
 /*
 FolderAPI Updates an existing folder definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param folder The folder definition
 
-@return Folder
+returns Folder
 */
 func (a *FolderAPI) UpdateFolder(ctx context.Context, folder Folder) (Folder, error) {
 	var returnValue Folder

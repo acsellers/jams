@@ -25,10 +25,10 @@ type AgentAPI service
 
 /*
 AgentAPI Deletes an Agent object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the Agent
 
-@return string
+returns string
 */
 func (a *AgentAPI) DeleteAgent(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -88,9 +88,9 @@ func (a *AgentAPI) DeleteAgent(ctx context.Context, name string) (string, error)
 
 /*
 AgentAPI Gets a list of all agents
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []Agent
+returns []Agent
 */
 func (a *AgentAPI) Agents(ctx context.Context) ([]Agent, error) {
 	var returnValue []Agent
@@ -150,10 +150,10 @@ func (a *AgentAPI) Agents(ctx context.Context) ([]Agent, error) {
 
 /*
 AgentAPI Get the Agent with the specified agentID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id
 
-@return Agent
+returns Agent
 */
 func (a *AgentAPI) AgentByID(ctx context.Context, id int) (Agent, error) {
 	var returnValue Agent
@@ -213,10 +213,10 @@ func (a *AgentAPI) AgentByID(ctx context.Context, id int) (Agent, error) {
 
 /*
 AgentAPI Get the Agent with the specified agentName.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the Agent
 
-@return Agent
+returns Agent
 */
 func (a *AgentAPI) AgentByName(ctx context.Context, name string) (Agent, error) {
 	var returnValue Agent
@@ -275,10 +275,10 @@ func (a *AgentAPI) AgentByName(ctx context.Context, name string) (Agent, error) 
 
 /*
 AgentAPI Creates a new Agent object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param agent &amp;gt;The name of the agent
 
-@return Agent
+returns Agent
 */
 func (a *AgentAPI) CreateAgent(ctx context.Context, agent Agent) (Agent, error) {
 	var returnValue Agent
@@ -337,10 +337,10 @@ func (a *AgentAPI) CreateAgent(ctx context.Context, agent Agent) (Agent, error) 
 
 /*
 AgentAPI Updates an existing Agent object or creates a new definition if it doesn't exist.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param agent The name of the agent
 
-@return Agent
+returns Agent
 */
 func (a *AgentAPI) UpdateAgent(ctx context.Context, agent Agent) (Agent, error) {
 	var returnValue Agent

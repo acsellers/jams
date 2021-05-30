@@ -14,6 +14,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/url"
+	"time"
 
 	"github.com/antihax/optional"
 )
@@ -24,14 +25,43 @@ var (
 )
 
 type HistoryAPI service
+type HistorySearch struct {
+	FolderName string
+	JobName    string
+	SetupName  string
+	StartDate  time.Time
+	EndDate    time.Time
+}
+
+func (hs HistorySearch) toQuery() url.Values {
+	values := url.Values{}
+
+	if hs.FolderName != "" {
+		values.Add("folderName", hs.FolderName)
+	}
+	if hs.JobName != "" {
+		values.Add("jobName", hs.JobName)
+	}
+	if hs.FolderName != "" {
+		values.Add("setupName", hs.SetupName)
+	}
+	if !hs.StartDate.IsZero() {
+		values.Add("startDate", hs.StartDate.Format(time.RFC3339))
+	}
+	if !hs.EndDate.IsZero() {
+		values.Add("endDate", hs.EndDate.Format(time.RFC3339))
+	}
+
+	return values
+}
 
 /*
 HistoryAPI Gets job execution history.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []History
+returns []History
 */
-func (a *HistoryAPI) History(ctx context.Context) ([]History, error) {
+func (a *HistoryAPI) History(ctx context.Context, search HistorySearch) ([]History, error) {
 	var returnValue []History
 
 	// create path and map variables
@@ -41,7 +71,7 @@ func (a *HistoryAPI) History(ctx context.Context) ([]History, error) {
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, search.toQuery())
 	if err != nil {
 		return returnValue, err
 	}
@@ -87,12 +117,11 @@ func (a *HistoryAPI) History(ctx context.Context) ([]History, error) {
 }
 
 /*
-HistoryAPI Gets job execution history using OData filters.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+HistoryAPI Gets job execution history using OData filters. You'll have to build them manually until I find or build an oData client.
 
-@return PageResultHistory
+returns PageResultHistory
 */
-func (a *HistoryAPI) HistoryOdata(ctx context.Context) (PageResultHistory, error) {
+func (a *HistoryAPI) HistoryOdata(ctx context.Context, query url.Values) (PageResultHistory, error) {
 	var returnValue PageResultHistory
 
 	// create path and map variables
@@ -102,7 +131,7 @@ func (a *HistoryAPI) HistoryOdata(ctx context.Context) (PageResultHistory, error
 	headers["Content-Type"] = "application/json"
 	headers["Accept"] = "application/json"
 
-	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, url.Values{})
+	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, query)
 	if err != nil {
 		return returnValue, err
 	}
@@ -149,21 +178,16 @@ func (a *HistoryAPI) HistoryOdata(ctx context.Context) (PageResultHistory, error
 
 /*
 HistoryAPI Gets log file as download or preview of first 512 kB.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param jobName The Job Name
  * @param ron The RON number
  * @param restartCount The Restart Count
- * @param optional nil or *HistoryApiHistoryGetJobLogOpts - Optional Parameters:
-     * @param "IsPreview" (optional.Bool) -  If true, returns first 512 kB of log file. If false or omitted, returns log file as attachment
+ * @param isPreview" If true, returns first 512 kB of log file. If false, returns log file as attachment
 
-@return Object
+returns Object
 */
 
-type HistoryApiHistoryGetJobLogOpts struct {
-	IsPreview optional.Bool
-}
-
-func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCount int, localVarOptionals *HistoryApiHistoryGetJobLogOpts) (Object, error) {
+func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCount int, isPreview bool) (Object, error) {
 	var returnValue Object
 
 	// create path and map variables
@@ -176,8 +200,8 @@ func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCou
 	)
 
 	queryParams := url.Values{}
-	if localVarOptionals != nil && localVarOptionals.IsPreview.IsSet() {
-		queryParams.Add("isPreview", parameterToString(localVarOptionals.IsPreview.Value(), ""))
+	if isPreview {
+		queryParams.Add("isPreview", "true")
 	}
 
 	headers := make(map[string]string)
@@ -231,14 +255,14 @@ func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCou
 
 /*
 HistoryAPI Gets log file as download or preview of first 512 kB.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param setupName The Setup Name
  * @param ron The RON number
  * @param restartCount The Restart Count
  * @param optional nil or *HistoryApiHistoryGetSetupLogOpts - Optional Parameters:
      * @param "IsPreview" (optional.Bool) -  If true, returns first 512 kB of log file. If false or omitted, returns log file as attachment
 
-@return Object
+returns Object
 */
 
 type HistoryApiHistoryGetSetupLogOpts struct {

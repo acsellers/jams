@@ -23,9 +23,9 @@ var (
 
 /*
 UserInfo Provides information about the authenticated user
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return Authentication
+returns Authentication
 */
 func (client *APIClient) UserInfo(ctx context.Context) (Authentication, error) {
 	if client.auth == nil {
@@ -86,13 +86,13 @@ func (client *APIClient) UserInfo(ctx context.Context) (Authentication, error) {
 }
 
 /*
-AuthenticationAPI Login to the web server
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+Login to the web server, it will automatically save the access token to the client to be used on future requests.
+
  * @param loginData The login credentials
 
-@return AccessToken
+
 */
-func (client *APIClient) Login(ctx context.Context, loginData LoginData) error {
+func (client *APIClient) Login(ctx context.Context, loginData LoginData) (AccessToken, error) {
 	var returnValue AccessToken
 
 	// create path and map variables

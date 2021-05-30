@@ -25,10 +25,10 @@ type DateTypeAPI service
 
 /*
 DateTypeAPI Deletes a DateType object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the DateType
 
-@return Object
+returns Object
 */
 func (a *DateTypeAPI) DeleteDateType(ctx context.Context, name string) (Object, error) {
 	var returnValue Object
@@ -90,9 +90,9 @@ func (a *DateTypeAPI) DeleteDateType(ctx context.Context, name string) (Object, 
 
 /*
 DateTypeAPI Gets a collection of all DateTypes
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []DateType
+returns []DateType
 */
 func (a *DateTypeAPI) DateTypes(ctx context.Context) ([]DateType, error) {
 	var returnValue []DateType
@@ -151,10 +151,10 @@ func (a *DateTypeAPI) DateTypes(ctx context.Context) ([]DateType, error) {
 
 /*
 DateTypeAPI Get the DateType with the specified name.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the DateType
 
-@return DateType
+returns DateType
 */
 func (a *DateTypeAPI) DateTypeByName(ctx context.Context, name string) (DateType, error) {
 	var returnValue DateType
@@ -213,10 +213,10 @@ func (a *DateTypeAPI) DateTypeByName(ctx context.Context, name string) (DateType
 
 /*
 DateTypeAPI Get the DateType with the specified ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id
 
-@return DateType
+returns DateType
 */
 func (a *DateTypeAPI) DateTypeByID(ctx context.Context, id int) (DateType, error) {
 	var returnValue DateType
@@ -275,10 +275,10 @@ func (a *DateTypeAPI) DateTypeByID(ctx context.Context, id int) (DateType, error
 
 /*
 DateTypeAPI Creates a new DateType object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param dateType A Models.DateType object
 
-@return Object
+returns Object
 */
 func (a *DateTypeAPI) CreateDateType(ctx context.Context, dateType DateType) (Object, error) {
 	var returnValue Object
@@ -337,10 +337,10 @@ func (a *DateTypeAPI) CreateDateType(ctx context.Context, dateType DateType) (Ob
 
 /*
 DateTypeAPI Updates an existing DateType object or creates a new definition if it doesn't exist.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param dateType A Models.DateType object
 
-@return Object
+returns Object
 */
 func (a *DateTypeAPI) UpdateDateType(ctx context.Context, dateType DateType) (Object, error) {
 	var returnValue Object

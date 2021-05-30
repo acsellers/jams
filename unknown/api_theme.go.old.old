@@ -25,9 +25,9 @@ type ThemeApiService service
 
 /*
 ThemeApiService
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * 
 
-@return Theme
+returns Theme
 */
 func (a *ThemeApiService) Theme(ctx context.Context) (Theme, error) {
 	var (

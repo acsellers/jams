@@ -25,10 +25,10 @@ type UserSecurityAPI service
 
 /*
 UserSecurityAPI Deletes a UserSecurity object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the UserSecurity to delete.
 
-@return string
+returns string
 */
 func (a *UserSecurityAPI) DeleteUser(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -87,9 +87,9 @@ func (a *UserSecurityAPI) DeleteUser(ctx context.Context, name string) (string, 
 
 /*
 UserSecurityAPI Gets a collection of all users
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []UserSecurity
+returns []UserSecurity
 */
 func (a *UserSecurityAPI) Users(ctx context.Context) ([]UserSecurity, error) {
 	var returnValue []UserSecurity
@@ -148,10 +148,10 @@ func (a *UserSecurityAPI) Users(ctx context.Context) ([]UserSecurity, error) {
 
 /*
 UserSecurityAPI Get the UserSecurity with the specified name.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the UserSecurity.
 
-@return UserSecurity
+returns UserSecurity
 */
 func (a *UserSecurityAPI) UserByName(ctx context.Context, name string) (UserSecurity, error) {
 	var returnValue UserSecurity
@@ -210,10 +210,10 @@ func (a *UserSecurityAPI) UserByName(ctx context.Context, name string) (UserSecu
 
 /*
 UserSecurityAPI Get the User with the specified ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The id of the UserSecurity.
 
-@return UserSecurity
+returns UserSecurity
 */
 func (a *UserSecurityAPI) UserByID(ctx context.Context, id int) (UserSecurity, error) {
 	var returnValue UserSecurity
@@ -272,10 +272,10 @@ func (a *UserSecurityAPI) UserByID(ctx context.Context, id int) (UserSecurity, e
 
 /*
 UserSecurityAPI Creates a new UserSecurity object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param user A Models.UserSecurity object
 
-@return UserSecurity
+returns UserSecurity
 */
 func (a *UserSecurityAPI) CreateUser(ctx context.Context, user UserSecurity) (UserSecurity, error) {
 	var returnValue UserSecurity
@@ -334,10 +334,10 @@ func (a *UserSecurityAPI) CreateUser(ctx context.Context, user UserSecurity) (Us
 
 /*
 UserSecurityAPI Updates an existing UserSecurity object or creates new definition if it doesn't exist.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param user A Models.UserSecurity object
 
-@return UserSecurity
+returns UserSecurity
 */
 func (a *UserSecurityAPI) UpdateUser(ctx context.Context, user UserSecurity) (UserSecurity, error) {
 	var returnValue UserSecurity

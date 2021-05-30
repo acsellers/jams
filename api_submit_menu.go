@@ -25,9 +25,9 @@ type SubmitMenuAPI service
 
 /*
 SubmitMenuAPI Gets the full populated menu. This is starts from the Folders in the root.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []NestedMenuEntry
+returns []NestedMenuEntry
 */
 func (a *SubmitMenuAPI) NestedMenu(ctx context.Context) ([]NestedMenuEntry, error) {
 	var returnValue []NestedMenuEntry
@@ -86,9 +86,9 @@ func (a *SubmitMenuAPI) NestedMenu(ctx context.Context) ([]NestedMenuEntry, erro
 
 /*
 SubmitMenuAPI Gets the default root level menu. This is created from the Folders in the root.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []MenuEntry
+returns []MenuEntry
 */
 func (a *SubmitMenuAPI) SubmitMenu(ctx context.Context) ([]MenuEntry, error) {
 	var returnValue []MenuEntry
@@ -147,11 +147,11 @@ func (a *SubmitMenuAPI) SubmitMenu(ctx context.Context) ([]MenuEntry, error) {
 
 /*
 SubmitMenuAPI Gets a submit menu.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param menuType Specifies which type of menu should be retrieved.
  * @param name Specifies the name of the folder or menu to be retrieved.
 
-@return []MenuEntry
+returns []MenuEntry
 */
 func (a *SubmitMenuAPI) SubmitMenuByName(ctx context.Context, menuType, name string) ([]MenuEntry, error) {
 	var returnValue []MenuEntry
@@ -210,11 +210,11 @@ func (a *SubmitMenuAPI) SubmitMenuByName(ctx context.Context, menuType, name str
 
 /*
 SubmitMenuAPI Gets the entries in a branch of a submit menu. Use GetSubmitMenuByName to get the top level menu              and use this to expand branches when they are selected.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param menuType Specifies which type of menu should be retrieved.
  * @param id The ID of the folder or menu that should be retrieved.
 
-@return []MenuEntry
+returns []MenuEntry
 */
 func (a *SubmitMenuAPI) SubmitMenuByID(ctx context.Context, menuType string, id int) ([]MenuEntry, error) {
 	var returnValue []MenuEntry

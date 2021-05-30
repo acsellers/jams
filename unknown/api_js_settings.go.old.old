@@ -21,19 +21,19 @@ var (
 	_ context.Context
 )
 
-type AppMenuAPI service
+type JsSettingsApiService service
 
 /*
-AppMenuAPI Get all AppMenuItems.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+JsSettingsApiService
+ * 
 
-@return []AppMenuItem
+returns Object
 */
-func (a *AppMenuAPI) AppMenus(ctx context.Context) ([]AppMenuItem, error) {
-	var returnValue []AppMenuItem
+func (a *JsSettingsApiService) JsSettings(ctx context.Context) (Object, error) {
+	var returnValue Object
 
 	// create path and map variables
-	apiPath := a.client.cfg.BasePath + "/api/appmenu"
+	apiPath := a.client.cfg.BasePath + "/jsSettings"
 
 	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
@@ -68,7 +68,7 @@ func (a *AppMenuAPI) AppMenus(ctx context.Context) ([]AppMenuItem, error) {
 		}
 
 		if response.StatusCode == 200 {
-			var v []AppMenuItem
+			var v Object
 			err = a.client.decode(&v, body, response.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.Err = err.Error()

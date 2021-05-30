@@ -25,10 +25,10 @@ type ConfigAPI service
 
 /*
 ConfigAPI Deletes a Configuration object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the Configuration
 
-@return string
+returns string
 */
 func (a *ConfigAPI) DeleteConfig(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -87,9 +87,9 @@ func (a *ConfigAPI) DeleteConfig(ctx context.Context, name string) (string, erro
 
 /*
 ConfigAPI Gets a list of all configurations
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []Cfg
+returns []Cfg
 */
 func (a *ConfigAPI) Configs(ctx context.Context) ([]Cfg, error) {
 	var returnValue []Cfg
@@ -148,10 +148,10 @@ func (a *ConfigAPI) Configs(ctx context.Context) ([]Cfg, error) {
 
 /*
 ConfigAPI Get the Configuration with the specified configName.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the Configuration
 
-@return Cfg
+returns Cfg
 */
 func (a *ConfigAPI) ConfigByName(ctx context.Context, name string) (Cfg, error) {
 	var returnValue Cfg
@@ -210,10 +210,10 @@ func (a *ConfigAPI) ConfigByName(ctx context.Context, name string) (Cfg, error) 
 
 /*
 ConfigAPI Creates a new Configuration object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param config The name of the configuration
 
-@return Cfg
+returns Cfg
 */
 func (a *ConfigAPI) CreateConfig(ctx context.Context, config Cfg) (Cfg, error) {
 	var returnValue Cfg
@@ -272,10 +272,10 @@ func (a *ConfigAPI) CreateConfig(ctx context.Context, config Cfg) (Cfg, error) {
 
 /*
 ConfigAPI Updates an existing Cfg object or creates a new definition if it doesn't exist.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param config The name of the cfg
 
-@return Cfg
+returns Cfg
 */
 func (a *ConfigAPI) UpdateConfig(ctx context.Context, config Cfg) (Cfg, error) {
 	var returnValue Cfg

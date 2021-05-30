@@ -11,11 +11,9 @@ package jams
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -23,20 +21,19 @@ var (
 	_ context.Context
 )
 
-type EntryAuditTrailApiService service
+type TenantApiService service
 
 /*
-EntryAuditTrailApiService Gets Entry Audit Trail.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param jamsId The JAMS Id.
+TenantApiService
+ * 
 
-@return []EntryAuditTrail
+returns Tenant
 */
-func (a *EntryAuditTrailApiService) EntryAuditTrails(ctx context.Context, jamsId string) ([]EntryAuditTrail, error) {
-	var returnValue []EntryAuditTrail
+func (a *TenantApiService) Tenant(ctx context.Context) (Tenant, error) {
+	var returnValue Tenant
 
 	// create path and map variables
-	apiPath := fmt.Sprintf("%s/api/EntryAuditTrail/%s", a.client.cfg.BasePath, jamsId)
+	apiPath := a.client.cfg.BasePath + "/api/tenant"
 
 	headers := make(map[string]string)
 	headers["Content-Type"] = "application/json"
@@ -71,7 +68,7 @@ func (a *EntryAuditTrailApiService) EntryAuditTrails(ctx context.Context, jamsId
 		}
 
 		if response.StatusCode == 200 {
-			var v []EntryAuditTrail
+			var v Tenant
 			err = a.client.decode(&v, body, response.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.Err = err.Error()

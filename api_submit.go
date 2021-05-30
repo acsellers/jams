@@ -25,10 +25,10 @@ type SubmitAPI service
 
 /*
 SubmitAPI Get the submit information for a Job or Setup with the specified name.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The qualified name of the Job or Setup.
 
-@return SubmitInfo
+returns SubmitInfo
 */
 func (a *SubmitAPI) SubmitInfoByName(ctx context.Context, name string) (SubmitInfo, error) {
 	var returnValue SubmitInfo
@@ -90,10 +90,10 @@ func (a *SubmitAPI) SubmitInfoByName(ctx context.Context, name string) (SubmitIn
 
 /*
 SubmitAPI Get the submit info for a Setup with the specified ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The ID of the Setup.
 
-@return SubmitInfo
+returns SubmitInfo
 */
 func (a *SubmitAPI) SubmitInfoBySetupID(ctx context.Context, id int) (SubmitInfo, error) {
 	var returnValue SubmitInfo
@@ -152,10 +152,10 @@ func (a *SubmitAPI) SubmitInfoBySetupID(ctx context.Context, id int) (SubmitInfo
 
 /*
 SubmitAPI Get the submit info for a Job with the specified ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The ID of the Job.
 
-@return SubmitInfo
+returns SubmitInfo
 */
 func (a *SubmitAPI) SubmitInfoByJobID(ctx context.Context, id int) (SubmitInfo, error) {
 	var returnValue SubmitInfo
@@ -214,10 +214,10 @@ func (a *SubmitAPI) SubmitInfoByJobID(ctx context.Context, id int) (SubmitInfo, 
 
 /*
 SubmitAPI Submit the job specified in the SubmitInfo object. Usually, you create the SubmitInfo object              by calling GetSubmit which returns a SubmitInfo. You can then modify values in the SubmitInfo              before calling PutSubmit.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param si A SubmitInfo object
 
-@return SubmitInfo
+returns SubmitInfo
 */
 func (a *SubmitAPI) CreateSubmitInfo(ctx context.Context, si SubmitInfo) (SubmitInfo, error) {
 	var returnValue SubmitInfo

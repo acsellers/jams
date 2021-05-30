@@ -27,12 +27,12 @@ type EntryAPI service
 
 /*
 EntryAPI Gets log file as download or preview of first 512 kB.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param entryId The Entry Id
  * @param optional nil or *EntryApiEntryDownloadOpts - Optional Parameters:
      * @param "IsPreview" (optional.Bool) -  If true, returns first 512 kB of log file. If false or omitted, returns log file as attachment
 
-@return Object
+returns Object
 */
 
 type EntryApiEntryDownloadOpts struct {
@@ -101,9 +101,9 @@ func (a *EntryAPI) EntryDownload(ctx context.Context, entryId int, localVarOptio
 
 /*
 EntryAPI Gets entry information for all entries in the current schedule.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []Entry
+returns []Entry
 */
 func (a *EntryAPI) Entries(ctx context.Context) ([]Entry, error) {
 	var returnValue []Entry
@@ -162,11 +162,11 @@ func (a *EntryAPI) Entries(ctx context.Context) ([]Entry, error) {
 
 /*
 EntryAPI Gets parameter value for a given entry.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry for which to get the parameter.
  * @param name The name of the parameter to return.
 
-@return EntryParam
+returns EntryParam
 */
 func (a *EntryAPI) EntryParameter(ctx context.Context, id int, name string) (EntryParam, error) {
 	var returnValue EntryParam
@@ -225,10 +225,10 @@ func (a *EntryAPI) EntryParameter(ctx context.Context, id int, name string) (Ent
 
 /*
 EntryAPI Gets parameter list for a given entry.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry for which to get parameters.
 
-@return []EntryParam
+returns []EntryParam
 */
 func (a *EntryAPI) EntryParameters(ctx context.Context, id int) ([]EntryParam, error) {
 	var returnValue []EntryParam
@@ -287,10 +287,10 @@ func (a *EntryAPI) EntryParameters(ctx context.Context, id int) ([]EntryParam, e
 
 /*
 EntryAPI Gets Entry information with the specified ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry to get.
 
-@return Entry
+returns Entry
 */
 func (a *EntryAPI) EntryByID(ctx context.Context, id int) (Entry, error) {
 	var returnValue Entry
@@ -349,7 +349,7 @@ func (a *EntryAPI) EntryByID(ctx context.Context, id int) (Entry, error) {
 
 /*
 EntryAPI Cancels a JAMS entry.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry to cancel.
  * @param cancelEntry A Models.CancelEntry.
 
@@ -395,7 +395,7 @@ func (a *EntryAPI) CancelEntry(ctx context.Context, id int, cancelEntry CancelEn
 
 /*
 EntryAPI Sets parameter value for a given entry.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry to update.
  * @param name The name of the parameter to update.
  * @param value The new parameter value.
@@ -442,7 +442,7 @@ func (a *EntryAPI) UpdateEntryParameter(ctx context.Context, id int, name, value
 
 /*
 EntryAPI Reschedules a JAMS entry.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry to reschedule.
  * @param rescheduleEntry A Models.RescheduleEntry.
 
@@ -488,7 +488,7 @@ func (a *EntryAPI) RescheduleEntry(ctx context.Context, id int, rescheduleEntry 
 
 /*
 EntryAPI Restarts a JAMS entry.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry to restart.
  * @param restartEntry A Models.RestartEntry.
 
@@ -534,7 +534,7 @@ func (a *EntryAPI) RestartEntry(ctx context.Context, id int, restartEntry Restar
 
 /*
 EntryAPI Sets the status message for an entry.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry to update.
  * @param status The new status message.
  * @param icon The new icon.
@@ -589,7 +589,7 @@ func (a *EntryAPI) UpdateStatus(ctx context.Context, id int, status string, icon
 
 /*
 EntryAPI Holds an Entry with the specified ID, with the              specified HoldEntry Audit Comment.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry to hold.
  * @param holdEntry A Models.HoldEntry.
 
@@ -635,7 +635,7 @@ func (a *EntryAPI) HoldEntry(ctx context.Context, id int, holdEntry HoldEntry) e
 
 /*
 EntryAPI Releases a CurJob with the specified ID              to Run Again, with specified ReleaseEntry Audit Comment
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The JAMS entry to release.
  * @param releaseEntry A Models.ReleaseEntry.
 

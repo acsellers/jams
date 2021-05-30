@@ -25,10 +25,10 @@ type SetupAPI service
 
 /*
 SetupAPI Deletes a Setup definition.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the Setup
 
-@return string
+returns string
 */
 func (a *SetupAPI) DeleteSetup(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -90,9 +90,9 @@ func (a *SetupAPI) DeleteSetup(ctx context.Context, name string) (string, error)
 
 /*
 SetupAPI Gets a collection of all setups
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []Setup
+returns []Setup
 */
 func (a *SetupAPI) Setups(ctx context.Context) ([]Setup, error) {
 	var returnValue []Setup
@@ -151,10 +151,10 @@ func (a *SetupAPI) Setups(ctx context.Context) ([]Setup, error) {
 
 /*
 SetupAPI Get the Setup with the specified ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The ID of the Setup definition
 
-@return Setup
+returns Setup
 */
 func (a *SetupAPI) SetupByID(ctx context.Context, id int) (Setup, error) {
 	var returnValue Setup
@@ -213,10 +213,10 @@ func (a *SetupAPI) SetupByID(ctx context.Context, id int) (Setup, error) {
 
 /*
 SetupAPI Get the Setup with the specified setupName.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name The name of the Setup
 
-@return Setup
+returns Setup
 */
 func (a *SetupAPI) SetupByName(ctx context.Context, name string) (Setup, error) {
 	var returnValue Setup
@@ -275,10 +275,10 @@ func (a *SetupAPI) SetupByName(ctx context.Context, name string) (Setup, error) 
 
 /*
 SetupAPI Gets all Setups in the folder with the specified ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id ID of the folder definition
 
-@return []Setup
+returns []Setup
 */
 func (a *SetupAPI) SetupsByFolderID(ctx context.Context, id int) ([]Setup, error) {
 	var returnValue []Setup
@@ -337,10 +337,10 @@ func (a *SetupAPI) SetupsByFolderID(ctx context.Context, id int) ([]Setup, error
 
 /*
 SetupAPI Creates a new Setup definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param setup New Setup definition
 
-@return Setup
+returns Setup
 */
 func (a *SetupAPI) CreateSetup(ctx context.Context, setup Setup) (Setup, error) {
 	var returnValue Setup
@@ -399,10 +399,10 @@ func (a *SetupAPI) CreateSetup(ctx context.Context, setup Setup) (Setup, error) 
 
 /*
 SetupAPI Updates an existing Setup definition or creates a new definition if it doesn't exist.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param setup The name of the setup
 
-@return Setup
+returns Setup
 */
 func (a *SetupAPI) UpdateSetup(ctx context.Context, setup Setup) (Setup, error) {
 	var returnValue Setup

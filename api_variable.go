@@ -25,11 +25,11 @@ type VariableAPI service
 
 /*
 VariableAPI Changes the value of a variable identified by name
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the variable definition
  * @param value The new value of the variable definition
 
-@return Object
+returns Object
 */
 func (a *VariableAPI) ChangeVariableValue(ctx context.Context, name string, value Object) (Object, error) {
 	var returnValue Object
@@ -91,10 +91,10 @@ func (a *VariableAPI) ChangeVariableValue(ctx context.Context, name string, valu
 
 /*
 VariableAPI Deletes a variable definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the variable
 
-@return string
+returns string
 */
 func (a *VariableAPI) DeleteVariable(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -156,9 +156,9 @@ func (a *VariableAPI) DeleteVariable(ctx context.Context, name string) (string, 
 
 /*
 VariableAPI Gets a list of variables that match the queryString
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
 
-@return []Variable
+returns []Variable
 */
 func (a *VariableAPI) Variables(ctx context.Context) ([]Variable, error) {
 	var returnValue []Variable
@@ -217,10 +217,10 @@ func (a *VariableAPI) Variables(ctx context.Context) ([]Variable, error) {
 
 /*
 VariableAPI Get the Variable with the specified ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id
 
-@return Variable
+returns Variable
 */
 func (a *VariableAPI) VariableByID(ctx context.Context, id int) (Variable, error) {
 	var returnValue Variable
@@ -279,10 +279,10 @@ func (a *VariableAPI) VariableByID(ctx context.Context, id int) (Variable, error
 
 /*
 VariableAPI Gets a list of variables under the specified folder definition by ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id ID of the folder definition
 
-@return []Variable
+returns []Variable
 */
 func (a *VariableAPI) VariablesByFolderID(ctx context.Context, id int) ([]Variable, error) {
 	var returnValue []Variable
@@ -341,10 +341,10 @@ func (a *VariableAPI) VariablesByFolderID(ctx context.Context, id int) ([]Variab
 
 /*
 VariableAPI Creates a new variable definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param variable Model of a new variable definition
 
-@return Variable
+returns Variable
 */
 func (a *VariableAPI) CreateVariable(ctx context.Context, variable Variable) (Variable, error) {
 	var returnValue Variable
@@ -403,10 +403,10 @@ func (a *VariableAPI) CreateVariable(ctx context.Context, variable Variable) (Va
 
 /*
 VariableAPI Update the Variable object.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param var_ A Models.Variable object
 
-@return Variable
+returns Variable
 */
 func (a *VariableAPI) UpdateVariable(ctx context.Context, var_ Variable) (Variable, error) {
 	var returnValue Variable

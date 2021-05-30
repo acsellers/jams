@@ -25,10 +25,10 @@ type TriggerAPI service
 
 /*
 TriggerAPI Deletes a trigger definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the trigger definition
 
-@return string
+returns string
 */
 func (a *TriggerAPI) DeleteTrigger(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -90,10 +90,10 @@ func (a *TriggerAPI) DeleteTrigger(ctx context.Context, name string) (string, er
 
 /*
 TriggerAPI Disables a trigger by name
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the trigger to disable
 
-@return string
+returns string
 */
 func (a *TriggerAPI) DisableTrigger(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -155,10 +155,10 @@ func (a *TriggerAPI) DisableTrigger(ctx context.Context, name string) (string, e
 
 /*
 TriggerAPI Enables a trigger by name
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the trigger to enable
 
-@return string
+returns string
 */
 func (a *TriggerAPI) EnableTrigger(ctx context.Context, name string) (string, error) {
 	var returnValue string
@@ -220,10 +220,10 @@ func (a *TriggerAPI) EnableTrigger(ctx context.Context, name string) (string, er
 
 /*
 TriggerAPI Gets a trigger definition by name
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the trigger definition
 
-@return Trigger
+returns Trigger
 */
 func (a *TriggerAPI) TriggerByName(ctx context.Context, name string) (Trigger, error) {
 	var returnValue Trigger
@@ -282,10 +282,10 @@ func (a *TriggerAPI) TriggerByName(ctx context.Context, name string) (Trigger, e
 
 /*
 TriggerAPI Gets all trigger definitions by parent folder ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param id The Trigger Id
 
-@return []Trigger
+returns []Trigger
 */
 func (a *TriggerAPI) TriggersByFolderID(ctx context.Context, id int) ([]Trigger, error) {
 	var returnValue []Trigger
@@ -344,10 +344,10 @@ func (a *TriggerAPI) TriggersByFolderID(ctx context.Context, id int) ([]Trigger,
 
 /*
 TriggerAPI Adds a new trigger definition to a JAMS Server
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param trigger The trigger definition
 
-@return Trigger
+returns Trigger
 */
 func (a *TriggerAPI) CreateTrigger(ctx context.Context, trigger Trigger) (Trigger, error) {
 	var returnValue Trigger
@@ -406,10 +406,10 @@ func (a *TriggerAPI) CreateTrigger(ctx context.Context, trigger Trigger) (Trigge
 
 /*
 TriggerAPI Updates and existing trigger definition
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param trigger The trigger definition
 
-@return Trigger
+returns Trigger
 */
 func (a *TriggerAPI) UpdateTrigger(ctx context.Context, trigger Trigger) (Trigger, error) {
 	var returnValue Trigger
@@ -468,10 +468,10 @@ func (a *TriggerAPI) UpdateTrigger(ctx context.Context, trigger Trigger) (Trigge
 
 /*
 TriggerAPI Resets a trigger
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param name Name of the trigger to reset
 
-@return string
+returns string
 */
 func (a *TriggerAPI) ResetTrigger(ctx context.Context, name string) (string, error) {
 	var returnValue string

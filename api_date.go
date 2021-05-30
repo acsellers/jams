@@ -28,13 +28,13 @@ type DateAPI service
 
 /*
 DateAPI Evaluate a natural language date and return the date that it identifies.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param date The natural language date specification.
  * @param optional nil or *DateApiDateGetEvaluateDateOpts - Optional Parameters:
      * @param "Today" (optional.Time) -  The date that should be considered \&quot;today\&quot; when evaluating              the date specification.
      * @param "StartDate" (optional.Time) -  The starting date to be used for interval specification (i.e. every other monday)
 
-@return time.Time
+returns time.Time
 */
 
 type DateApiDateGetEvaluateDateOpts struct {
@@ -108,11 +108,11 @@ func (a *DateAPI) EvaluateDate(ctx context.Context, date string, localVarOptiona
 
 /*
 DateAPI Adds a date to an existing DateType or creates a new DateType if it doesn't exist.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ *
  * @param dateTypeName The name of the DateType to add the date to.
  * @param date The date to add.
 
-@return Object
+returns Object
 */
 func (a *DateAPI) UpdateDate(ctx context.Context, dateTypeName string, date time.Time) (Object, error) {
 	var returnValue Object
