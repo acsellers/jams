@@ -273,7 +273,7 @@ func (a *UserSecurityAPI) UserByID(ctx context.Context, id int) (UserSecurity, e
 /*
 UserSecurityAPI Creates a new UserSecurity object.
 
- * @param user A Models.UserSecurity object
+ * @param user A UserSecurity object
 
 returns UserSecurity
 */
@@ -335,7 +335,7 @@ func (a *UserSecurityAPI) CreateUser(ctx context.Context, user UserSecurity) (Us
 /*
 UserSecurityAPI Updates an existing UserSecurity object or creates new definition if it doesn't exist.
 
- * @param user A Models.UserSecurity object
+ * @param user A UserSecurity object
 
 returns UserSecurity
 */

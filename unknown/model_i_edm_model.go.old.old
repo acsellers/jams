@@ -12,7 +12,7 @@ package jams
 type IEdmModel struct {
 	SchemaElements                []IEdmSchemaElement                `json:"schemaElements,omitempty"`
 	VocabularyAnnotations         []IEdmVocabularyAnnotation         `json:"vocabularyAnnotations,omitempty"`
-	ReferencedModels              []IEdmModel                        `json:"referencedModels,omitempty"`
+	Referenced             []IEdmModel                        `json:"referencedomitempty"`
 	DeclaredNamespaces            []string                           `json:"declaredNamespaces,omitempty"`
 	DirectValueAnnotationsManager *IEdmDirectValueAnnotationsManager `json:"directValueAnnotationsManager,omitempty"`
 	EntityContainer               *IEdmEntityContainer               `json:"entityContainer,omitempty"`

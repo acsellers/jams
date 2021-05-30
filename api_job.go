@@ -277,7 +277,7 @@ func (a *JobAPI) Jobs(ctx context.Context) ([]Job, error) {
 JobAPI Gets Jobs in the Folder with the specified name
 
  * @param folderName The name of the Folder to return Jobs from.
- * @param name
+ * @param name The name of the Job.
 
 returns []Job
 */
@@ -404,7 +404,7 @@ func (a *JobAPI) JobsByFolderID(ctx context.Context, id int) ([]Job, error) {
 /*
 JobAPI Creates a new Job object.
 
- * @param job A Models.Job object
+ * @param job A Job object
 
 returns Job
 */
@@ -466,7 +466,7 @@ func (a *JobAPI) CreateJob(ctx context.Context, job Job) (Job, error) {
 /*
 JobAPI Updates an existing Job object or creates new definition if it doesn't exist.
 
- * @param job A Models.Job object
+ * @param job A Job object
 
 returns Job
 */

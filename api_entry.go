@@ -351,7 +351,7 @@ func (a *EntryAPI) EntryByID(ctx context.Context, id int) (Entry, error) {
 EntryAPI Cancels a JAMS entry.
 
  * @param id The JAMS entry to cancel.
- * @param cancelEntry A Models.CancelEntry.
+ * @param cancelEntry A CancelEntry.
 
 
 */
@@ -444,7 +444,7 @@ func (a *EntryAPI) UpdateEntryParameter(ctx context.Context, id int, name, value
 EntryAPI Reschedules a JAMS entry.
 
  * @param id The JAMS entry to reschedule.
- * @param rescheduleEntry A Models.RescheduleEntry.
+ * @param rescheduleEntry A RescheduleEntry.
 
 
 */
@@ -490,7 +490,7 @@ func (a *EntryAPI) RescheduleEntry(ctx context.Context, id int, rescheduleEntry 
 EntryAPI Restarts a JAMS entry.
 
  * @param id The JAMS entry to restart.
- * @param restartEntry A Models.RestartEntry.
+ * @param restartEntry A RestartEntry.
 
 
 */
@@ -591,7 +591,7 @@ func (a *EntryAPI) UpdateStatus(ctx context.Context, id int, status string, icon
 EntryAPI Holds an Entry with the specified ID, with the              specified HoldEntry Audit Comment.
 
  * @param id The JAMS entry to hold.
- * @param holdEntry A Models.HoldEntry.
+ * @param holdEntry A HoldEntry.
 
 
 */
@@ -637,7 +637,7 @@ func (a *EntryAPI) HoldEntry(ctx context.Context, id int, holdEntry HoldEntry) e
 EntryAPI Releases a CurJob with the specified ID              to Run Again, with specified ReleaseEntry Audit Comment
 
  * @param id The JAMS entry to release.
- * @param releaseEntry A Models.ReleaseEntry.
+ * @param releaseEntry A ReleaseEntry.
 
 
 */

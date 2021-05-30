@@ -404,7 +404,7 @@ func (a *VariableAPI) CreateVariable(ctx context.Context, variable Variable) (Va
 /*
 VariableAPI Update the Variable object.
 
- * @param var_ A Models.Variable object
+ * @param var_ A Variable object
 
 returns Variable
 */

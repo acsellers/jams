@@ -276,7 +276,7 @@ func (a *DateTypeAPI) DateTypeByID(ctx context.Context, id int) (DateType, error
 /*
 DateTypeAPI Creates a new DateType object.
 
- * @param dateType A Models.DateType object
+ * @param dateType A DateType object
 
 returns Object
 */
@@ -338,7 +338,7 @@ func (a *DateTypeAPI) CreateDateType(ctx context.Context, dateType DateType) (Ob
 /*
 DateTypeAPI Updates an existing DateType object or creates a new definition if it doesn't exist.
 
- * @param dateType A Models.DateType object
+ * @param dateType A DateType object
 
 returns Object
 */

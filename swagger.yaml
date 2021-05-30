@@ -726,7 +726,7 @@ paths:
       parameters:
         - name: dateType
           in: body
-          description: A Models.DateType object
+          description: A DateType object
           required: true
           schema:
             $ref: '#/definitions/DateType'
@@ -755,7 +755,7 @@ paths:
       parameters:
         - name: dateType
           in: body
-          description: A Models.DateType object
+          description: A DateType object
           required: true
           schema:
             $ref: '#/definitions/DateType'
@@ -832,7 +832,7 @@ paths:
           format: int
         - name: holdEntry
           in: body
-          description: A Models.HoldEntry.
+          description: A HoldEntry.
           required: true
           schema:
             $ref: '#/definitions/HoldEntry'
@@ -862,7 +862,7 @@ paths:
           format: int
         - name: releaseEntry
           in: body
-          description: A Models.ReleaseEntry.
+          description: A ReleaseEntry.
           required: true
           schema:
             $ref: '#/definitions/ReleaseEntry'
@@ -1028,7 +1028,7 @@ paths:
           format: int
         - name: rescheduleEntry
           in: body
-          description: A Models.RescheduleEntry.
+          description: A RescheduleEntry.
           required: true
           schema:
             $ref: '#/definitions/RescheduleEntry'
@@ -1058,7 +1058,7 @@ paths:
           format: int
         - name: restartEntry
           in: body
-          description: A Models.RestartEntry.
+          description: A RestartEntry.
           required: true
           schema:
             $ref: '#/definitions/RestartEntry'
@@ -1088,7 +1088,7 @@ paths:
           format: int
         - name: cancelEntry
           in: body
-          description: A Models.CancelEntry.
+          description: A CancelEntry.
           required: true
           schema:
             $ref: '#/definitions/CancelEntry'
@@ -1533,7 +1533,7 @@ paths:
       parameters:
         - name: job
           in: body
-          description: A Models.Job object
+          description: A Job object
           required: true
           schema:
             $ref: '#/definitions/Job'
@@ -1562,7 +1562,7 @@ paths:
       parameters:
         - name: job
           in: body
-          description: A Models.Job object
+          description: A Job object
           required: true
           schema:
             $ref: '#/definitions/Job'
@@ -2641,7 +2641,7 @@ paths:
       parameters:
         - name: user
           in: body
-          description: A Models.UserSecurity object
+          description: A UserSecurity object
           required: true
           schema:
             $ref: '#/definitions/UserSecurity'
@@ -2670,7 +2670,7 @@ paths:
       parameters:
         - name: user
           in: body
-          description: A Models.UserSecurity object
+          description: A UserSecurity object
           required: true
           schema:
             $ref: '#/definitions/UserSecurity'
@@ -2719,7 +2719,7 @@ paths:
       parameters:
         - name: var
           in: body
-          description: A Models.Variable object
+          description: A Variable object
           required: true
           schema:
             $ref: '#/definitions/Variable'
@@ -3999,7 +3999,7 @@ definitions:
         items:
           $ref: '#/definitions/IEdmVocabularyAnnotation'
         readOnly: true
-      referencedModels:
+      referenced
         type: array
         items:
           $ref: '#/definitions/IEdmModel'
