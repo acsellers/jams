@@ -7,7 +7,7 @@ If you care about the Theme API (or the other skipped API's) create an issue and
 ### TODO: 
 
 1. The GetJobLog function doesn't return the log like it should. 
-2. The History API has a endpoint that will take oData queries, but, I didn't see a good odata query client for Go. One would assume someone had already done the work to make an odata client to generate the queries, but I can't find one. Maybe I'll build one...
+2. The History API has a endpoint that will take oData queries, but, I didn't see a good odata query client for Go. One would assume someone had already done the work to make an odata client to generate the query string, but I can't find one. Maybe I'll build one...
 3. This is built against the 6.X release of the JAMS Rest API. I plan on working on the 7.X version soon.
 
 
