@@ -104,18 +104,18 @@ func (client *APIClient) Login(ctx context.Context, loginData LoginData) (Access
 
 	r, err := client.buildRequest(apiPath, "POST", &loginData, headers, url.Values{})
 	if err != nil {
-		return err
+		return returnValue, err
 	}
 
 	response, err := client.Call(ctx, r)
 	if err != nil || response == nil {
-		return err
+		return returnValue, err
 	}
 
 	body, err := ioutil.ReadAll(response.Body)
 	response.Body.Close()
 	if err != nil {
-		return err
+		return returnValue, err
 	}
 
 	if response.StatusCode < 300 {
@@ -124,7 +124,7 @@ func (client *APIClient) Login(ctx context.Context, loginData LoginData) (Access
 		if err == nil {
 			client.auth = &returnValue
 		}
-		return err
+		return returnValue, err
 	}
 
 	if response.StatusCode >= 300 {
@@ -138,14 +138,14 @@ func (client *APIClient) Login(ctx context.Context, loginData LoginData) (Access
 			err = client.decode(&v, body, response.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.Err = err.Error()
-				return newErr
+				return returnValue, newErr
 			}
 			newErr.Model = v
-			return newErr
+			return returnValue, newErr
 		}
 
-		return newErr
+		return returnValue, newErr
 	}
 
-	return nil
+	return returnValue, nil
 }

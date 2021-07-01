@@ -187,8 +187,8 @@ HistoryAPI Gets log file as download or preview of first 512 kB.
 returns Object
 */
 
-func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCount int, isPreview bool) (Object, error) {
-	var returnValue Object
+func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCount int, isPreview bool) (string, error) {
+	var returnValue string
 
 	// create path and map variables
 	apiPath := fmt.Sprintf(
@@ -210,18 +210,18 @@ func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCou
 
 	r, err := a.client.buildRequest(apiPath, "GET", nil, headers, queryParams)
 	if err != nil {
-		return returnValue, err
+		return "", err
 	}
 
 	response, err := a.client.Call(ctx, r)
 	if err != nil || response == nil {
-		return returnValue, err
+		return "", err
 	}
 
 	body, err := ioutil.ReadAll(response.Body)
 	response.Body.Close()
 	if err != nil {
-		return returnValue, err
+		return "", err
 	}
 
 	if response.StatusCode < 300 {
@@ -237,13 +237,19 @@ func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCou
 		}
 
 		if response.StatusCode == 200 {
-			var v Object
-			err = a.client.decode(&v, body, response.Header.Get("Content-Type"))
+			// preview is just the log as a string
+
+			b := []byte{}
+			err = a.client.decode(&b, body, response.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.Err = err.Error()
 				return returnValue, newErr
 			}
-			newErr.Model = v
+
+			if isPreview {
+				return string(b), err
+			}
+
 			return returnValue, newErr
 		}
 
