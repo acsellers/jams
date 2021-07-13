@@ -219,7 +219,7 @@ SubmitAPI Submit the job specified in the SubmitInfo object. Usually, you create
 
 returns SubmitInfo
 */
-func (a *SubmitAPI) CreateSubmitInfo(ctx context.Context, si SubmitInfo) (SubmitInfo, error) {
+func (a *SubmitAPI) SubmitJob(ctx context.Context, si SubmitInfo) (SubmitInfo, error) {
 	var returnValue SubmitInfo
 
 	// create path and map variables

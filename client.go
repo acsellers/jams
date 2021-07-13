@@ -144,6 +144,8 @@ func (c *APIClient) buildRequest(
 	if err != nil {
 		return nil, err
 	}
+	url.Scheme = c.cfg.Scheme
+	url.Host = c.cfg.Host
 
 	// Adding Query Param
 	query := url.Query()
@@ -197,6 +199,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		}
 		return nil
 	} else if strings.Contains(contentType, "application/json") {
+		b = bytes.ReplaceAll(b, []byte(`T00:00:00"`), []byte(`T00:00:00Z"`))
 		if err = json.Unmarshal(b, v); err != nil {
 			return err
 		}
