@@ -11,7 +11,7 @@ If you care about the Theme API (or the other skipped API's) create an issue and
 
 ### TODO: 
 
-1. The GetJobLog function doesn't return the log like I want it to. 
+1. The GetJobLog function doesn't return large logs.
 2. This is built against the 6.X release of the JAMS Rest API. I plan on working on the 7.X version at some point.
 
 
