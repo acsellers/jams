@@ -4,11 +4,15 @@ A Go client for the JAMS scheduler and (later) a set of useful tools built on it
 
 If you care about the Theme API (or the other skipped API's) create an issue and explain why they're so useful.
 
+### Examples
+
+* submit - Find and submit a job
+* schedule - Look at Jobs and Setups to make a simplified weekly job schedule
+
 ### TODO: 
 
-1. The GetJobLog function doesn't return the log like it should. 
-2. The History API has a endpoint that will take oData queries, but, I didn't see a good odata query client for Go. One would assume someone had already done the work to make an odata client to generate the query string, but I can't find one. Maybe I'll build one...
-3. This is built against the 6.X release of the JAMS Rest API. I plan on working on the 7.X version soon.
+1. The GetJobLog function doesn't return the log like I want it to. 
+2. This is built against the 6.X release of the JAMS Rest API. I plan on working on the 7.X version at some point.
 
 
 ### Planned Tools:

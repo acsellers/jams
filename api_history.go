@@ -182,12 +182,12 @@ HistoryAPI Gets log file as download or preview of first 512 kB.
  * @param jobName The Job Name
  * @param ron The RON number
  * @param restartCount The Restart Count
- * @param isPreview" If true, returns first 512 kB of log file. If false, returns log file as attachment
+ * @param largeLog If false, returns only the first 512kb of the log, if true, will return the whole log
 
 returns Object
 */
 
-func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCount int, isPreview bool) (string, error) {
+func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCount int, largeLog bool) (string, error) {
 	var returnValue string
 
 	// create path and map variables
@@ -200,7 +200,7 @@ func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCou
 	)
 
 	queryParams := url.Values{}
-	if isPreview {
+	if !largeLog {
 		queryParams.Add("isPreview", "true")
 	}
 
