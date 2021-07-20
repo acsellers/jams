@@ -246,7 +246,7 @@ func (a *HistoryAPI) JobLog(ctx context.Context, jobName string, ron, restartCou
 				return returnValue, newErr
 			}
 
-			if isPreview {
+			if !largeLog {
 				return string(b), err
 			}
 
