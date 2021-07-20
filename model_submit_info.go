@@ -63,3 +63,11 @@ type SubmitInfo struct {
 	UserName             string            `json:"userName,omitempty"`
 	UseSymbols           bool              `json:"useSymbols,omitempty"`
 }
+
+func (si *SubmitInfo) SetParameter(key, value string) {
+	for i := range si.Parameters {
+		if si.Parameters[i].ParamName == key {
+			si.Parameters[i].ParamValue = value
+		}
+	}
+}

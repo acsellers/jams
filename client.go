@@ -14,6 +14,7 @@ import (
 	"regexp"
 	"strings"
 	"time"
+	"unicode/utf8"
 )
 
 var (
@@ -205,6 +206,11 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		}
 		return nil
 	}
+	if sp, ok := v.(*string); ok && utf8.Valid(b) {
+		*sp = string(b)
+		return nil
+	}
+
 	return errors.New("undefined response type")
 }
 
